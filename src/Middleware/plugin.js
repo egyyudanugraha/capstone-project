@@ -1,29 +1,24 @@
 const Boom = require('@hapi/boom');
-const admin = require('../Config/firebase-config');
 
-const matchToken = {
-  name: 'matchToken',
+const matchRole = {
+  name: 'matchRole',
   version: '1.0.0',
   register: async (server) => {
     server.ext({
       type: 'onPreHandler',
       method: async (request, h) => {
-        try {
-          const { headers } = request;
-          const { authorization } = headers;
-          const token = authorization.split(' ')[1];
-          const decodedValue = await admin.auth().verifyIdToken(token);
-          if (decodedValue) {
-            request.user = decodedValue;
-            return h.continue;
-          }
-          throw Boom.badRequest();
-        } catch (err) {
-          throw Boom.unauthorized('Invalid token! Please login again.');
+        const match = request.route.path.match(/\/article/);
+        const admin = request.auth.isAuthenticated ? request.auth.credentials.user.role === 'admin' : false;
+        const method = ['post', 'put', 'delete'].includes(request.route.method);
+
+        if (match && !admin && method) {
+          throw Boom.badGateway('You are not authorized to access this route');
         }
+
+        return h.continue;
       },
     });
   },
 };
 
-module.exports = matchToken;
+module.exports = matchRole;
