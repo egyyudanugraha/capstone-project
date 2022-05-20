@@ -1,16 +1,22 @@
 const Boom = require('@hapi/boom');
+const { resolve } = require('path');
 const Article = require('../Models/article');
 const User = require('../Models/user');
+const { handleImageUpload } = require('../Utils/upload');
 
 module.exports = {
   createArticle: async (request, h) => {
     try {
-      const { title, content, tags } = request.payload;
+      const {
+        title, content, tags, cover,
+      } = request.payload;
+      const file = await handleImageUpload(cover);
       const article = new Article({
         writer: request.auth.credentials.user._id,
         title,
         content,
         tags,
+        cover: file,
       });
       await article.save();
       return h.response({
@@ -100,6 +106,11 @@ module.exports = {
     try {
       const { id } = request.params;
       const article = await Article.findOne({ _id: id });
+
+      if (!article) {
+        throw Boom.notFound('Article not found');
+      }
+
       await article.remove();
       return h.response({
         message: 'Article deleted successfully',
@@ -109,4 +120,19 @@ module.exports = {
       throw Boom.badRequest(error);
     }
   },
+  showImageLarge: () => ({
+    directory: {
+      path: resolve(__dirname, '../../public/images/large'),
+    },
+  }),
+  showImageMedium: () => ({
+    directory: {
+      path: resolve(__dirname, '../../public/images/medium'),
+    },
+  }),
+  showImageSmall: () => ({
+    directory: {
+      path: resolve(__dirname, '../../public/images/small'),
+    },
+  }),
 };

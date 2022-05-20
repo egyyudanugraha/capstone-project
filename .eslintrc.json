@@ -14,6 +14,7 @@
         "no-console": "off",
         "func-names": "off",
         "no-underscore-dangle": "off",
-        "no-return-assign": "off"
+        "no-return-assign": "off",
+        "global-require": "off"
     }
 }

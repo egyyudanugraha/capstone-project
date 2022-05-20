@@ -19,6 +19,8 @@ const init = async () => {
   await server.register({
     plugin: matchRole,
   });
+
+  await server.register(require('@hapi/inert'));
   server.route(router);
 
   await server.start();

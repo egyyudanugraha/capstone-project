@@ -15,6 +15,10 @@ const articleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cover: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Number,
     default: Date.now(),
