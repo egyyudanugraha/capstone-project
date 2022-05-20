@@ -21,7 +21,7 @@ module.exports = {
         error: false,
       }).code(201);
     } catch (error) {
-      throw Boom.boomify(error);
+      throw Boom.badRequest(error);
     }
   },
   login: async (request, h) => {
@@ -39,7 +39,7 @@ module.exports = {
         error: false,
       }).code(200);
     } catch (error) {
-      throw Boom.boomify(error);
+      throw Boom.badRequest(error);
     }
   },
   logout: async (request, h) => {
@@ -52,7 +52,7 @@ module.exports = {
 
       return h.response({ message: 'Logout success' }).code(200);
     } catch (error) {
-      throw Boom.boomify(error);
+      throw Boom.badRequest(error);
     }
   },
 };

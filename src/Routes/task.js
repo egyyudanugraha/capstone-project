@@ -1,13 +1,32 @@
+const {
+  showAllTask, createTask, showOneTask, updateTask, deleteTask,
+} = require('../Controllers/task');
+
 const taskRoute = [
   {
-    method: 'GET',
-    path: '/tasks',
-    handler: (request, h) => h.response('ini Task'),
+    method: 'POST',
+    path: '/task',
+    handler: createTask,
   },
   {
     method: 'GET',
-    path: '/tasks/id',
-    handler: (request, h) => h.response('ini Task id'),
+    path: '/task',
+    handler: showAllTask,
+  },
+  {
+    method: 'GET',
+    path: '/task/{id}',
+    handler: showOneTask,
+  },
+  {
+    method: 'PUT',
+    path: '/task/{id}',
+    handler: updateTask,
+  },
+  {
+    method: 'DELETE',
+    path: '/task/{id}',
+    handler: deleteTask,
   },
 ];
 

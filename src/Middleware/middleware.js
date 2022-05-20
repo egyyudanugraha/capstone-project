@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-// const Boom = require('@hapi/boom');
 const User = require('../Models/user');
 
 const validate = async (request) => {

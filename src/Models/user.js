@@ -3,6 +3,7 @@ const bcryptjs = require('bcryptjs');
 const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
+const Task = require('./task');
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -30,17 +31,22 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 7,
     trim: true,
     validate(value) {
       if (value.toLowerCase().includes('password')) {
         throw Boom.badRequest('Password cannot contain "password"');
       }
 
-      if (value.length < 7) {
-        throw Boom.badRequest('Password must be at least 7 characters');
+      if (value.length < 8) {
+        throw Boom.badRequest('Password must be at least 8 characters');
       }
     },
+  },
+  role: {
+    type: String,
+    required: true,
+    enum: ['user', 'admin'],
+    default: 'user',
   },
   token: {
     type: String,
@@ -92,6 +98,12 @@ userSchema.pre('save', async function (next) {
   if (user.isModified('password')) {
     user.password = await bcryptjs.hash(user.password, 8);
   }
+  next();
+});
+
+userSchema.pre('remove', async function (next) {
+  const user = this;
+  await Task.deleteMany({ owner: user._id });
   next();
 });
 

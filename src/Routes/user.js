@@ -1,20 +1,27 @@
-const { profile, update, updatePassword } = require('../Controllers/user');
+const {
+  getProfile, updateProfile, updatePassword, deleteProfile,
+} = require('../Controllers/user');
 
 const userRoute = [
   {
     method: 'GET',
     path: '/user',
-    handler: profile,
+    handler: getProfile,
   },
   {
     method: 'PUT',
     path: '/user',
-    handler: update,
+    handler: updateProfile,
   },
   {
     method: 'PUT',
     path: '/user/password',
     handler: updatePassword,
+  },
+  {
+    method: 'DELETE',
+    path: '/user',
+    handler: deleteProfile,
   },
 ];
 
