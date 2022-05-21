@@ -50,6 +50,10 @@ module.exports = {
       const { id } = request.params;
       const history = await History.findOne({ _id: id, owner: user._id });
 
+      if (!history) {
+        throw Boom.notFound('History not found');
+      }
+
       return h.response({
         message: 'Get detail history successfully',
         data: history,
@@ -64,6 +68,10 @@ module.exports = {
       const { user } = request.auth.credentials;
       const { id } = request.params;
       const history = await History.findOne({ _id: id, owner: user._id });
+
+      if (!history) {
+        throw Boom.notFound('History not found');
+      }
 
       await history.remove();
 

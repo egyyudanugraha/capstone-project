@@ -60,6 +60,10 @@ module.exports = {
       const article = await Article.findOne({ _id: id });
       const writer = await User.findOne({ _id: article.writer });
 
+      if (!article) {
+        throw Boom.notFound('Article not found');
+      }
+
       const data = {
         ...article._doc,
         writer: `${writer.firstName} ${writer.lastName}`,

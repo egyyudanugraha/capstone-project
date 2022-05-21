@@ -58,6 +58,10 @@ module.exports = {
       const { id } = request.params;
       const task = await Task.findOne({ _id: id, owner: user._id });
 
+      if (!task) {
+        throw Boom.notFound('Task not found');
+      }
+
       return h.response({
         message: 'Task found',
         data: task,
