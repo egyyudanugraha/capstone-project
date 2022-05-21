@@ -66,7 +66,7 @@ module.exports = {
 
       const data = {
         ...article._doc,
-        writer: `${writer.firstName} ${writer.lastName}`,
+        writer: writer ? `${writer.firstName} ${writer.lastName}` : 'Admin',
       };
 
       return h.response({
