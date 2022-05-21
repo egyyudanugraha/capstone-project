@@ -50,7 +50,7 @@ module.exports = {
       account.token = null;
       await account.save();
 
-      return h.response({ message: 'Logout success' }).code(200);
+      return h.response({ message: 'Logout success', error: false }).code(200);
     } catch (error) {
       throw Boom.badRequest(error);
     }
