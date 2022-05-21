@@ -3,4 +3,4 @@ config/
 public/
 package-lock.json
 .env
-apptivity-api.pem
+apptivity-key.pem

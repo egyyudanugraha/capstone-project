@@ -1,4 +1,6 @@
+const Boom = require('@hapi/boom');
 const mongoose = require('mongoose');
+const { handleImageDelete } = require('../Utils/upload');
 
 const articleSchema = new mongoose.Schema({
   writer: {
@@ -27,6 +29,16 @@ const articleSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+});
+
+articleSchema.pre('remove', function (next) {
+  const article = this;
+  const response = handleImageDelete(article.cover);
+  if (!response) {
+    throw Boom.badRequest('Error deleting image');
+  }
+
+  next();
 });
 
 const Article = mongoose.model('Article', articleSchema);

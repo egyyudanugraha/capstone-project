@@ -46,17 +46,26 @@ const articleRoute = [
   {
     method: 'GET',
     path: '/article/image/large/{file*}',
-    handler: showImageLarge(),
+    config: {
+      auth: false,
+      handler: showImageLarge(),
+    },
   },
   {
     method: 'GET',
     path: '/article/image/medium/{file*}',
-    handler: showImageMedium(),
+    config: {
+      auth: false,
+      handler: showImageMedium(),
+    },
   },
   {
     method: 'GET',
     path: '/article/image/small/{file*}',
-    handler: showImageSmall(),
+    config: {
+      auth: false,
+      handler: showImageSmall(),
+    },
   },
 ];
 

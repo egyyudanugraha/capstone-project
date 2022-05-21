@@ -38,4 +38,19 @@ module.exports = {
       throw Boom.badRequest(error);
     }
   },
+  handleImageDelete: (filename) => {
+    try {
+      const pathSmall = resolve(__dirname, `../../public/images/small/${filename}`);
+      const pathMedium = resolve(__dirname, `../../public/images/medium/${filename}`);
+      const pathLarge = resolve(__dirname, `../../public/images/large/${filename}`);
+
+      fs.unlinkSync(pathSmall);
+      fs.unlinkSync(pathMedium);
+      fs.unlinkSync(pathLarge);
+
+      return true;
+    } catch (error) {
+      throw Boom.badRequest(error);
+    }
+  },
 };
