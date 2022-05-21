@@ -9,7 +9,7 @@ const router = require('./Routes/router');
 const init = async () => {
   const server = Hapi.server({
     port: process.env.PORT,
-    host: '0.0.0.0',
+    host: process.env.HOST,
   });
 
   await server.register(JWT);
