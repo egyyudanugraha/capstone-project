@@ -1,23 +1,11 @@
 const DrawerInitiator = {
-    init({ hamburger, drawer, content }) {
-        hamburger.addEventListener('click', (event) => {
-            this._toggleDrawer(event, drawer);
-        });
+  init({ hamburger, drawer, content }) {
+    this._collapse = new Collapse(drawer, { triggerEl: hamburger });
 
-        content.addEventListener('click', (event) => {
-            this._closeDrawer(event, drawer);
-        });
-    },
-
-    _toggleDrawer(event, drawer) {
-        event.stopPropagation();
-        drawer.classList.toggle('open');
-    },
-
-    _closeDrawer(event, drawer) {
-        event.stopPropagation();
-        drawer.classList.remove('open');
-    },
-}
+    content.addEventListener('click', () => {
+      this._collapse.collapse();
+    });
+  },
+};
 
 export default DrawerInitiator;

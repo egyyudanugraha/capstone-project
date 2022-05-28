@@ -1,7 +1,17 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   content: ['./src/**/*.{html,js}'],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Fredoka', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
-  plugins: [],
-}
+  plugins: [require('flowbite/plugin'), require('tailwind-scrollbar')],
+  variants: {
+    scrollbar: ['dark', 'rounded'],
+    scrollbar: ['rounded'],
+  },
+};

@@ -1,62 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../dist/output.css">
+<html lang="en" class="dar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apptivity</title>
-</head>
-<body>
-    <header class="absolute top-0 left-0 w-full flex items-center z-10">
-        <div class="container">
-            <div class="flex items-center justify-between relative">
-                <div class="flex items-center px-5 py-2">
-                    <button id="hamburger" name="hamburger" type="button" class="block absolute left-4 text-2xl p-5">
-                        ☰
-                    </button>
-                    <nav id="drawer" class="absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full top-full left-[-250px]">
-                        <ul class="block">
-                            <li class="group flex">
-                                <a href="#" class="flex">
-                                    <img src="../public/image/home.svg" alt="Home" class="w-5 py-2 mx-6 mr-2">
-                                </a>
-                                <a href="#" class="text-base py-4 mx-2 group-hover:font-bold">Home</a>
-                            </li>
-                            <li class="group flex">
-                                <a href="#" class="flex">
-                                    <img src="../public/image/pomodoro.svg" alt="Pomodoro" class="w-5 py-2 mx-6 mr-2">
-                                </a>
-                                <a href="#" class="text-base py-4 mx-2 group-hover:font-bold">Pomodoro</a>
-                            </li>
-                            <li class="group flex">
-                                <a href="#" class="flex">
-                                    <img src="../public/image/matrix.png" alt="Eisenhower Matrix" class="w-5 h-10 py-2 mx-6 my-2 mr-2">
-                                </a>
-                                <a href="#" class="text-base py-4 mx-2 group-hover:font-bold">Eisenhower Matrix</a>
-                            </li>
-                            <li class="group flex">
-                                <a href="#" class="flex">
-                                    <img src="../public/image/kaizen.png" alt="Kaizen" class="w-5 h-10 py-2 mx-6 my-2 mr-2">
-                                </a>
-                                <a href="#" class="text-base py-4 mx-2 group-hover:font-bold">Kaizen</a>
-                            </li>
-                            <li class="group flex">
-                                <a href="#" class="flex">
-                                    <img src="../public/image/profile.svg" alt="Profile" class="w-5 py-2 mx-6 mr-2">
-                                </a>
-                                <a href="#" class="text-base py-4 mx-2 group-hover:font-bold">Profile</a>
-                            </li>
-                            
-                        </ul>
-                    </nav>
-                    <a href="#" class="font-bold text-xl block py-2 px-2 ml-11">
-                        Apptivity
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div id="mainContent" ></div>
-</body>
+  </head>
+  <body class="bg-slate-50 dark:bg-slate-900 scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
+    <app-navbar></app-navbar>
+    <main></main>
+    <app-footer></app-footer>
+  </body>
 </html>
