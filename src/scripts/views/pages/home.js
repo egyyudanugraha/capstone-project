@@ -1,6 +1,6 @@
 const Home = {
   async render() {
-    return `<div class="dashboard flex flex-col gap-8 mt-5">
+    return `<div class="dashboard flex flex-col gap-8">
     <div class="grid md:grid-cols-2">
       <div class="rounded-lg mx-6">
         <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -85,7 +85,7 @@ const Home = {
     </div>
 
     <!-- Recommended Article -->
-    <div class="my-10 mx-2">
+    <div class="mt-10 mx-2">
       <h3 class="flex justify-center text-2xl leading-6 mb-6 font-medium text-slate-800 dark:text-slate-100">Recommended Articles</h3>
       <div class="articles flex gap-3 flex-wrap justify-center">
         <div class="max-w-md md:max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
