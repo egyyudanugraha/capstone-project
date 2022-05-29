@@ -10,52 +10,40 @@ const Home = {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div class="w-full max-h-[50vh] pb-4 overflow-y-auto grid my-3 gap-2 scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
-                    <div class="text-[11px] my-auto">3 Hari lagi</div>
-                  </div>
+          <tr>
+          <td>
+            <div class="w-full max-h-[50vh] pb-4 overflow-y-auto grid my-3 gap-2 scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
+              <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                <div class="text-[11px] my-auto">3 Hari lagi</div>
+              </div>
+              <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                <div class="text-[11px] my-auto">3 Hari lagi</div>
                 </div>
-              </td>
-            </tr>
+              <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                <div class="text-[11px] my-auto">3 Hari lagi</div>
+                </div>
+              <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                <div class="text-[11px] my-auto">3 Hari lagi</div>
+                </div>
+              <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                <div class="text-[11px] my-auto">3 Hari lagi</div>
+                </div>
+              <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                <div class="text-[11px] my-auto">3 Hari lagi</div>
+                </div>
+              <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                <div class="text-[11px] my-auto">3 Hari lagi</div>
+                </div>
+            </div>
+          </td>
+        </tr>
           </tbody>
         </table>
       </div>
@@ -71,10 +59,25 @@ const Home = {
               <td>
                 <div class="w-full max-h-[50vh] pb-4 overflow-y-auto grid my-3 gap-2 scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
                   <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
+                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
                   </div>
                   <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[80%] text-slate-700 dark:text-slate-300">Task 1 (max 30 char) 12121212 3</div>
+                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                  </div>
+                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                  </div>
+                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                  </div>
+                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                  </div>
+                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
+                  </div>
+                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
+                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
                   </div>
                 </div>
               </td>
