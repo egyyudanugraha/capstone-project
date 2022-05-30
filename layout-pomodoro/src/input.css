@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pomodoro: #d95550;
+  --shortBreak: #227093;
+  --longBreak: #474787;
+}
