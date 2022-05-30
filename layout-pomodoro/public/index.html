@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+    <main>
+    <div class="flex justify-center mt-8 mb-8 ">
+    <h1 class="font-concert text-7xl text-white animate-bounce text-center">Pomodoro</h1>
+    </div>
+    
+    <div class="flex flex-col px-8 mx-auto my-8 xl:px-5 lg:flex-row max-w-7xl">
+
+    <div class="flex font-nunito rounded-md flex-col items-center justify-center w-full px-10 py-1 mb-8 mr-6 lg:mb-0 lg:flex-1 lg:w-1/3" id="box-time">
+    <div class="flex justify-center text-white ">
+        <div class="my-4 pt-5 pb-7 h-350 rounded-xl ">
+          <div class="flex justify-center" id="js-mode-buttons">
+            <button class="text-base rounded-xl py-1 px-3 active" data-mode="pomodoro">Pomodoro</button>
+            <button class="text-base rounded-xl py-1 px-3" data-mode="shortBreak">Short Break</button>
+            <button class="text-base rounded-xl py-1 px-3" data-mode="longBreak">Long Break</button>
+          </div>
+          <div class="flex justify-center text-9xl py-6" id="time-display">
+            <span id="js-minutes">25</span>
+            <span class="separator">:</span>
+            <span id="js-seconds">00</span> 
+          </div>
+          
+          <div class="flex pt-10 justify-center">
+            <button class="
+            bg-amber-400 text-white
+            py-3 px-16  text-lg font-extrabold
+            rounded-md shadow-start_inset"
+            
+            data-action="start" id="start-btn">START</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex overflow-x-hidden lg:overflow-y-auto scrollbar-hide rounded-md flex-row items-center justify-center w-full px-10 py-1 mb-8 mr-6 lg:mb-0 lg:flex-1 lg:w-1/3" id="box-task">
+        <div class="flex justify-center text-white font-nunito w-full">
+            <div class=" p-0 px-2 pb-7 h-350 rounded-xl  ">
+                <div class="flex items-center text-white text-4xl lg:text-4xl my-0 py-4">
+                    <p class="font-nunito font-extrabold m-auto ">Tasks</p>
+                  </div>
+                  
+                    <div class="flex
+                    bg-white w-80
+                    rounded-md border-white
+                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
+                      <label class="flex items-start">
+                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
+                          Contoh TASK 1 mandi di sungai muara yang luas
+                        </span> 
+                      </label>
+                    </div>
+                    
+                    <div class="flex
+                    bg-white w-80
+                    rounded-md border-white
+                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
+                      <label class="flex items-start">
+                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
+                          Contoh TASK 1 mandi di sungai muara yang luas
+                        </span> 
+                      </label>
+                    </div>
+                    
+                    <div class="flex
+                    bg-white w-80
+                    rounded-md border-white
+                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
+                      <label class="flex items-start">
+                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
+                          Contoh TASK 1 mandi di sungai muara yang luas
+                        </span> 
+                      </label>
+                    </div>
+
+                    <div class="flex
+                    bg-white w-80
+                    rounded-md border-white
+                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
+                      <label class="flex items-start">
+                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
+                          Contoh TASK 1 mandi di sungai muara yang luas
+                        </span> 
+                      </label>
+                    </div>
+
+                    <div class="flex
+                    bg-white w-80
+                    rounded-md border-white
+                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
+                      <label class="flex items-start">
+                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
+                          Contoh TASK 1 mandi di sungai muara yang luas
+                        </span> 
+                      </label>
+                    </div>
+
+                   
+                    
+          </div>
+        </div>
+    </div>  
+    
+
+    <div class="hidden">
+      <audio src="../src/scripts/break-sound.mp3" data-sound="pomodoro"></audio>
+      <audio src="../src/scripts/break-sound.mp3" data-sound="shortBreak"></audio>
+      <audio src="../src/scripts/break-sound.mp3" data-sound="longBreak"></audio>
+    </div>
+  </main>
+  
+  <article class="bg-white mt-60 pt-10 h-full">
+      <h1 class="font-kanit text-4xl text-red-800 text-center">Tools yang Dapat Bantu Tingkatkan Konsentrasimu</h1>
+      <div class="flex flex-col mx-10 mt-10 lg:py-2 lg:mx-60 text-justify">
+        <h3 class="font-kanit text-2xl text-red-800 py-2">Apa itu Teknik Pomodoro? </h3>
+        <p class="pb-6">Teknik Pomodoro adalah teknik pengaturan waktu yang telah diperkenalkan pada akhir tahun 1980 oleh Fransisco Cirillo. Pomodoro sendiri dalam Bahasa Spanyol artinya tomat, Cirillo saat masih menjadi mahasiswa menggunakan kitchen timer berbentuk tomat sebagai pengatur waktu saat belajar. 
+          Teknik ini adalah teknik fokus dengan interval selang waktu. Melalui teknik ini kamu harus fokus dalam selang waktu tertentu, contohnya 25 menit. Setelah waktu habis, kamu diharuskan istirahat selama 5 menit. Cara ini dilakukan sebanyak 4 babak, setelah itu kamu bisa beristirahat lebih lama asal tidak lebih panjang daripada waktu untuk fokus</p>
+
+        <h3 class="font-kanit text-2xl text-red-800 py-3">Cara Menerapkan Teknik Pomodoro</h3>
+        <ol class="list-decimal px-10">
+          <strong> <li>Jauhi distraksi dan siapkan materi yang harus dipelajari</li></strong>
+          <p class="py-2">Matikan notifikasi di ponsel, kamu bisa menggunakan fitur airplane mode bila perlu atau senyapkan ponsel. Tutup browser di laptop yang tidak diperlukan, cukup siapkan materi yang perlu kamu pelajari. Misalnya soal latihan, power point, atau modul.</p>
+          <strong><li> Tentukan waktu dan mulai fokus untuk beraktivitas></li></strong>
+          <p class="py-2">Kamu bisa gunakan jam alarm, alarm ponsel, atau bahkan jam pasir. Tentukan berapa lama waktu untuk fokus pada materi pelajaran. Sesuaikan waktu fokus berdasarkan ritme kamu sendiri. Cirillo biasa menggunakan waktu 25 menit, kamu bisa meniru Cirillo sebagai awalan. Selanjutnya terapkan trial and error untuk menemukan waktu fokus yang sesuai. Setelahnya kamu akan menemukan cara paling cocok dalam pengaturan waktu.</p>
+          <strong><li> Lakukan kegiatan yang menyenangkan saat istirahat></li></strong>
+          <p class="py-2">Setelah menyelesaikan waktu fokus untuk belajar, kamu bisa beristirahat dengan melakukan peregangan ringan atau mengambil air minum. Berjalan-jalan sebentar dan melemaskan otot selama dua sampai lima menit juga bisa menjadi cara untuk istirahat. Supaya saat kembali belajar lebih rileks dan fokus.</p>
+          <strong><li> Ulangi teknik di atas hingga empat kali></li></strong>
+          <p class="py-2">Gunakan siklus belajar-istirahat selama empat kali, kemudian ambil waktu istirahat selama 15-30 menit, asalkan tidak lebih dari waktu fokus.</p>
+        
+      </div>
+
+  </article>
+
+
+<script src="../src/scripts/index.js"></script>
+</body>
+</html>
