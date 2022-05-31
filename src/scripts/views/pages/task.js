@@ -82,7 +82,7 @@ const Task = {
       e.preventDefault();
       e.submitter.setAttribute('disabled', 'disabled');
 
-      const task_id = e.target.task_id.value;
+      const taskId = e.target.task_id.value;
       const task = {
         title: e.target.title.value,
         description: e.target.description.value,
@@ -92,9 +92,9 @@ const Task = {
       };
 
       let responseTask = null;
-      if (task_id !== '') {
+      if (taskId !== '') {
         e.submitter.innerHTML = this._loadingBtn('Updating');
-        responseTask = await ApptivityApi.updateTask(task_id, task);
+        responseTask = await ApptivityApi.updateTask(taskId, task);
       } else {
         e.submitter.innerHTML = this._loadingBtn('Adding');
         responseTask = await ApptivityApi.createTask(task);
@@ -124,11 +124,10 @@ const Task = {
     document.querySelector('tbody').addEventListener('click', async (e) => {
       if (e.target.classList.contains('btn-edit')) {
         const task = await ApptivityApi.getTask(e.target.dataset.id);
-        const formTask = document.querySelector('form');
         formTask.task_id.value = task._id;
         formTask.title.value = task.title;
         formTask.description.value = task.description;
-        formTask.date.value = new Date(task.deadline).toISOString().substr(0, 16);
+        formTask.date.value = this._convertToLocalTime(task.deadline);
         formTask.urgency.value = task.urgency;
         formTask.important.checked = task.important;
       } else if (e.target.classList.contains('btn-delete')) {
@@ -165,7 +164,7 @@ const Task = {
     tableBody.innerHTML = '';
     const tasks = await ApptivityApi.getAllTask(params);
     if (tasks.length === 0) {
-      tableBody.innerHTML = `<tr><td colspan="5" class="text-center">No task</td></tr>`;
+      tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No task</td></tr>';
       return;
     }
 
@@ -183,7 +182,12 @@ const Task = {
   },
 
   _loadingBtnReset() {
-    return `Save task`;
+    return 'Save task';
+  },
+
+  _convertToLocalTime(time) {
+    const result = new Date(new Date(time).setMinutes(new Date(time).getMinutes() - new Date(time).getTimezoneOffset())).toISOString();
+    return result.substring(0, 23);
   },
 };
 

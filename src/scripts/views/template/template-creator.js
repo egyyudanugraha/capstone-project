@@ -4,18 +4,18 @@ const _convertDate = (date) => {
   const year = dateObj.getFullYear();
   const month = dateObj.getMonth() + 1;
   const day = dateObj.getDate();
+  const time = dateObj.toLocaleTimeString();
 
-  return `${day} ${monthString[month - 1]} ${year}`;
+  return `${day} ${monthString[month - 1]} ${year}, ${time}`;
 };
 
 const _urgencyToString = (urgent) => {
   if (urgent < 3) {
     return 'Low';
-  } else if (urgent === 3) {
+  } if (urgent === 3) {
     return 'Normal';
-  } else {
-    return 'High';
   }
+  return 'High';
 };
 
 const taskItemTable = (task) => `<tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">

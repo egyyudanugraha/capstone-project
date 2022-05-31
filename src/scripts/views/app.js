@@ -1,8 +1,8 @@
+import Swal from 'sweetalert2';
 import routes from '../routes/routes';
 import DrawerInitiator from '../utils/drawer-initiator';
 import URLParser from '../routes/url-parser';
 import checkAuth from '../utils/auth';
-import Swal from 'sweetalert2';
 
 class App {
   constructor({ hamburger, drawer, content }) {
@@ -36,7 +36,9 @@ class App {
         });
 
         return;
-      } else if (auth && ['#/login', '#/register'].includes(window.location.hash)) {
+      }
+
+      if (auth && ['#/login', '#/register'].includes(window.location.hash)) {
         window.location.hash = '/';
         Swal.fire({
           title: 'Oops...',
