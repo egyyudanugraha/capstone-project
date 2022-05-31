@@ -73,7 +73,7 @@ module.exports = {
   },
   updateTask: async (request, h) => {
     const updates = Object.keys(request.payload);
-    const allowedUpdates = ['title', 'description', 'completed', 'urgency', 'important'];
+    const allowedUpdates = ['title', 'description', 'completed', 'urgency', 'important', 'deadline'];
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
     if (!isValidOperation) {
