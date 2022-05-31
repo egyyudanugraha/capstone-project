@@ -1,18 +1,13 @@
-import { auth } from '../template/auth-template';
+import Swal from 'sweetalert2';
+import ApptivityApi from '../../data/apptivity-api';
 
-const Auth = {
+const Login = {
   async render() {
     return `<div class="block max-w-lg m-auto mt-10">
-    <div class="bg-white dark:text-white p-4 rounded-md shadow-l block dark:bg-slate-600" name="card-authentication">
-      <ul class="grid grid-flow-col text-sm font-medium text-center" id="myTab" data-tabs-toggle="#auth-content" role="tablist">
-        <li class="justify-start" role="presentation">
-          <button class="inline-block p-4 rounded-lg w-full font-medium" id="login-tab" data-tabs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Login</button>
-        </li>
-        <li class="justify-end" role="presentation">
-          <button class="inline-block p-4 rounded-lg w-full font-medium" id="register-tab" data-tabs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Register</button>
-        </li>
-      </ul>
-      <div id="auth-content">
+    <div class="bg-white p-4 rounded-md shadow-l block mx-4 dark:bg-slate-600" name="card-authentication">
+        <div class="block text-center mb-4">
+          <h1 class="text-2xl font-bold text-purple-600 dark:text-white">Login</h1>
+        </div>
         <div class="p-4 rounded-bl-md mt-3 rounded-md dark:bg-slate-700" id="login" role="tabpanel" aria-labelledby="login-tab">
           <form class="grid gap-3" name="login-form" method="post">
             <div class="grid gap-2">
@@ -42,58 +37,7 @@ const Auth = {
               <button class="block w-full h-11 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded" type="submit">Login</button>
             </div>
           </form>
-        </div>
-        <div class="hidden p-4 rounded-bl-md mt-3 rounded-md dark:bg-slate-700" id="register" role="tabpanel" aria-labelledby="register-tab">
-          <form class="grid gap-3" name="login-form" method="post">
-            <div class="grid gap-2">
-              <label class="block text-slate-700 after:text-pink-600 after:ml-0.5 after:content-['*'] dark:text-white" for="firstName">First Name</label>
-              <input
-                class="block w-full border-none h-11 bg-slate-100 placeholder:text-slate-400 rounded-md dark:bg-slate-600 dark:text-white dark:placeholder:text-slate-400 focus:ring-1 focus:ring-purple-600 invalid:focus:ring-pink-500"
-                type="text"
-                name="firstName"
-                id="firstName"
-                placeholder="First name"
-                required
-              />
-            </div>
-            <div class="grid gap-2">
-              <label class="block text-slate-700 after:text-pink-600 after:ml-0.5 after:content-['*'] dark:text-white" for="lastName">Last Name</label>
-              <input
-                class="block w-full border-none h-11 bg-slate-100 placeholder:text-slate-400 rounded-md dark:bg-slate-600 dark:text-white dark:placeholder:text-slate-400 focus:ring-1 focus:ring-purple-600 invalid:focus:ring-pink-500"
-                type="text"
-                name="lastName"
-                id="lastName"
-                placeholder="Last name"
-                required
-              />
-            </div>
-            <div class="grid gap-2">
-              <label class="block text-slate-700 after:text-pink-600 after:ml-0.5 after:content-['*'] dark:text-white" for="regist-email">Email</label>
-              <input
-                class="block w-full border-none h-11 bg-slate-100 placeholder:text-slate-400 rounded-md dark:bg-slate-600 dark:text-white dark:placeholder:text-slate-400 focus:ring-1 focus:ring-purple-600 invalid:focus:ring-pink-500"
-                type="email"
-                name="email"
-                id="regist-email"
-                placeholder="Email"
-                required
-              />
-            </div>
-            <div class="grid gap-2">
-              <label class="block text-slate-700 after:text-pink-600 after:ml-0.5 after:content-['*'] dark:text-white" for="regist-password">Password</label>
-              <input
-                class="block w-full border-none h-11 bg-slate-100 placeholder:text-slate-400 rounded-md dark:bg-slate-600 dark:text-white dark:placeholder:text-slate-400 focus:ring-1 focus:ring-purple-600 invalid:focus:ring-pink-500"
-                type="password"
-                name="password"
-                minlength="8"
-                id="regist-password"
-                placeholder="Password (min 8)"
-                required
-              />
-            </div>
-            <div class="grid grid-flow-col mt-4">
-              <button class="block w-full h-11 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded" type="submit">Register</button>
-            </div>
-          </form>
+          <p class="dark:text-white text-center mt-3">No have account? <a href="#/register" class="hover:underline text-purple-600 dark:text-white">Sign up</a> </p>
         </div>
         <p class="flex my-2 justify-center text-slate-700 dark:text-white">OR</p>
         <div class="grid grid-flow-col px-4 dark:px-0">
@@ -127,11 +71,41 @@ const Auth = {
           </button>
         </div>
       </div>
-    </div>
   </div>`;
   },
 
-  async afterRender() {},
+  async afterRender() {
+    document.querySelector('app-navbar').classList.add('hidden');
+    const formLogin = document.querySelector('form');
+    formLogin.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        email: e.target.email.value,
+        password: e.target.password.value,
+      };
+
+      try {
+        const user = await ApptivityApi.login(data);
+        formLogin.reset();
+        if (user.error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: user.message,
+          });
+        } else {
+          localStorage.setItem('access_token', user.token);
+          window.location.href = '/';
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      }
+    });
+  },
 };
 
-export default Auth;
+export default Login;

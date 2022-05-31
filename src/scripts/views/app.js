@@ -1,6 +1,8 @@
 import routes from '../routes/routes';
 import DrawerInitiator from '../utils/drawer-initiator';
 import URLParser from '../routes/url-parser';
+import checkAuth from '../utils/auth';
+import Swal from 'sweetalert2';
 
 class App {
   constructor({ hamburger, drawer, content }) {
@@ -22,7 +24,29 @@ class App {
   async renderPage() {
     const url = URLParser.UrlWithCombiner();
     const page = routes[url];
+
     try {
+      const auth = await checkAuth();
+      if (!auth && !['#/login', '#/register'].includes(window.location.hash)) {
+        window.location.hash = '#/login';
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Session expired, please login again',
+          icon: 'error',
+        });
+
+        return;
+      } else if (auth && ['#/login', '#/register'].includes(window.location.hash)) {
+        window.location.hash = '/';
+        Swal.fire({
+          title: 'Oops...',
+          text: 'You are already logged in',
+          icon: 'warning',
+        });
+      } else if (auth) {
+        document.querySelector('app-navbar').classList.remove('hidden');
+      }
+
       this._content.innerHTML = await page.render();
       await page.afterRender();
     } catch (error) {
