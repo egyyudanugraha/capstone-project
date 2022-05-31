@@ -73,7 +73,7 @@ module.exports = {
   },
   updateTask: async (request, h) => {
     const updates = Object.keys(request.payload);
-    const allowedUpdates = ['title', 'description', 'completed'];
+    const allowedUpdates = ['title', 'description', 'completed', 'urgency', 'important'];
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
     if (!isValidOperation) {
@@ -90,7 +90,7 @@ module.exports = {
         throw Boom.notFound('Task not found');
       }
 
-      updates.forEach((update) => task[update] = payload[update]);
+      updates.forEach((update) => (task[update] = payload[update]));
       await task.save();
 
       return h.response({
