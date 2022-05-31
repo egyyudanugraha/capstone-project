@@ -83,6 +83,13 @@ class ApptivityApi {
     const json = await response.json();
     return json.data;
   }
+
+  // Matrix
+  static async getMatrix() {
+    const response = await fetch(API_ENDPOINT.MATRIX, this._options());
+    const json = await response.json();
+    return json.data;
+  }
 }
 
 export default ApptivityApi;

@@ -29,4 +29,6 @@ const taskItemTable = (task) => `<tr class="border-b dark:bg-gray-800 dark:borde
 </td>
 </tr>`;
 
-export { taskItemTable };
+const matrixItem = (task) => `<div class="item bg-slate-50 dark:bg-gray-800 dark:text-white p-2 rounded-md">${task.title}</div>`;
+
+export { taskItemTable, matrixItem };

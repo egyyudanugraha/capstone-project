@@ -7,6 +7,7 @@ const API_ENDPOINT = {
   USER: `${CONFIG.BASE_URL}/user`,
   TASK: `${CONFIG.BASE_URL}/task`,
   TASK_DETAIL: (id) => `${CONFIG.BASE_URL}/task/${id}`,
+  MATRIX: `${CONFIG.BASE_URL}/matrix`,
 };
 
 export default API_ENDPOINT;
