@@ -123,4 +123,24 @@ module.exports = {
       throw Boom.badRequest(error);
     }
   },
+  matrix: async (request, h) => {
+    try {
+      const { user } = request.auth.credentials;
+      const tasks = await Task.find({ owner: user._id });
+      const matrix = {
+        do: tasks.filter((task) => !task.completed && task.urgency > 3 && task.important),
+        decide: tasks.filter((task) => !task.completed && task.urgency <= 3 && task.important),
+        delegate: tasks.filter((task) => !task.completed && task.urgency > 3 && !task.important),
+        delete: tasks.filter((task) => !task.completed && task.urgency <= 3 && !task.important),
+      };
+
+      return h.response({
+        message: 'Matrix',
+        data: matrix,
+        error: false,
+      });
+    } catch (error) {
+      throw Boom.badRequest(error);
+    }
+  },
 };
