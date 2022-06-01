@@ -14,6 +14,8 @@
     "rules": {
         "no-underscore-dangle": "off",
         "max-len": "off",
-        "no-return-assign": "off"
+        "no-return-assign": "off",
+        "no-undef": "off",
+        "no-nested-ternary":"off"
     }
 }

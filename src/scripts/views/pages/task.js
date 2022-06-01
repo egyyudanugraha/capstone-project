@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import ApptivityApi from '../../data/apptivity-api';
-import { taskItemTable } from '../template/template-creator';
+import { modalContent, taskItemTable } from '../template/template-creator';
 
 const Task = {
   async render() {
@@ -47,22 +47,22 @@ const Task = {
         <div class="all-task grid gap-3">
           <h2 class="text-2xl text-slate-900 dark:text-white flex justify-center">All Task</h2>
           <div class="text-right">
-            <select id="filter" class="bg-white border-2 border-slate-200 dark:bg-slate-700 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white focus:ring-purple-600">
-              <option>Show all</option>
-              <option value="priority=high">Filter by high priority</option>
-              <option value="priority=low">Filter by low priority</option>
-              <option value="completed=true">Filter by completed</option>
-              <option value="completed=false">Filter by uncompleted</option>
-            </select>
+          <select id="filter" class="bg-white border-2 border-slate-200 dark:bg-slate-700 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white focus:ring-purple-600">
+          <option>Show all</option>
+          <option value="priority=high">Sort by high priority</option>
+          <option value="priority=low">Sort by low priority</option>
+          <option value="completed=true">Filter by completed</option>
+          <option value="completed=false">Filter by uncompleted</option>
+          </select>
           </div>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[400px]">
             <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
                 <tr>
                   <th scope="col" class="px-6 py-3">Task name</th>
-                  <th scope="col" class="px-6 py-3">Urgency</th>
+                  <th scope="col" class="px-6 py-3 hidden md:block">Urgency</th>
                   <th scope="col" class="px-6 py-3">Deadline</th>
-                  <th scope="col" class="px-6 py-3">Completed</th>
+                  <th scope="col" class="px-6 py-3 hidden md:block">Completed</th>
                   <th scope="col" class="px-6 py-3">Action</th>
                 </tr>
               </thead>
@@ -72,11 +72,26 @@ const Task = {
             </table>
           </div>
         </div>
-      </div>`;
+      </div>
+      <app-modal></app-modal>
+      `;
   },
+
+  tasks: null,
+  modal: null,
 
   async afterRender() {
     this._renderTask();
+    this.modal = new Modal(document.getElementById('modalItemTask'), {
+      placement: 'center',
+      backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
+    });
+
+    document.querySelector('#modalItemTask').addEventListener('click', (e) => {
+      if (e.target.classList.contains('close-modal')) {
+        this.modal.hide();
+      }
+    });
     const formTask = document.querySelector('form');
     formTask.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -122,8 +137,12 @@ const Task = {
 
     // update & delete task
     document.querySelector('tbody').addEventListener('click', async (e) => {
-      if (e.target.classList.contains('btn-edit')) {
-        const task = await ApptivityApi.getTask(e.target.dataset.id);
+      if (e.target.classList.contains('btn-detail')) {
+        const task = this.tasks.find((item) => item._id === e.target.dataset.id);
+        document.querySelector('#modal-content').innerHTML = modalContent(task);
+        this.modal.show();
+      } else if (e.target.classList.contains('btn-edit')) {
+        const task = this.tasks.find((item) => item._id === e.target.dataset.id);
         formTask.task_id.value = task._id;
         formTask.title.value = task.title;
         formTask.description.value = task.description;
@@ -131,7 +150,7 @@ const Task = {
         formTask.urgency.value = task.urgency;
         formTask.important.checked = task.important;
       } else if (e.target.classList.contains('btn-delete')) {
-        const task = await ApptivityApi.getTask(e.target.dataset.id);
+        const task = this.tasks.find((item) => item._id === e.target.dataset.id);
         Swal.fire({
           title: 'Are you sure?',
           text: `Are you sure to delete ${task.title}?`,
@@ -163,6 +182,7 @@ const Task = {
     const tableBody = document.querySelector('tbody');
     tableBody.innerHTML = '';
     const tasks = await ApptivityApi.getAllTask(params);
+    this.tasks = tasks;
     if (tasks.length === 0) {
       tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No task</td></tr>';
       return;
