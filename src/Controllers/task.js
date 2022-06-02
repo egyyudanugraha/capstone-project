@@ -1,6 +1,8 @@
 const Boom = require('@hapi/boom');
 const Task = require('../Models/task');
 
+const mapMatrix = (tasks) => tasks.map((task) => ({ _id: task._id, title: task.title }));
+
 module.exports = {
   createTask: async (request, h) => {
     try {
@@ -123,15 +125,35 @@ module.exports = {
       throw Boom.badRequest(error);
     }
   },
+  deleteAllTask: async (request, h) => {
+    try {
+      const { user } = request.auth.credentials;
+      const tasks = await Task.find({ owner: user._id });
+
+      if (tasks.length === 0) {
+        throw Boom.notFound('Task not found');
+      }
+
+      await Task.deleteMany({ owner: user._id });
+
+      return h.response({
+        message: 'All tasks deleted successfully',
+        error: false,
+      });
+    } catch (error) {
+      throw Boom.badRequest(error);
+    }
+  },
   matrix: async (request, h) => {
     try {
       const { user } = request.auth.credentials;
       const tasks = await Task.find({ owner: user._id });
+
       const matrix = {
-        do: tasks.filter((task) => !task.completed && task.urgency > 3 && task.important),
-        decide: tasks.filter((task) => !task.completed && task.urgency <= 3 && task.important),
-        delegate: tasks.filter((task) => !task.completed && task.urgency > 3 && !task.important),
-        delete: tasks.filter((task) => !task.completed && task.urgency <= 3 && !task.important),
+        do: mapMatrix(tasks.filter((task) => !task.completed && task.urgency > 3 && task.important)),
+        decide: mapMatrix(tasks.filter((task) => !task.completed && task.urgency <= 3 && task.important)),
+        delegate: mapMatrix(tasks.filter((task) => !task.completed && task.urgency > 3 && !task.important)),
+        delete: mapMatrix(tasks.filter((task) => !task.completed && task.urgency <= 3 && !task.important)),
       };
 
       return h.response({

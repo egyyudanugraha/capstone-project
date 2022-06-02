@@ -1,5 +1,5 @@
 const {
-  showAllTask, createTask, showOneTask, updateTask, deleteTask, matrix,
+  showAllTask, createTask, showOneTask, updateTask, deleteTask, matrix, deleteAllTask,
 } = require('../Controllers/task');
 
 const taskRoute = [
@@ -27,6 +27,11 @@ const taskRoute = [
     method: 'DELETE',
     path: '/task/{id}',
     handler: deleteTask,
+  },
+  {
+    method: 'DELETE',
+    path: '/tasks',
+    handler: deleteAllTask,
   },
   {
     method: 'GET',
