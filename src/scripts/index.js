@@ -6,6 +6,7 @@ import './components/card-matrix';
 import './components/modal';
 import './components/footer';
 import App from './views/app';
+import registerServiceWorker from './utils/sw-register';
 
 const app = new App({
   hamburger: document.querySelector('#hamburger'),
@@ -19,6 +20,7 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+  registerServiceWorker();
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('dark');
   } else {

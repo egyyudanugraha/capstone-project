@@ -46,16 +46,17 @@ const Task = {
         </div>
         <div class="all-task grid gap-3">
           <h2 class="text-2xl text-slate-900 dark:text-white flex justify-center">All Task</h2>
-          <div class="text-right">
-          <select id="filter" class="bg-white border-2 border-slate-200 dark:bg-slate-700 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white focus:ring-purple-600">
-          <option>Show all</option>
-          <option value="priority=high">Sort by high priority</option>
-          <option value="priority=low">Sort by low priority</option>
-          <option value="completed=true">Filter by completed</option>
-          <option value="completed=false">Filter by uncompleted</option>
-          </select>
+          <div class="flex justify-between">
+            <select id="filter" class="bg-white border-2 border-slate-200 dark:bg-slate-700 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white focus:ring-purple-600">
+              <option>Show all</option>
+              <option value="priority=high">Sort by high priority</option>
+              <option value="priority=low">Sort by low priority</option>
+              <option value="completed=true">Filter by completed</option>
+              <option value="completed=false">Filter by uncompleted</option>
+            </select>
+            <button class="btn-delete-all focus:outline-none align-middle text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm px-3 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete All Task</button>
           </div>
-          <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[400px]">
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[400px]  scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
             <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
                 <tr>
@@ -175,6 +176,32 @@ const Task = {
           }
         });
       }
+    });
+
+    // delete all task
+    document.querySelector('.btn-delete-all').addEventListener('click', async () => {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'Are you sure to delete all tasks?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#b91c1c',
+        confirmButtonText: 'Yes, delete it!',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          Swal.showLoading();
+          const deleteAllTask = await ApptivityApi.deleteAllTask();
+          Swal.fire({
+            title: 'Success',
+            icon: 'success',
+            html: `${deleteAllTask.message}`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+
+          this._renderTask();
+        }
+      });
     });
   },
 

@@ -5,6 +5,7 @@ const API_ENDPOINT = {
   LOGIN: `${CONFIG.BASE_URL}/login`,
   LOGOUT: `${CONFIG.BASE_URL}/logout`,
   USER: `${CONFIG.BASE_URL}/user`,
+  USER_PASSWORD: `${CONFIG.BASE_URL}/user/password`,
   TASK: `${CONFIG.BASE_URL}/task`,
   TASK_DETAIL: (id) => `${CONFIG.BASE_URL}/task/${id}`,
   MATRIX: `${CONFIG.BASE_URL}/matrix`,

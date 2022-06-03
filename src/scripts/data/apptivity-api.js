@@ -31,13 +31,42 @@ class ApptivityApi {
   }
 
   static async logout() {
-    const response = await fetch(API_ENDPOINT.LOGOUT);
+    const response = await fetch(API_ENDPOINT.LOGOUT, this._options());
     const json = await response.json();
     return json;
   }
 
   static async getUser() {
     const response = await fetch(API_ENDPOINT.USER, this._options());
+    const json = await response.json();
+    return json;
+  }
+
+  static async updateUser(user) {
+    const response = await fetch(API_ENDPOINT.USER, {
+      method: 'PUT',
+      ...this._options(),
+      body: JSON.stringify(user),
+    });
+    const json = await response.json();
+    return json;
+  }
+
+  static async updatePassword(passwords) {
+    const response = await fetch(API_ENDPOINT.USER_PASSWORD, {
+      method: 'PUT',
+      ...this._options(),
+      body: JSON.stringify(passwords),
+    });
+    const json = await response.json();
+    return json;
+  }
+
+  static async deleteUser() {
+    const response = await fetch(API_ENDPOINT.USER, {
+      method: 'DELETE',
+      ...this._options(),
+    });
     const json = await response.json();
     return json;
   }
@@ -77,6 +106,15 @@ class ApptivityApi {
 
   static async deleteTask(id) {
     const response = await fetch(`${API_ENDPOINT.TASK_DETAIL(id)}`, {
+      method: 'DELETE',
+      ...this._options(),
+    });
+    const json = await response.json();
+    return json.data;
+  }
+
+  static async deleteAllTask() {
+    const response = await fetch(`${API_ENDPOINT.TASK}s`, {
       method: 'DELETE',
       ...this._options(),
     });

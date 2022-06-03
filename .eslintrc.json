@@ -1,21 +1,24 @@
 {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es2021": true,
-        "node": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest"
-    },
-    "rules": {
-        "no-underscore-dangle": "off",
-        "max-len": "off",
-        "no-return-assign": "off",
-        "no-undef": "off",
-        "no-nested-ternary":"off"
-    }
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["airbnb-base"],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "no-underscore-dangle": "off",
+    "max-len": "off",
+    "no-return-assign": "off",
+    "no-undef": "off",
+    "no-nested-ternary": "off",
+    "import/no-extraneous-dependencies": "off",
+    "global-require": "off",
+    "no-param-reassign": "off",
+    "class-methods-use-this": "off",
+    "no-restricted-globals": "off"
+  }
 }
