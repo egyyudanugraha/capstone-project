@@ -33,6 +33,13 @@ class ApptivityApi {
   static async logout() {
     const response = await fetch(API_ENDPOINT.LOGOUT, this._options());
     const json = await response.json();
+    localStorage.removeItem('access_token');
+    return json;
+  }
+
+  static async checkAuth() {
+    const response = await fetch(API_ENDPOINT.AUTH, this._options());
+    const json = await response.json();
     return json;
   }
 

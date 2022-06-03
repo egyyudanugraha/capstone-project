@@ -150,7 +150,6 @@ const Profile = {
               icon: 'success',
               timer: 1500,
             });
-            localStorage.removeItem('access_token');
             window.location.hash = '#/login';
           } else {
             this._swAlert(logout);

@@ -7,6 +7,7 @@ import './components/modal';
 import './components/footer';
 import App from './views/app';
 import registerServiceWorker from './utils/sw-register';
+import showDeadline from './utils/task-utils';
 
 const app = new App({
   hamburger: document.querySelector('#hamburger'),
@@ -27,3 +28,5 @@ window.addEventListener('load', () => {
     document.documentElement.classList.remove('dark');
   }
 });
+
+showDeadline();
