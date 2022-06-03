@@ -1,4 +1,6 @@
-const { register, login, logout } = require('../Controllers/auth');
+const {
+  register, login, logout, checkAuth,
+} = require('../Controllers/auth');
 
 const authRoute = [
   {
@@ -21,6 +23,11 @@ const authRoute = [
     method: 'GET',
     path: '/logout',
     handler: logout,
+  },
+  {
+    method: 'GET',
+    path: '/checkauth',
+    handler: checkAuth,
   },
 ];
 

@@ -55,4 +55,18 @@ module.exports = {
       throw Boom.badRequest(error);
     }
   },
+  checkAuth: async (request, h) => {
+    const { user } = request.auth.credentials;
+
+    try {
+      const account = await User.findOne({ _id: user._id });
+      if (!account) {
+        return Boom.unauthorized('User not found');
+      }
+
+      return h.response({ message: 'Check auth success', error: false }).code(200);
+    } catch (error) {
+      throw Boom.badRequest(error);
+    }
+  },
 };
