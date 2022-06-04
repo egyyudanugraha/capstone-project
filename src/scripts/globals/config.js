@@ -1,4 +1,4 @@
-const url = 'http://54.179.67.35:5000';
+const url = 'https://apptivity-api-v3.herokuapp.com';
 
 const CONFIG = {
   BASE_URL: url,

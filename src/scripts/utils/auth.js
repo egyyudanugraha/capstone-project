@@ -1,8 +1,8 @@
 import ApptivityApi from '../data/apptivity-api';
 
 const checkAuth = async () => {
-  const res = await ApptivityApi.checkAuth();
-  if (res.statusCode === 401) {
+  const res = await ApptivityApi.getUser();
+  if (res.error) {
     localStorage.removeItem('access_token');
     return false;
   }

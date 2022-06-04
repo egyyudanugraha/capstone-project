@@ -37,12 +37,6 @@ class ApptivityApi {
     return json;
   }
 
-  static async checkAuth() {
-    const response = await fetch(API_ENDPOINT.AUTH, this._options());
-    const json = await response.json();
-    return json;
-  }
-
   static async getUser() {
     const response = await fetch(API_ENDPOINT.USER, this._options());
     const json = await response.json();
@@ -89,7 +83,7 @@ class ApptivityApi {
     return json;
   }
 
-  static async getAllTask(params) {
+  static async getAllTask(params = '') {
     const response = await fetch(`${API_ENDPOINT.TASK}?${params}`, this._options());
     const json = await response.json();
     return json.data;

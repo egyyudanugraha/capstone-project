@@ -48,7 +48,7 @@ const Task = {
           <h2 class="text-2xl text-slate-900 dark:text-white flex justify-center">All Task</h2>
           <div class="flex justify-between">
             <select id="filter" class="bg-white border-2 border-slate-200 dark:bg-slate-700 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white focus:ring-purple-600">
-              <option>Show all</option>
+              <option value="">Show all</option>
               <option value="priority=high">Sort by high priority</option>
               <option value="priority=low">Sort by low priority</option>
               <option value="completed=true">Filter by completed</option>
@@ -205,7 +205,7 @@ const Task = {
     });
   },
 
-  async _renderTask(params = '') {
+  async _renderTask(params) {
     const tableBody = document.querySelector('tbody');
     tableBody.innerHTML = '';
     const tasks = await ApptivityApi.getAllTask(params);
