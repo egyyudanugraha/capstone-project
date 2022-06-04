@@ -72,7 +72,7 @@ module.exports = {
   profile: async (req, res) => {
     res.send({
       message: 'User profile',
-      user: req.user,
+      data: req.user,
       error: false,
     });
   },
