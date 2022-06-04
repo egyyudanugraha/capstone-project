@@ -167,7 +167,7 @@ const Task = {
             Swal.fire({
               title: 'Success',
               icon: 'success',
-              html: `Task <b>${deleteTask.title}</b> deleted successfully`,
+              html: deleteTask.message,
               showConfirmButton: false,
               timer: 2000,
             });
@@ -189,7 +189,6 @@ const Task = {
         confirmButtonText: 'Yes, delete it!',
       }).then(async (result) => {
         if (result.isConfirmed) {
-          Swal.showLoading();
           const deleteAllTask = await ApptivityApi.deleteAllTask();
           Swal.fire({
             title: 'Success',
@@ -205,7 +204,7 @@ const Task = {
     });
   },
 
-  async _renderTask(params) {
+  async _renderTask(params = '') {
     const tableBody = document.querySelector('tbody');
     tableBody.innerHTML = '';
     const tasks = await ApptivityApi.getAllTask(params);

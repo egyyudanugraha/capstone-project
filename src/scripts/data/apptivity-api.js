@@ -37,6 +37,12 @@ class ApptivityApi {
     return json;
   }
 
+  static async logoutAll() {
+    const response = await fetch(API_ENDPOINT.LOGOUT_ALL, this._options());
+    const json = await response.json();
+    return json;
+  }
+
   static async getUser() {
     const response = await fetch(API_ENDPOINT.USER, this._options());
     const json = await response.json();
@@ -111,16 +117,16 @@ class ApptivityApi {
       ...this._options(),
     });
     const json = await response.json();
-    return json.data;
+    return json;
   }
 
   static async deleteAllTask() {
-    const response = await fetch(`${API_ENDPOINT.TASK}s`, {
+    const response = await fetch(`${API_ENDPOINT.TASK}`, {
       method: 'DELETE',
       ...this._options(),
     });
     const json = await response.json();
-    return json.data;
+    return json;
   }
 
   // Matrix

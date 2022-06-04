@@ -50,7 +50,7 @@ registerRoute(
 
 registerRoute(
   ({ url }) => url.pathname.startsWith('/user'),
-  new CacheFirst({
+  new NetworkFirst({
     cacheName: 'user-cache',
     plugins: [
       new CacheableResponse({

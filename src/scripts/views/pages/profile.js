@@ -13,7 +13,7 @@ const Profile = {
         </div>
         <div class="border-t border-gray-200 dark:border-slate-900">
             <div class="bg-gray-50 dark:bg-slate-700 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500 dark:text-white">Nama Depan</dt>
+              <div class="text-sm font-medium text-gray-500 dark:text-white">Nama Depan</div>
               <input
                 type="text"
                 name="firstName"
@@ -23,7 +23,7 @@ const Profile = {
               />
             </div>
             <div class="bg-white dark:bg-slate-700 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500 dark:text-white">Nama Belakang</dt>
+              <div class="text-sm font-medium text-gray-500 dark:text-white">Nama Belakang</div>
               <input
                 type="text"
                 name="lastName"
@@ -33,7 +33,7 @@ const Profile = {
               />
             </div>
             <div class="bg-gray-50 dark:bg-slate-700 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500 dark:text-white">Email</dt>
+              <div class="text-sm font-medium text-gray-500 dark:text-white">Email</div>
               <input
                 type="email"
                 disabled
@@ -52,6 +52,10 @@ const Profile = {
               >Logout</button>
               <button
                 type="button"
+                class="btn-logout-all w-full inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-sky-700 hover:shadow-lg focus:bg-sky-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-sky-800 active:shadow-lg transition duration-150 ease-in-out"
+              >Logout All Device</button>
+              <button
+                type="button"
                 class="btn-delete-user w-full inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
               >Delete account</button>
             </div>
@@ -66,19 +70,18 @@ const Profile = {
         </div>
         <div class="border-t border-gray-200 dark:border-slate-900">
           <div class="bg-gray-50 dark:bg-slate-700 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500 dark:text-white">Old password</dt>
+            <div class="text-sm font-medium text-gray-500 dark:text-white">Old password</div>
             <input type="password" name="old_password" class="mt-1 bg-white dark:bg-slate-800 border-0 w-full text-sm text-gray-900 dark:text-gray-50 sm:mt-0 sm:col-span-2 focus:ring-purple-600 invalid:focus:ring-pink-500" placeholder="Old password" minlength="8" required/>
           </div>
           <div class="bg-white dark:bg-slate-700 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500 dark:text-white">New password</dt>
+            <div class="text-sm font-medium text-gray-500 dark:text-white">New password</div>
             <input type="password" name="new_password" class="mt-1 bg-white dark:bg-slate-800 border-0 w-full text-sm text-gray-900 dark:text-gray-50 sm:mt-0 sm:col-span-2 focus:ring-purple-600 invalid:focus:ring-pink-500" placeholder="New password" minlength="8" required/>
           </div>
           <div class="bg-gray-50 dark:bg-slate-700 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500 dark:text-white">Confirm new password</dt>
+            <div class="text-sm font-medium text-gray-500 dark:text-white">Confirm new password</div>
             <input type="password" name="confirm_password" class="mt-1 bg-white dark:bg-slate-800 border-0 w-full text-sm text-gray-900 dark:text-gray-50 sm:mt-0 sm:col-span-2 focus:ring-purple-600 invalid:focus:ring-pink-500" placeholder="Confirm new password" minlength="8" required/>
           </div>
           <div class="bg-white dark:bg-slate-700 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 justify-center">
-            <dt class="text-sm font-medium text-gray-500"></dt>
             <button
               type="button"
               class="btn-password w-full inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
@@ -149,8 +152,40 @@ const Profile = {
               title: 'Logged out!',
               icon: 'success',
               timer: 1500,
+            }).then(() => {
+              localStorage.removeItem('access_token');
+              window.location.hash = '#/login';
             });
-            window.location.hash = '#/login';
+          } else {
+            this._swAlert(logout);
+          }
+        }
+      });
+    });
+
+    // Logout all devices
+    const btnLogoutAll = document.querySelector('.btn-logout-all');
+    btnLogoutAll.addEventListener('click', () => {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will be logged out from all devices',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, logout!',
+      }).then(async (result) => {
+        if (result.value) {
+          const logout = await ApptivityApi.logoutAll();
+          if (!logout.error) {
+            Swal.fire({
+              title: 'Logged out!',
+              icon: 'success',
+              timer: 1500,
+            }).then(() => {
+              localStorage.removeItem('access_token');
+              window.location.hash = '#/login';
+            });
           } else {
             this._swAlert(logout);
           }
@@ -183,9 +218,10 @@ const Profile = {
                 icon: 'success',
                 message: deleteUser.message,
                 timer: 3000,
+              }).then(() => {
+                localStorage.removeItem('access_token');
+                window.location.hash = '#/login';
               });
-              localStorage.removeItem('access_token');
-              window.location.hash = '#/login';
             } else {
               this._swAlert(deleteUser);
             }
