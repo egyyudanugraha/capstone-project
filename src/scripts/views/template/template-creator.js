@@ -32,13 +32,13 @@ const taskItemTable = (task) => `<tr class="border-b dark:bg-gray-800 dark:borde
 </td>
 </tr>`;
 
-const matrixItem = (task) => `<button data-id="${task._id}" class="btn-modal block bg-slate-50 hover:bg-slate-100 text-left text-white dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white p-2 rounded-md" type="button" data-modal-toggle="modalItemTask">
+const matrixItem = (task) => `<button data-id="${task._id}" class="btn-modal block bg-slate-50 hover:bg-slate-100 text-left text-slate-800 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white p-2 rounded-md" type="button" data-modal-toggle="modalItemTask">
 ${task.title}
 </button>`;
 
-const taskNotFound = () => `
-<p class="text-center text-slate-800 dark:text-white italic text-sm">No tasks found, please add a 
-<a href="#/tasks" class="underline underline-offset-1 not-italic hover:decoration-purple-600">new task</a></p>
+const taskNotFound = (msg) => `
+<p class="text-center text-white dark:text-white italic text-sm">${msg}, 
+<a href="#/tasks" class="underline underline-offset-1 not-italic hover:decoration-purple-600">create a new task</a></p>
 `;
 
 const modalContent = (task) => `

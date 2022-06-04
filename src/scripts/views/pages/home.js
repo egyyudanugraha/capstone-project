@@ -1,67 +1,18 @@
+import { isToday } from 'date-fns';
+import ApptivityApi from '../../data/apptivity-api';
+import { matrixItem, modalContent, taskNotFound } from '../template/template-creator';
+
 const Home = {
   async render() {
     return `<div class="dashboard flex flex-col gap-8">
-    <div class="grid md:grid-cols-2">
-      <div class="rounded-lg mx-6">
-        <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" class="px-6 py-3 flex justify-center text-xl text-slate-800 dark:text-slate-100">Recommended tasks to complete</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr>
-          <td>
-            <div class="w-full max-h-[50vh] pb-4 overflow-y-auto grid my-3 gap-2 scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
-              
-              <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
-                <div class="text-[11px] my-auto">3 Hari lagi</div>
-                </div>
-            </div>
-          </td>
-        </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="rounded-lg mx-6">
-        <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" class="px-6 py-3 flex justify-center text-xl text-slate-800 dark:text-slate-100">Uncompleted Tasks</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="w-full max-h-[50vh] pb-4 overflow-y-auto grid my-3 gap-2 scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
-                  </div>
-                  <div class="bg-white shadow-md h-12 rounded-md mx-4 dark:bg-slate-800 flex justify-between px-6">
-                    <div class="text-lg my-auto max-w-[50%] text-slate-700 dark:text-slate-300 text-ellipsis overflow-hidden whitespace-nowrap">Task 1 (max 30 char) 12121212 3 Task 1 (max 30 char) 12121212 3</div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="flex flex-col md:grid md:grid-cols-2 max-w-3xl md:max-w-full gap-3 mx-6 md:mx-14">
+      <app-card-matrix class="bg-amber-600 border-yellow-200 dark:border-amber-600 scrollbar-thumb-amber-800 scrollbar-track-amber-500"
+        data-title="Deadline Today" data-subtitle="Tasks to complete" data-command="List tasks deadline today">
+      </app-card-matrix>
+      <app-card-matrix class="bg-teal-600 border-cyan-400 dark:border-teal-600 scrollbar-thumb-teal-800 scrollbar-track-teal-400"
+        data-title="All Tasks" data-subtitle="Uncompleted tasks" data-command="List all tasks uncompleted">
+      </app-card-matrix>
+      <app-modal></app-modal>
     </div>
 
     <!-- Recommended Article -->
@@ -193,8 +144,54 @@ const Home = {
   </div>`;
   },
 
+  async _getTasks() {
+    const tasks = await ApptivityApi.getAllTask();
+    return tasks;
+  },
+
+  allTask: null,
+  modal: null,
+
   async afterRender() {
-    console.log('afterRender');
+    const deadlineContent = document.querySelector('#deadline');
+    const allContent = document.querySelector('#all');
+
+    this._renderItemTask(deadlineContent, 'deadline');
+    this._renderItemTask(allContent);
+
+    this.modal = new Modal(document.getElementById('modalItemTask'), {
+      placement: 'center',
+      backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
+    });
+
+    document.querySelector('#modalItemTask').addEventListener('click', (e) => {
+      if (e.target.classList.contains('close-modal')) {
+        this.modal.hide();
+      }
+    });
+  },
+
+  async _renderItemTask(selector, filter = 'all') {
+    const content = selector;
+    let tasks = await this._getTasks();
+    this.allTask = tasks;
+    if (filter === 'deadline') {
+      tasks = tasks.filter((task) => isToday(new Date(task.deadline)));
+    } else {
+      tasks = tasks.filter((task) => !task.completed);
+    }
+
+    if (tasks.length === 0) content.innerHTML = taskNotFound('No task today');
+    tasks.forEach((task) => {
+      content.innerHTML += matrixItem(task);
+      content.addEventListener('click', async (e) => {
+        if (e.target.classList.contains('btn-modal')) {
+          const taskDetail = this.allTask.find((item) => item._id === e.target.dataset.id);
+          document.querySelector('#modal-content').innerHTML = modalContent(taskDetail);
+          this.modal.show();
+        }
+      });
+    });
   },
 };
 

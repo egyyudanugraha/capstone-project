@@ -41,7 +41,7 @@ const Profile = {
                 placeholder="Email"
               />
             </div>
-            <div class="bg-white dark:bg-slate-700 px-4 py-5 flex flex-col sm:grid sm:grid-cols-3 gap-4 justify-center">
+            <div class="bg-white dark:bg-slate-700 px-4 py-5 flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center">
               <button
                 type="button"
                 class="btn-edit w-full inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
@@ -81,7 +81,7 @@ const Profile = {
             <div class="text-sm font-medium text-gray-500 dark:text-white">Confirm new password</div>
             <input type="password" name="confirm_password" class="mt-1 bg-white dark:bg-slate-800 border-0 w-full text-sm text-gray-900 dark:text-gray-50 sm:mt-0 sm:col-span-2 focus:ring-purple-600 invalid:focus:ring-pink-500" placeholder="Confirm new password" minlength="8" required/>
           </div>
-          <div class="bg-white dark:bg-slate-700 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 justify-center">
+          <div class="bg-white dark:bg-slate-700 px-4 py-5 flex flex-col md:grid justify-center">
             <button
               type="button"
               class="btn-password w-full inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
@@ -241,7 +241,15 @@ const Profile = {
       if (newPassword === confirmPass) {
         const updatePass = await ApptivityApi.updatePassword({ password, newPassword });
         if (!updatePass.error) {
-          this._swAlert(updatePass);
+          Swal.fire({
+            title: 'Password changed!',
+            icon: 'success',
+            text: `${updatePass.message}, please re-login!`,
+            timer: 3000,
+          }).then(() => {
+            localStorage.removeItem('access_token');
+            window.location.hash = '#/login';
+          });
         } else {
           this._swAlert(updatePass);
         }

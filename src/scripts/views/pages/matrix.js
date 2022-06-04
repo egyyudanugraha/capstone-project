@@ -44,7 +44,7 @@ const Matrix = {
   _renderItemTask(tasks, element) {
     const selectorContainer = document.querySelector(`#${element}`);
     selectorContainer.innerHTML = '';
-    if (tasks.length === 0) selectorContainer.innerHTML = taskNotFound();
+    if (tasks.length === 0) selectorContainer.innerHTML = taskNotFound('No task found');
     tasks.forEach((task) => (selectorContainer.innerHTML += matrixItem(task)));
     selectorContainer.addEventListener('click', async (e) => {
       if (e.target.classList.contains('btn-modal')) {
