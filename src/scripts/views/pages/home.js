@@ -1,6 +1,6 @@
-import { isToday } from 'date-fns';
+import { compareAsc, isToday } from 'date-fns';
 import ApptivityApi from '../../data/apptivity-api';
-import { matrixItem, modalContent, taskNotFound } from '../template/template-creator';
+import { deadlineItem, modalContent, taskNotFound } from '../template/template-creator';
 
 const Home = {
   async render() {
@@ -165,7 +165,7 @@ const Home = {
     });
 
     document.querySelector('#modalItemTask').addEventListener('click', (e) => {
-      if (e.target.classList.contains('close-modal')) {
+      if (e.target.classList.contains('close-modal') || e.target.classList.contains('work-now')) {
         this.modal.hide();
       }
     });
@@ -181,16 +181,19 @@ const Home = {
       tasks = tasks.filter((task) => !task.completed);
     }
 
+    tasks = tasks.sort((a, b) => compareAsc(a.deadline, b.deadline));
+
     if (tasks.length === 0) content.innerHTML = taskNotFound('No task today');
     tasks.forEach((task) => {
-      content.innerHTML += matrixItem(task);
-      content.addEventListener('click', async (e) => {
-        if (e.target.classList.contains('btn-modal')) {
-          const taskDetail = this.allTask.find((item) => item._id === e.target.dataset.id);
-          document.querySelector('#modal-content').innerHTML = modalContent(taskDetail);
-          this.modal.show();
-        }
-      });
+      content.innerHTML += deadlineItem(task);
+    });
+
+    content.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('btn-modal')) {
+        const taskDetail = this.allTask.find((item) => item._id === e.target.dataset.id);
+        document.querySelector('#modal-content').innerHTML = modalContent(taskDetail);
+        this.modal.show();
+      }
     });
   },
 };

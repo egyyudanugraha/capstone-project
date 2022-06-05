@@ -35,7 +35,7 @@ const Matrix = {
     });
 
     document.querySelector('#modalItemTask').addEventListener('click', (e) => {
-      if (e.target.classList.contains('close-modal')) {
+      if (e.target.classList.contains('close-modal') || e.target.classList.contains('work-now')) {
         this.modal.hide();
       }
     });

@@ -135,6 +135,23 @@ class ApptivityApi {
     const json = await response.json();
     return json.data;
   }
+
+  // History
+  static async getHistory() {
+    const response = await fetch(API_ENDPOINT.HISTORY, this._options());
+    const json = await response.json();
+    return json.data;
+  }
+
+  static async createHistory(history) {
+    const response = await fetch(API_ENDPOINT.HISTORY, {
+      method: 'POST',
+      ...this._options(),
+      body: JSON.stringify(history),
+    });
+    const json = response.json();
+    return json;
+  }
 }
 
 export default ApptivityApi;

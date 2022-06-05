@@ -1,105 +1,41 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-use-before-define */
-/* eslint-disable linebreak-style */
+import Swal from 'sweetalert2';
+import ApptivityApi from '../../data/apptivity-api';
+import { pomodorItemTask, taskNotFound } from '../template/template-creator';
+
 const Pomodoro = {
   async render() {
-    return `<div class="flex justify-center mt-8 mb-8">
-        <h1 class="font-concert text-7xl text-white animate-bounce text-center">Pomodoro</h1>
-        </div>
-        <div class="flex flex-col px-8 mx-auto my-8 xl:px-5 lg:flex-row max-w-7xl">
-        <div class="flex  font-nunito rounded-md flex-col items-center justify-center w-full px-10 py-1 mb-8 mr-6 lg:mb-0 lg:flex-1 lg:w-1/3" id="box-time">
+    return `
+        <div class="flex flex-col mx-4 md:flex-row gap-3">
+        <div class="flex font-nunito rounded-md flex-col items-center justify-center w-full" id="box-time">
         <div class="flex justify-center text-white ">
-            <div class="my-4 pt-5 pb-7 h-350 rounded-xl ">
+            <div class="mb-4 pt-5 pb-7 h-350 rounded-xl ">
               <div class="flex justify-center" id="js-mode-buttons">
-                <button class="text-base rounded-xl py-1 px-3 active" data-mode="pomodoro">Pomodoro</button>
-                <button class="text-base rounded-xl py-1 px-3" data-mode="shortBreak">Short Break</button>
-                <button class="text-base rounded-xl py-1 px-3" data-mode="longBreak">Long Break</button>
+                <button class="text-base rounded-md py-1 px-3 bg-purple-600 border-b-4 border-purple-800" data-mode="pomodoro">Pomodoro</button>
+                <button class="text-base rounded-md py-1 px-3" data-mode="shortBreak">Short Break</button>
+                <button class="text-base rounded-md py-1 px-3" data-mode="longBreak">Long Break</button>
               </div>
               <div class="flex justify-center text-9xl py-6" id="time-display">
                 <span id="js-minutes">25</span>
                 <span class="separator">:</span>
                 <span id="js-seconds">00</span> 
               </div>
-              <div class="flex pt-10 justify-center">
+              <div class="grid pt-10 gap-4 justify-center">
                 <button class="
-                bg-amber-400 text-white
-                py-3 px-16  text-lg font-extrabold
-                rounded-md shadow-start_inset"
+                bg-amber-400 hover:bg-amber-500 border-b-4 py-4 w-[200px] border-amber-600 text-white text-lg font-extrabold
+                rounded-md text-center"
                 data-action="start" id="start-btn">START</button>
+                <div class="session text-slate-50 text-center text-sm"></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex overflow-x-hidden lg:overflow-y-auto scrollbar-hide rounded-md flex-row items-center justify-center w-full px-10 py-1 mb-8 mr-6 lg:mb-0 lg:flex-1 lg:w-1/3" id="box-task">
-            <div class="flex justify-center text-white font-nunito w-full">
-                <div class=" p-0 px-2 pb-7 h-350 rounded-xl  ">
-                    <div class="flex items-center text-white text-4xl lg:text-4xl my-0 py-4">
-                        <p class="font-nunito font-extrabold m-auto ">Tasks</p>
-                      </div>
-
-                      <div class="flex
-                    bg-white w-80
-                    rounded-md border-white
-                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
-                      <label class="flex items-start">
-                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
-                          Contoh TASK 1 mandi di sungai muara yang luas
-                        </span> 
-                      </label>
-                    </div>
-                    <div class="flex
-                    bg-white w-80
-                    rounded-md border-white
-                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
-                      <label class="flex items-start">
-                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
-                          Contoh TASK 1 mandi di sungai muara yang luas
-                        </span> 
-                      </label>
-                    </div>
-                    <div class="flex
-                    bg-white w-80
-                    rounded-md border-white
-                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
-                      <label class="flex items-start">
-                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
-                          Contoh TASK 1 mandi di sungai muara yang luas
-                        </span> 
-                      </label>
-                    </div>
-                    <div class="flex
-                    bg-white w-80
-                    rounded-md border-white
-                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
-                      <label class="flex items-start">
-                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
-                          Contoh TASK 1 mandi di sungai muara yang luas
-                        </span> 
-                      </label>
-                    </div>
-                    <div class="flex
-                    bg-white w-80
-                    rounded-md border-white
-                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
-                      <label class="flex items-start">
-                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
-                          Contoh TASK 1 mandi di sungai muara yang luas
-                        </span> 
-                      </label>
-                    </div>
-                    <div class="flex
-                    bg-white w-80
-                    rounded-md border-white
-                    py-3 my-2 mx-auto px-2 lg:px-4 lg:w-96">
-                      <label class="flex items-start">
-                        <input type="checkbox" class="form-checkbox border-0 rounded-md h-8 w-8" checked><span class="ml-4  text-sm text-gray-900">
-                          Contoh TASK 1 mandi di sungai muara yang luas
-                        </span> 
-                      </label>
-                    </div>
-              </div>
-            </div>
+        <div class="block rounded-md py-5 px-4 w-full min-h-[70vh] max-h-[70vh]" id="box-task">
+          <div class="flex items-center text-white text-4xl my-0">
+            <p class="font-nunito font-extrabold m-auto ">Tasks</p>
+          </div>
+          <div class="card-body overflow-y-auto my-3 flex flex-col gap-2 w-full p-3 max-h-[50vh] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+            
+          </div>
         </div>
        `;
   },
@@ -110,18 +46,51 @@ const Pomodoro = {
       longBreak: 15,
       longBreakInterval: 4,
       sessions: 0,
+      status: false,
     };
 
     let interval;
+    let startDate = null;
     switchMode('pomodoro');
+    showSession();
+
+    const tasksContainer = document.querySelector('.card-body');
+    const tasks = await this._getUncompletedTasks();
+    tasksContainer.innerHTML = '';
+    if (tasks.length === 0) tasksContainer.innerHTML = taskNotFound('All tasks are completed');
+    tasks.forEach((task) => {
+      tasksContainer.innerHTML += pomodorItemTask(task);
+    });
+
+    tasksContainer.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('checkbox') && startDate === null) {
+        Swal.fire({
+          title: 'Warning!',
+          text: 'Please start the timer before completing the task',
+          icon: 'warning',
+        });
+        e.target.checked = false;
+        return;
+      }
+
+      if (e.target.classList.contains('checkbox')) {
+        await ApptivityApi.updateTask(e.target.dataset.id, { completed: e.target.checked });
+        if (e.target.checked) {
+          await ApptivityApi.createHistory({
+            task: e.target.dataset.id,
+            start_date: startDate,
+          });
+        }
+      }
+    });
 
     const modeButtons = document.querySelector('#js-mode-buttons');
     modeButtons.addEventListener('click', handleMode);
 
-    const buttonSound = new Audio('../button-sound.mp3');
+    const startSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
+    const stopSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-click-error-1110.mp3');
     const mainButton = document.getElementById('start-btn');
     mainButton.addEventListener('click', () => {
-      buttonSound.play();
       const {
         action,
       } = mainButton.dataset;
@@ -131,7 +100,6 @@ const Pomodoro = {
         stopTimer();
       }
     });
-    console.log(buttonSound);
 
     function handleMode(event) {
       const {
@@ -140,8 +108,8 @@ const Pomodoro = {
 
       if (!mode) return;
 
+      clearInterval(interval);
       switchMode(mode);
-      stopTimer();
     }
 
     function getRemainingTime(endTime) {
@@ -159,48 +127,70 @@ const Pomodoro = {
       };
     }
 
+    function showSession() {
+      document.querySelector('.session').innerHTML = `Session : ${timer.sessions}/${timer.longBreakInterval}`;
+    }
+
     function startTimer() {
-      let {
+      const {
         total,
       } = timer.remainingTime;
       const endTime = Date.parse(new Date()) + total * 1000;
 
-      if (timer.mode === 'pomodoro') timer.sessions++;
+      if (timer.sessions === 0) startDate = Date.now();
 
-      mainButton.dataset.action = 'stop';
-      mainButton.textContent = 'STOP';
-      mainButton.classList.add('active');
+      if (timer.mode === 'pomodoro') {
+        if (timer.sessions === timer.longBreakInterval) timer.sessions = 0;
+        timer.sessions++;
+        showSession();
+      }
+      timer.status = true;
+      changeStatusButton(true);
 
       interval = setInterval(() => {
         timer.remainingTime = getRemainingTime(endTime);
         updateClock();
-        total = timer.remainingTime.total;
-        if (total <= 0) {
-          clearInterval(interval);
-
-          switch (timer.mode) {
-            case 'pomodoro':
-              if (timer.sessions % timer.longBreakInterval === 0) {
-                switchMode('longBreak');
-              } else {
-                switchMode('shortBreak');
-              }
-              break;
-            default:
-              switchMode('pomodoro');
-          }
-          document.querySelector(`[data-sound="${timer.mode}"]`).play();
-          startTimer();
-        }
+        _utils();
       }, 1000);
+
+      startSound.play();
+    }
+
+    function _utils() {
+      const { total } = timer.remainingTime;
+      if (total <= 0) {
+        stopTimer();
+
+        switch (timer.mode) {
+          case 'pomodoro':
+            if (timer.sessions % timer.longBreakInterval === 0) {
+              switchMode('longBreak');
+            } else {
+              switchMode('shortBreak');
+            }
+            break;
+          default:
+            switchMode('pomodoro');
+        }
+      }
     }
 
     function stopTimer() {
       clearInterval(interval);
 
-      mainButton.dataset.action = 'start';
-      mainButton.textContent = 'START';
-      mainButton.classList.remove('active');
+      stopSound.play();
+      timer.status = false;
+      changeStatusButton();
+    }
+
+    function changeStatusButton(start = false) {
+      if (start) {
+        mainButton.dataset.action = 'stop';
+        mainButton.textContent = 'STOP';
+      } else {
+        mainButton.dataset.action = 'start';
+        mainButton.textContent = 'START';
+      }
     }
 
     function updateClock() {
@@ -225,27 +215,37 @@ const Pomodoro = {
         seconds: 0,
       };
 
+      if (timer.status) {
+        changeStatusButton();
+      }
+
       document
         .querySelectorAll('button[data-mode]')
-        .forEach((e) => e.classList.remove('active'));
-      document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+        .forEach((e) => e.classList.remove('bg-purple-600', 'border-b-4', 'border-purple-800'));
+      document.querySelector(`[data-mode="${mode}"]`).classList.add('bg-purple-600', 'border-b-4', 'border-purple-800');
 
+      const boxTimer = document.getElementById('box-time');
+      const boxTask = document.getElementById('box-task');
       if (mode === 'pomodoro') {
-        document.getElementById('box-time').style.backgroundColor = '#dd6662';
-        document.getElementById('box-task').style.backgroundColor = '#dd6662';
-        document.getElementById('box-time').style.transition = 'background-color 1s ease-in-out';
-        document.getElementById('box-task').style.transition = 'background-color 1s ease-in-out';
+        boxTimer.style.backgroundColor = boxTask.style.backgroundColor = '#fb7185';
       } else if (mode === 'shortBreak') {
-        document.getElementById('box-time').style.backgroundColor = '#4385a3';
-        document.getElementById('box-task').style.backgroundColor = '#4385a3';
-      } else if (mode === 'longBreak') {
-        document.getElementById('box-time').style.backgroundColor = '#626299';
-        document.getElementById('box-task').style.backgroundColor = '#626299';
+        boxTimer.style.backgroundColor = boxTask.style.backgroundColor = '#0284c7';
+      } else {
+        boxTimer.style.backgroundColor = boxTask.style.backgroundColor = '#2dd4bf';
       }
 
       updateClock();
     }
   },
+
+  async _getUncompletedTasks() {
+    const tasks = await ApptivityApi.getAllTask('completed=false');
+    return tasks;
+  },
+
+  // async _renderItemTask() {
+
+  // },
 };
 
 export default Pomodoro;

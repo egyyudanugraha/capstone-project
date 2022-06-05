@@ -10,6 +10,7 @@ const API_ENDPOINT = {
   TASK: `${CONFIG.BASE_URL}/task`,
   TASK_DETAIL: (id) => `${CONFIG.BASE_URL}/task/${id}`,
   MATRIX: `${CONFIG.BASE_URL}/matrix`,
+  HISTORY: `${CONFIG.BASE_URL}/history`,
 };
 
 export default API_ENDPOINT;

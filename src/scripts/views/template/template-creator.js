@@ -1,4 +1,4 @@
-import { format, formatDistanceToNowStrict } from 'date-fns';
+import { format, formatDistanceStrict, formatDistanceToNowStrict } from 'date-fns';
 
 const _convertDate = (date) => {
   const monthString = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -32,9 +32,25 @@ const taskItemTable = (task) => `<tr class="border-b dark:bg-gray-800 dark:borde
 </td>
 </tr>`;
 
+const historyItemTable = (task) => `<tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+<th scope="row" class="px-6 py-4 md:min-w-[170px] font-medium text-gray-900 dark:text-white whitespace-nowrap">${task.task}</th>
+<td class="px-6 py-4">${formatDistanceStrict(new Date(task.start_date), new Date(task.end_date))}</td>
+<td class="px-6 py-4">${format(new Date(task.end_date), 'PPPPpp')}</td>
+</tr>`;
+
 const matrixItem = (task) => `<button data-id="${task._id}" class="btn-modal block bg-slate-50 hover:bg-slate-100 text-left text-slate-800 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white p-2 rounded-md" type="button" data-modal-toggle="modalItemTask">
 ${task.title}
 </button>`;
+
+const deadlineItem = (task) => `<button data-id="${task._id}" class="btn-modal flex bg-slate-50 hover:bg-slate-100 text-left text-slate-800 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white p-2 rounded-md" type="button" data-modal-toggle="modalItemTask">
+<span class="w-[80%]">${task.title}</span>
+<span class="text-xs m-auto">${formatDistanceToNowStrict(new Date(task.deadline), { addSuffix: true })}</span>
+</button>`;
+
+const pomodorItemTask = (task) => `<div class="item bg-white rounded-md p-2 w-full flex gap-2">
+<input type="checkbox" data-id="${task._id}" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+<span class="text-md text-slate-800 my-auto">${task.title}</span>
+</div>`;
 
 const taskNotFound = (msg) => `
 <p class="text-center text-white dark:text-white italic text-sm">${msg}, 
@@ -79,11 +95,12 @@ const modalContent = (task) => `
     </div>
     <!-- Modal footer -->
     <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+        <a href="#/pomodoro" class="work-now text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800">Work now!</a>
         <button type="button" class="close-modal text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">Close</button>
     </div>
 </div>
 `;
 
 export {
-  taskItemTable, matrixItem, taskNotFound, modalContent,
+  taskItemTable, matrixItem, taskNotFound, modalContent, pomodorItemTask, historyItemTable, deadlineItem,
 };
