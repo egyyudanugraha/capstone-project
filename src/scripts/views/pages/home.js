@@ -1,6 +1,6 @@
 import { isToday } from 'date-fns';
 import ApptivityApi from '../../data/apptivity-api';
-import { matrixItem, modalContent, taskNotFound } from '../template/template-creator';
+import { taskItem, modalContent, taskNotFound } from '../template/template-creator';
 
 const Home = {
   async render() {
@@ -179,11 +179,12 @@ const Home = {
       tasks = tasks.filter((task) => isToday(new Date(task.deadline)));
     } else {
       tasks = tasks.filter((task) => !task.completed);
+      tasks = tasks.sort((a, b) => a.deadline - b.deadline);
     }
 
     if (tasks.length === 0) content.innerHTML = taskNotFound('No task today');
     tasks.forEach((task) => {
-      content.innerHTML += matrixItem(task);
+      content.innerHTML += taskItem(task);
       content.addEventListener('click', async (e) => {
         if (e.target.classList.contains('btn-modal')) {
           const taskDetail = this.allTask.find((item) => item._id === e.target.dataset.id);
