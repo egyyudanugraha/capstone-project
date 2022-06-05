@@ -179,6 +179,7 @@ const Home = {
       tasks = tasks.filter((task) => isToday(new Date(task.deadline)));
     } else {
       tasks = tasks.filter((task) => !task.completed);
+      tasks = tasks.sort((a, b) => a.deadline - b.deadline);
     }
 
     tasks = tasks.sort((a, b) => compareAsc(a.deadline, b.deadline));
