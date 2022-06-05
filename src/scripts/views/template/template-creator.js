@@ -36,6 +36,14 @@ const matrixItem = (task) => `<button data-id="${task._id}" class="btn-modal blo
 ${task.title}
 </button>`;
 
+const taskItem = (task) => `
+<div class="px-2 py-2 mb-3 sm:grid bg-slate-50 rounded-lg sm:grid-cols-3 sm:gap-4 sm:px-6">
+ <button data-id="${task._id}" class="sm:col-span-2 btn-modal block whitespace-nowrap overflow-hidden text-ellipsis bg-slate-50 hover:bg-slate-100 text-left text-slate-800 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white p-2 rounded-md" type="button" data-modal-toggle="modalItemTask">
+ ${task.title}</button>
+ <span class="text-xs text-right text-gray-700 sm:mt-3 sm:col-span-1 px-2">${formatDistanceToNowStrict(new Date(task.deadline), { addSuffix: true })}</span>
+</div>
+`;
+
 const taskNotFound = (msg) => `
 <p class="text-center text-white dark:text-white italic text-sm">${msg}, 
 <a href="#/tasks" class="underline underline-offset-1 not-italic hover:decoration-purple-600">create a new task</a></p>
@@ -85,5 +93,5 @@ const modalContent = (task) => `
 `;
 
 export {
-  taskItemTable, matrixItem, taskNotFound, modalContent,
+  taskItemTable, matrixItem, taskNotFound, modalContent, taskItem,
 };
