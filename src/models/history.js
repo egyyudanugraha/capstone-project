@@ -11,11 +11,11 @@ const historySchema = new mongoose.Schema({
     ref: 'Task',
     required: true,
   },
-  finishedIn: {
-    type: String,
+  start_date: {
+    type: Number,
     required: true,
   },
-  finishedAt: {
+  end_date: {
     type: Number,
     required: true,
     default: Date.now,
