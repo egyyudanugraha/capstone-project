@@ -30,10 +30,17 @@ module.exports = {
   getAllHistory: async (req, res) => {
     const owner = req.user._id;
     try {
-      const histories = await History.find({ owner });
+      const histories = await History.find({ owner }).populate({ path: 'task', select: 'title' });
+      const mapping = histories.map((history) => ({
+        _id: history._id,
+        task: history.task.title,
+        start_date: history.start_date,
+        end_date: history.end_date,
+      }));
+
       res.status(200).send({
         message: 'Get histories successfully',
-        data: histories,
+        data: mapping,
         error: false,
       });
     } catch (error) {
