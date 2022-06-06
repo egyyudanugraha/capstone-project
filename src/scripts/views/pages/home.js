@@ -18,7 +18,7 @@ const Home = {
     <!-- Recommended Article -->
     <div class="mt-10 mx-2">
       <h3 class="flex justify-center text-2xl leading-6 mb-6 font-medium text-slate-800 dark:text-slate-100">Recommended Articles</h3>
-      <div class="articles flex gap-3 flex-wrap justify-center">
+      <div class="articles grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-center mx-8">
         <div class="max-w-md md:max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
             <img class="rounded-t-lg" src="https://source.unsplash.com/600x400/?tech" alt="" />
@@ -145,7 +145,7 @@ const Home = {
   },
 
   async _getTasks() {
-    const tasks = await ApptivityApi.getAllTask();
+    const tasks = await ApptivityApi.getAllTask('completed=false');
     return tasks;
   },
 
@@ -177,9 +177,6 @@ const Home = {
     this.allTask = tasks;
     if (filter === 'deadline') {
       tasks = tasks.filter((task) => isToday(new Date(task.deadline)));
-    } else {
-      tasks = tasks.filter((task) => !task.completed);
-      tasks = tasks.sort((a, b) => a.deadline - b.deadline);
     }
 
     tasks = tasks.sort((a, b) => compareAsc(a.deadline, b.deadline));
@@ -190,8 +187,8 @@ const Home = {
     });
 
     content.addEventListener('click', async (e) => {
-      if (e.target.classList.contains('btn-modal')) {
-        const taskDetail = this.allTask.find((item) => item._id === e.target.dataset.id);
+      if (e.target.classList.contains('btn-modal') || e.target.parentElement.classList.contains('btn-modal')) {
+        const taskDetail = this.allTask.find((item) => item._id === e.target.dataset.id || item._id === e.target.parentElement.dataset.id);
         document.querySelector('#modal-content').innerHTML = modalContent(taskDetail);
         this.modal.show();
       }

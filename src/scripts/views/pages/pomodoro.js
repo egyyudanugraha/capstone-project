@@ -84,6 +84,12 @@ const Pomodoro = {
       }
     });
 
+    window.addEventListener('hashchange', () => {
+      if (window.location.hash !== '#/pomodoro' && timer.status) {
+        stopTimer();
+      }
+    });
+
     const modeButtons = document.querySelector('#js-mode-buttons');
     modeButtons.addEventListener('click', handleMode);
 
@@ -141,7 +147,7 @@ const Pomodoro = {
 
       if (timer.mode === 'pomodoro') {
         if (timer.sessions === timer.longBreakInterval) timer.sessions = 0;
-        timer.sessions++;
+        if (timer.remainingTime.minutes === timer.pomodoro) timer.sessions += 1;
         showSession();
       }
       timer.status = true;

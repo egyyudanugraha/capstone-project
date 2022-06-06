@@ -43,7 +43,7 @@ ${task.title}
 </button>`;
 
 const deadlineItem = (task) => `<button data-id="${task._id}" class="btn-modal flex bg-slate-50 hover:bg-slate-100 text-left text-slate-800 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white p-2 rounded-md" type="button" data-modal-toggle="modalItemTask">
-<span class="w-[80%]">${task.title}</span>
+<span class="my-auto w-[75%]">${task.title}</span>
 <span class="text-xs m-auto">${formatDistanceToNowStrict(new Date(task.deadline), { addSuffix: true })}</span>
 </button>`;
 
