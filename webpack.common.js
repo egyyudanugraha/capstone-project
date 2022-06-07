@@ -1,4 +1,3 @@
-const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
@@ -27,7 +26,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new Dotenv(),
     new WebpackPwaManifest({
       name: 'Apptivity',
       short_name: 'Apptivity',
