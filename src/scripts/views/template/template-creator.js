@@ -119,10 +119,15 @@ const cardArticle = (article) => `
 <div class="max-w-md md:max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
   <div>
     <a href="${article.url}" target="_blank">
-      <img class="rounded-t-lg object-cover h-48 w-full" src="${article.image}" alt="" />
+      <img class="rounded-t-lg object-cover h-48 w-full" src="${article.urlToImage}" alt="" />
     </a>
     <div class="card-body-article p-5">
       <div class="label text-xs text-slate-600 dark:text-slate-200 flex gap-2 mb-3">
+        <div class="author flex gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+          <span>${article.author}</span>
+        </div>
         <div class="author flex gap-1">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
           </svg>

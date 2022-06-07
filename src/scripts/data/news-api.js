@@ -3,13 +3,13 @@ import API_ENDPOINT from '../globals/api-endpoint';
 
 class NewsApi {
   static _getStartEndWeek() {
-    const startWeek = formatISO(startOfWeek(new Date()));
-    const endWeek = formatISO(endOfWeek(new Date()));
+    const startWeek = formatISO(startOfWeek(new Date()), { representation: 'date' });
+    const endWeek = formatISO(endOfWeek(new Date()), { representation: 'date' });
     return `from=${startWeek}&to=${endWeek}`;
   }
 
   static async getNewsEverything(query) {
-    const response = await fetch(`${API_ENDPOINT.NEWS(query)}&max=8&${this._getStartEndWeek()}`);
+    const response = await fetch(`${API_ENDPOINT.NEWS('everything')}&q=${query}&pageSize=8&${this._getStartEndWeek()}`);
     const json = await response.json();
     return json.articles;
   }

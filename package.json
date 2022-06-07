@@ -6,7 +6,7 @@
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "tail": "tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/style.css --watch",
+    "tailwind": "tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/style.css --watch",
     "tailwind-build": "tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/style.css --minify"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^6.0.2",
     "css-loader": "^3.6.0",
+    "dotenv-webpack": "^7.1.0",
     "eslint": "^8.16.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",

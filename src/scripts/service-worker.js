@@ -73,7 +73,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ url }) => url.origin === 'https://newsapi.org',
+  ({ url }) => url.origin === 'https://cors-anywhere.herokuapp.com',
   new StaleWhileRevalidate({
     cacheName: 'articles-cache',
     plugins: [
