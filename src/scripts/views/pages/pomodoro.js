@@ -43,58 +43,7 @@ const Pomodoro = {
             <option value="matrix">Sort by Eisenhower Martix</option>
           </select>
           <div class="card-body overflow-y-auto my-3 flex flex-col gap-2 w-full p-3 max-h-[45vh] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
-            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
-              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
-              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
-            </div>
+            
           </div>
         </div>
        `;
