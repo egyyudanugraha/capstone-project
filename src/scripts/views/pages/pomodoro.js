@@ -15,16 +15,16 @@ const Pomodoro = {
         <div class="flex justify-center text-white ">
             <div class="mb-4 pt-5 pb-7 h-350 rounded-xl ">
               <div class="flex justify-center" id="js-mode-buttons">
-                <button class="text-base rounded-md py-1 px-3 bg-purple-600 border-b-4 border-purple-800" data-mode="pomodoro">Pomodoro</button>
-                <button class="text-base rounded-md py-1 px-3" data-mode="shortBreak">Short Break</button>
-                <button class="text-base rounded-md py-1 px-3" data-mode="longBreak">Long Break</button>
+                <button class="text-sm md:text-base rounded-md py-1 px-3 bg-purple-600 border-b-4 border-purple-800" data-mode="pomodoro">Pomodoro</button>
+                <button class="text-sm md:text-base rounded-md py-1 px-3" data-mode="shortBreak">Short Break</button>
+                <button class="text-sm md:text-base rounded-md py-1 px-3" data-mode="longBreak">Long Break</button>
               </div>
-              <div class="flex justify-center text-9xl py-6" id="time-display">
+              <div class="flex justify-center text-8xl md:text-9xl py-6" id="time-display">
                 <span id="js-minutes">25</span>
                 <span class="separator">:</span>
                 <span id="js-seconds">00</span> 
               </div>
-              <div class="grid pt-10 gap-4 justify-center">
+              <div class="grid pt:5 md:pt-10 gap-4 justify-center">
                 <button class="
                 bg-amber-400 hover:bg-amber-500 border-b-4 py-4 w-[200px] border-amber-600 text-white text-lg font-extrabold
                 rounded-md text-center"
@@ -313,9 +313,9 @@ const Pomodoro = {
       if (mode === 'pomodoro') {
         boxTimer.style.backgroundColor = boxTask.style.backgroundColor = '#fb7185';
       } else if (mode === 'shortBreak') {
-        boxTimer.style.backgroundColor = boxTask.style.backgroundColor = '#0284c7';
-      } else {
         boxTimer.style.backgroundColor = boxTask.style.backgroundColor = '#2dd4bf';
+      } else {
+        boxTimer.style.backgroundColor = boxTask.style.backgroundColor = ' #0284c7';
       }
 
       updateClock();
