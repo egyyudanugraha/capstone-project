@@ -1,9 +1,14 @@
 import Swal from 'sweetalert2';
+import { compareAsc } from 'date-fns';
 import ApptivityApi from '../../data/apptivity-api';
 import { pomodorItemTask, taskNotFound } from '../template/template-creator';
+import NotificationHelper from '../../utils/notification-helper';
 
 const Pomodoro = {
+  allTask: null,
   async render() {
+    const tasks = await ApptivityApi.getAllTask('completed=false');
+    this.allTask = tasks;
     return `
         <div class="flex flex-col mx-4 md:flex-row gap-3">
         <div class="flex font-nunito rounded-md flex-col items-center justify-center w-full" id="box-time">
@@ -30,22 +35,78 @@ const Pomodoro = {
           </div>
         </div>
         <div class="block rounded-md py-5 px-4 w-full min-h-[70vh] max-h-[70vh]" id="box-task">
-          <div class="flex items-center text-white text-4xl my-0">
+          <div class="flex items-center text-white text-4xl my-0 mb-2">
             <p class="font-nunito font-extrabold m-auto ">Tasks</p>
           </div>
-          <div class="card-body overflow-y-auto my-3 flex flex-col gap-2 w-full p-3 max-h-[50vh] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
-            
+          <select id="filter" class="bg-white text-left border-2 ml-3 border-slate-200 dark:bg-slate-50 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-800 text-slate-800 dark:text-slate-800 focus:ring-purple-600">
+            <option value="deadline">Sort by Deadline</option>
+            <option value="matrix">Sort by Eisenhower Martix</option>
+          </select>
+          <div class="card-body overflow-y-auto my-3 flex flex-col gap-2 w-full p-3 max-h-[45vh] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
+            <div class="item bg-white rounded-md p-2 w-full flex gap-2">
+              <input type="checkbox" data-id="" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+              <span class="text-md text-slate-800 my-auto">asasasdsdddd dddddddddds sd sd sds dsd </span>
+            </div>
           </div>
         </div>
        `;
   },
+
   async afterRender() {
     const timer = {
-      pomodoro: 25,
-      shortBreak: 5,
-      longBreak: 15,
+      pomodoro: 1,
+      shortBreak: 1,
+      longBreak: 1,
       longBreakInterval: 4,
-      sessions: 0,
+      sessions: 2,
       status: false,
     };
 
@@ -55,11 +116,10 @@ const Pomodoro = {
     showSession();
 
     const tasksContainer = document.querySelector('.card-body');
-    const tasks = await this._getUncompletedTasks();
-    tasksContainer.innerHTML = '';
-    if (tasks.length === 0) tasksContainer.innerHTML = taskNotFound('All tasks are completed');
-    tasks.forEach((task) => {
-      tasksContainer.innerHTML += pomodorItemTask(task);
+    this._renderItemTask(tasksContainer);
+
+    filter.addEventListener('change', async (e) => {
+      this._renderItemTask(tasksContainer, e.target.value);
     });
 
     tasksContainer.addEventListener('click', async (e) => {
@@ -143,7 +203,7 @@ const Pomodoro = {
       } = timer.remainingTime;
       const endTime = Date.parse(new Date()) + total * 1000;
 
-      if (timer.sessions === 0) startDate = Date.now();
+      startDate = Date.now();
 
       if (timer.mode === 'pomodoro') {
         if (timer.sessions === timer.longBreakInterval) timer.sessions = 0;
@@ -171,12 +231,30 @@ const Pomodoro = {
           case 'pomodoro':
             if (timer.sessions % timer.longBreakInterval === 0) {
               switchMode('longBreak');
+              NotificationHelper.sendNotification({
+                title: 'Pomodoro last session ended!',
+                options: {
+                  body: `Let's take a break for ${timer.longBreak} minutes`,
+                },
+              });
             } else {
               switchMode('shortBreak');
+              NotificationHelper.sendNotification({
+                title: `Pomodoro session ${timer.sessions} ended!`,
+                options: {
+                  body: `Let's take a break for ${timer.shortBreak} minutes`,
+                },
+              });
             }
             break;
           default:
             switchMode('pomodoro');
+            NotificationHelper.sendNotification({
+              title: 'Break is over!',
+              options: {
+                body: 'Let\'s back to work',
+              },
+            });
         }
       }
     }
@@ -244,14 +322,21 @@ const Pomodoro = {
     }
   },
 
-  async _getUncompletedTasks() {
-    const tasks = await ApptivityApi.getAllTask('completed=false');
-    return tasks;
+  _renderItemTask(selector, sort = null) {
+    let tasks = this.allTask;
+    const tasksContainer = selector;
+    tasksContainer.innerHTML = '';
+    tasks = tasks.sort((a, b) => compareAsc(a.deadline, b.deadline));
+
+    if (sort === 'matrix') {
+      tasks = tasks.sort((a, b) => b.urgency - a.urgency).sort((a, b) => b.important - a.important);
+    }
+
+    if (tasks.length === 0) tasksContainer.innerHTML = taskNotFound('All tasks are completed');
+    tasks.forEach((task) => {
+      tasksContainer.innerHTML += pomodorItemTask(task);
+    });
   },
-
-  // async _renderItemTask() {
-
-  // },
 };
 
 export default Pomodoro;

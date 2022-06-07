@@ -13,8 +13,8 @@ self.skipWaiting();
 precacheAndRoute(self.__WB_MANIFEST);
 
 registerRoute(
-  ({ url }) => url.pathname.startsWith('/article/image/'),
-  new StaleWhileRevalidate({
+  ({ request }) => request.destination === 'image',
+  new CacheFirst({
     cacheName: 'image-cache',
     plugins: [
       new CacheableResponse({
@@ -64,6 +64,18 @@ registerRoute(
   ({ url }) => url.origin === 'https://fonts.googleapis.com',
   new CacheFirst({
     cacheName: 'google-fonts-stylesheets',
+    plugins: [
+      new CacheableResponse({
+        statuses: [200],
+      }),
+    ],
+  }),
+);
+
+registerRoute(
+  ({ url }) => url.origin === 'https://newsapi.org',
+  new StaleWhileRevalidate({
+    cacheName: 'articles-cache',
     plugins: [
       new CacheableResponse({
         statuses: [200],
