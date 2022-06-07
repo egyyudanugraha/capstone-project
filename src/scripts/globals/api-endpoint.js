@@ -11,7 +11,7 @@ const API_ENDPOINT = {
   TASK_DETAIL: (id) => `${CONFIG.BASE_URL}/task/${id}`,
   MATRIX: `${CONFIG.BASE_URL}/matrix`,
   HISTORY: `${CONFIG.BASE_URL}/history`,
-  NEWS: (path) => `${CONFIG.BASE_NEWS_URL(path)}`,
+  NEWS: (query) => `${CONFIG.BASE_NEWS_URL(query)}`,
 };
 
 export default API_ENDPOINT;
