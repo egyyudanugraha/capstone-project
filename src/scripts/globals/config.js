@@ -1,4 +1,4 @@
-const url = `${process.env.URL_API}`;
+const url = 'https://apptivity-api-v3.herokuapp.com';
 const urlNews = `${process.env.URL_NEWS}`;
 const apiKey = `${process.env.API_KEY}`;
 
