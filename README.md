@@ -154,7 +154,7 @@ How to install local apptivity on your laptop? let's follow the instructions
 
 * [MDN Web Docs](https://developer.mozilla.org/)
 * [Workbox](https://developer.chrome.com/docs/workbox/)
-* [Flowbte](https://flowbite.com/)
+* [Flowbite](https://flowbite.com/)
 * [Express](https://expressjs.com/)
 * [Mongoose](https://mongoosejs.com/)
 * [SweetAlert](https://sweetalert2.github.io/)
