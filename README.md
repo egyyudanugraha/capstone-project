@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/egyyudanugraha/capstone-project">
-    <img src="https://github.com/egyyudanugraha/capstone-project/src/public/favicon.png" alt="Logo" width="80" height="80">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA6hbjSwkXpZKsfSiUwuz_gOgND5iBdynQqmNWF9kDrO8-klCX_1aj5IGyxQI44KzeDnk&usqp=CAU" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Apptivity API</h3>
