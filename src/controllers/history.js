@@ -1,9 +1,18 @@
 const History = require('../models/history');
+const Task = require('../models/task');
 
 module.exports = {
   createHistory: async (req, res) => {
     const { body, user } = req;
     try {
+      const checkTask = await Task.findOne({ _id: body.task });
+      if (!checkTask) {
+        return res.status(400).send({
+          message: 'Task not found!',
+          error: true,
+        });
+      }
+
       const checkHistory = await History.findOne({ task: body.task, owner: user._id });
       if (checkHistory) {
         return res.status(400).send({

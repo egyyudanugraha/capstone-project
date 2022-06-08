@@ -46,6 +46,18 @@ taskSchema.pre('save', async function (next) {
   next();
 });
 
+taskSchema.pre('remove', async function (next) {
+  const task = this;
+  await History.deleteOne({ task: task._id });
+  next();
+});
+
+taskSchema.pre('deleteMany', async function (next) {
+  const task = this;
+  await History.deleteMany({ owner: task._conditions.owner });
+  next();
+});
+
 const Task = mongoose.model('Task', taskSchema);
 
 module.exports = Task;
