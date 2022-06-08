@@ -125,6 +125,7 @@ How to install local apptivity on your laptop? let's follow the instructions
 <!-- ROADMAP -->
 ## Roadmap
 
+- [x] Build Backend for APIs, [see this](https://github.com/egyyudanugraha/capstone-project/tree/backend-v3)
 - [x] Authenticate & Authorize with JWT
 - [x] Tasks
 - [x] Eisenhower Matrix
@@ -140,10 +141,10 @@ How to install local apptivity on your laptop? let's follow the instructions
 <!-- CONTACT -->
 ## Contact
 
-Arijaya Putra - [Instagram](https://twitter.com/twitter_handle)
-Yuda - [Instagram](https://twitter.com/twitter_handle)
-Aditya - [Instagram](https://www.instagram.com/)
-Seli - [Instagram](https://www.instagram.com/)
+- [Arijaya Putra](https://www.instagram.com/)
+- [Yuda](https://www.instagram.com/_yuda23_)
+- [Aditya](https://www.instagram.com/)
+- [Seli](https://www.instagram.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
