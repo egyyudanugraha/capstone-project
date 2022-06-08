@@ -51,11 +51,11 @@ const Pomodoro = {
 
   async afterRender() {
     const timer = {
-      pomodoro: 1,
-      shortBreak: 1,
-      longBreak: 1,
+      pomodoro: 25,
+      shortBreak: 5,
+      longBreak: 15,
       longBreakInterval: 4,
-      sessions: 2,
+      sessions: 0,
       status: false,
     };
 
@@ -72,17 +72,14 @@ const Pomodoro = {
     });
 
     tasksContainer.addEventListener('click', async (e) => {
-      if (e.target.classList.contains('checkbox') && startDate === null) {
+      if (startDate === null || timer.status !== true) {
         Swal.fire({
           title: 'Warning!',
           text: 'Please start the timer before completing the task',
           icon: 'warning',
         });
         e.target.checked = false;
-        return;
-      }
-
-      if (e.target.classList.contains('checkbox')) {
+      } else if (e.target.classList.contains('checkbox')) {
         await ApptivityApi.updateTask(e.target.dataset.id, { completed: e.target.checked });
         if (e.target.checked) {
           await ApptivityApi.createHistory({
@@ -152,9 +149,8 @@ const Pomodoro = {
       } = timer.remainingTime;
       const endTime = Date.parse(new Date()) + total * 1000;
 
-      startDate = Date.now();
-
       if (timer.mode === 'pomodoro') {
+        startDate = Date.now();
         if (timer.sessions === timer.longBreakInterval) timer.sessions = 0;
         if (timer.remainingTime.minutes === timer.pomodoro) timer.sessions += 1;
         showSession();

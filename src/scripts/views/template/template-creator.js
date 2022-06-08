@@ -22,16 +22,24 @@ const _urgencyToString = (urgent) => {
   return 'High';
 };
 
-const _getClassForDeadline = (deadline) => {
-  if (differenceInMinutes(new Date(deadline), new Date(), { roundingMethod: 'ceil' }) <= 30) {
+const _getClassForDeadline = (deadline, modal = false) => {
+  if (differenceInMinutes(new Date(deadline), new Date(), { roundingMethod: 'ceil' }) <= 30 && !modal) {
     return 'text-red-600 font-semibold animate-bounce';
   }
 
-  if (differenceInMinutes(new Date(deadline), new Date(), { roundingMethod: 'ceil' }) <= 59) {
+  if (differenceInMinutes(new Date(deadline), new Date(), { roundingMethod: 'ceil' }) <= 59 && !modal) {
     return 'text-yellow-400 font-semibold';
   }
 
-  return '';
+  if (differenceInMinutes(new Date(deadline), new Date(), { roundingMethod: 'ceil' }) <= 30 && modal) {
+    return 'bg-red-600 dark:bg-red-600 animate-bounce';
+  }
+
+  if (differenceInMinutes(new Date(deadline), new Date(), { roundingMethod: 'ceil' }) <= 59 && modal) {
+    return 'bg-yellow-400 dark:bg-yellow-400';
+  }
+
+  return null;
 };
 
 const taskItemTable = (task) => `<tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
@@ -58,7 +66,7 @@ ${task.title}
 
 const deadlineItem = (task) => `<button data-id="${task._id}" class="btn-modal flex bg-slate-50 hover:bg-slate-100 text-left text-slate-800 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white p-2 rounded-md" type="button" data-modal-toggle="modalItemTask">
 <span class="my-auto w-[75%]">${task.title}</span>
-<span class="text-xs m-auto ${_getClassForDeadline(task.deadline)}">${formatDistanceToNowStrict(new Date(task.deadline), { addSuffix: true, roundingMethod: 'ceil' })}</span>
+<span class="text-xs m-auto ${_getClassForDeadline(task.deadline) !== null ? _getClassForDeadline(task.deadline) : ''}">${formatDistanceToNowStrict(new Date(task.deadline), { addSuffix: true, roundingMethod: 'ceil' })}</span>
 </button>`;
 
 const pomodorItemTask = (task) => `<div class="item bg-white rounded-md p-2 w-full flex gap-2">
@@ -101,7 +109,7 @@ const modalContent = (task) => `
             <span class="font-semibold">Deadline</span>
             <p class="my-1 text-7xl border-b-2 border-purple-600">${format(new Date(task.deadline), 'p')}</p>
             <p class="my-1 text-xl">${format(new Date(task.deadline), 'PP')}</p>
-            <span class="bg-purple-600 text-white text-md font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-purple-600 dark:text-white">
+            <span class="dark:text-white text-white text-md font-medium inline-flex items-center px-2.5 py-0.5 rounded ${_getClassForDeadline(task.deadline, true) !== null ? _getClassForDeadline(task.deadline, true) : 'bg-purple-600 dark:bg-purple-600'}">
               <svg class="mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
               ${formatDistanceToNowStrict(new Date(task.deadline), { addSuffix: true, roundingMethod: 'ceil' })}
             </span>
@@ -119,15 +127,10 @@ const cardArticle = (article) => `
 <div class="max-w-md md:max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
   <div>
     <a href="${article.url}" target="_blank">
-      <img class="rounded-t-lg object-cover h-48 w-full" src="${article.urlToImage}" alt="" />
+      <img class="rounded-t-lg object-cover h-48 w-full" src="${article.image}" alt="" />
     </a>
     <div class="card-body-article p-5">
       <div class="label text-xs text-slate-600 dark:text-slate-200 flex gap-2 mb-3">
-        <div class="author flex gap-1">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-          </svg>
-          <span>${article.author}</span>
-        </div>
         <div class="author flex gap-1">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
           </svg>

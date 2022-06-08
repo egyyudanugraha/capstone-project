@@ -93,7 +93,7 @@ const Home = {
   async _renderRecommendedArticle() {
     const articlesContent = document.querySelector('.articles');
     articlesContent.innerHTML = '';
-    const articles = await NewsApi.getNewsEverything('productivity');
+    const articles = await NewsApi.getNews('productivity', 4);
     articles.forEach((article) => {
       articlesContent.innerHTML += cardArticle(article);
     });
