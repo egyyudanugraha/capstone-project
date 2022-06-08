@@ -153,8 +153,8 @@ const Task = {
       } else if (e.target.classList.contains('btn-delete')) {
         const task = this.tasks.find((item) => item._id === e.target.dataset.id);
         Swal.fire({
-          title: 'Are you sure?',
-          text: `Are you sure to delete ${task.title}?`,
+          title: `Are you sure to delete ${task.title}?`,
+          text: 'If you delete this task, the history of this task will also be deleted',
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -181,8 +181,8 @@ const Task = {
     // delete all task
     document.querySelector('.btn-delete-all').addEventListener('click', async () => {
       Swal.fire({
-        title: 'Are you sure?',
-        text: 'Are you sure to delete all tasks?',
+        title: 'Are you sure to delete all tasks?',
+        text: 'If you delete all tasks, the history of all tasks will also be deleted',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#b91c1c',

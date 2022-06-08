@@ -39,6 +39,7 @@ class App {
     const page = routes[url];
 
     try {
+      Swal.showLoading();
       const auth = await checkAuth();
       if (!auth && !['#/login', '#/register'].includes(window.location.hash)) {
         window.location.hash = '#/login';
@@ -63,10 +64,15 @@ class App {
       }
 
       this._content.innerHTML = await page.render();
+      if (Swal.isLoading()) Swal.close();
       this._switchClassActive();
       await page.afterRender();
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: 'Oops...',
+        text: 'Something went wrong',
+        icon: 'error',
+      });
     }
   }
 }

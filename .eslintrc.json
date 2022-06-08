@@ -21,8 +21,6 @@
     "class-methods-use-this": "off",
     "no-restricted-globals": "off",
     "no-multi-assign": "off",
-    "no-use-before-define": "off",
-    "no-plusplus": "off",
-    "no-console": "off"
+    "no-use-before-define": "off"
   }
 }

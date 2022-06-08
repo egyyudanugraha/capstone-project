@@ -13,7 +13,7 @@ const Home = {
     const tasks = await ApptivityApi.getAllTask('completed=false');
     this.allTask = tasks;
 
-    return `<div class="dashboard flex flex-col gap-8">
+    return `<div class="dashboard flex flex-col gap-10">
     <div class="flex flex-col md:grid md:grid-cols-2 max-w-3xl md:max-w-full gap-3 mx-6 md:mx-14">
       <app-card-matrix class="bg-amber-600 border-yellow-200 dark:border-amber-600 scrollbar-thumb-amber-800 scrollbar-track-amber-500"
         data-title="Deadline Today" data-subtitle="Tasks to complete" data-command="List tasks deadline today">
@@ -25,7 +25,7 @@ const Home = {
     </div>
 
     <!-- Recommended Article -->
-    <div class="mt-10 mx-2">
+    <div class="mx-2">
       <h3 class="flex justify-center text-2xl leading-6 mb-6 font-medium text-slate-800 dark:text-slate-100">Recommended article of the week</h3>
       <div class="articles grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-center mx-4 md:mx-8">
         
@@ -84,7 +84,7 @@ const Home = {
     tasks = tasks.sort((a, b) => compareAsc(a.deadline, b.deadline));
 
     content.innerHTML = '';
-    if (tasks.length === 0) content.innerHTML = taskNotFound('No task today');
+    if (tasks.length === 0) content.innerHTML = taskNotFound('No task found');
     tasks.forEach((task) => {
       content.innerHTML += deadlineItem(task);
     });

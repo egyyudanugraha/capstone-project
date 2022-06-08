@@ -94,7 +94,7 @@ const modalContent = (task) => `
             </div>
             <div class="completed my-2">
                 <span class="font-semibold">Completed</span>
-                <p>${task.completed}</p>
+                <p>${task.completed ? 'Yes' : 'No'}</p>
             </div>
             <div class="urgency my-2">
                 <span class="font-semibold">Urgency</span>

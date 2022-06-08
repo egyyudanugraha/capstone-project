@@ -299,7 +299,7 @@ const Profile = {
     content.innerHTML = '';
     const histories = await ApptivityApi.getHistory();
     if (histories.length === 0) {
-      content.innerHTML = '<tr><td colspan="2">No history found</td></tr>';
+      content.innerHTML = '<tr><td colspan="3" class="text-center">No history found</td></tr>';
       return;
     }
 
