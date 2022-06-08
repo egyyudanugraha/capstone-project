@@ -1,4 +1,5 @@
 const { merge } = require('webpack-merge');
+const webpack = require('webpack');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -19,4 +20,11 @@ module.exports = merge(common, {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
+      'process.env.BASE_URL_API': JSON.stringify(process.env.BASE_URL_API),
+      'process.env.BASE_URL_NEWS': JSON.stringify(process.env.BASE_URL_NEWS),
+    }),
+  ],
 });
