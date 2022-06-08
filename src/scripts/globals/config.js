@@ -1,6 +1,6 @@
 const url = 'https://apptivity-api-v3.herokuapp.com';
-const urlNews = `${process.env.URL_NEWS}`;
-const apiKey = `${process.env.API_KEY}`;
+const urlNews = 'https://cors-anywhere.herokuapp.com/https://newsapi.org/v2';
+const apiKey = '0b212ed8acb84037b9729a1ee40744fc';
 
 const CONFIG = {
   BASE_URL: url,
