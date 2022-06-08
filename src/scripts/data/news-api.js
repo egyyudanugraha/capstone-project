@@ -9,7 +9,13 @@ class NewsApi {
   }
 
   static async getNewsEverything(query) {
-    const response = await fetch(`${API_ENDPOINT.NEWS('everything')}&q=${query}&pageSize=8&${this._getStartEndWeek()}`);
+    const response = await fetch(`${API_ENDPOINT.NEWS('everything')}&q=${query}&pageSize=8&${this._getStartEndWeek()}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-requested-with': 'browser',
+      },
+    });
     const json = await response.json();
     return json.articles;
   }
