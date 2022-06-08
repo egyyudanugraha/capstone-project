@@ -54,11 +54,13 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About Apptivity
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Apptivity adalah productivity tools berbasis website yang digunakan untuk memudahkan pengguna dalam mengimplementasikan berbagai macam teknik-teknik produktivitas seperti Pomodoro, Eisenhower Matrix, Kaizen, dan terdapat juga berbagai artikel yang membahas segala hal berkaitan dengan produktivitas.
+
+Project Apptivity dibangun untuk memenuhi tugas akhir atau Capstone Project pada program Studi Independen Bersertifikat - Batch 2.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -70,6 +72,10 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [Javascript](https://www.javascript.com/)
 * [Tailwind](https://tailwindcss.com/)
 
+#### APIs
+* [Apptivity API V3](https://apptivity-api-v3.herokuapp.com/) See docs [here](https://github.com/egyyudanugraha/capstone-project/tree/backend-v3)
+* [GNews API](https://gnews.io/)
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -77,20 +83,17 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+How to install local apptivity on your laptop? let's follow the instructions
 
 ### Prerequisites
+* Node Js (v14.17.6 or latest)
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ### Installation
+  #### Note
+  This project required API KEY from [GNews](https://gnews.io/). To get the API KEY please register [here](https://gnews.io/register)
 
-1. Clone the repo
+1. Clone this repository (main branch)
    ```sh
    git clone https://github.com/egyyudanugraha/capstone-project.git
    ```
@@ -98,101 +101,66 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
-3. Enter your API in `config.js`
+3. Create file `.env` in root project folder
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   API_KEY='YOUR_API_FROM_GNEWS'
+   BASE_URL_API='https://apptivity-api-v3.herokuapp.com'
+   BASE_URL_NEWS='https://gnews.io/api/v4/search'
    ```
-
+4. Run the server!
+   ```sh
+   npm run start-dev
+   ```
+   Yeay! Server running on [localhost](http://localhost:8080/)
+   
+   #### Optional
+   For the styling development please run tailwind, open new tab on terminal.
+   ```sh
+   npm run tailwind
+   ```
+   To build this project for production, run command
+   ```sh
+   npm run build
+   ```
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- [x] Authenticate & Authorize with JWT
+- [x] Tasks
+- [x] Eisenhower Matrix
+- [x] Pomodoro
+- [x] History of completed task
+- [x] Articles productivity
+- [x] Progressive Web App
+- [ ] Notification service
+- [ ] Other
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Arijaya Putra - [[Instagram](https://twitter.com/twitter_handle)](https://www.instagram.com/)
+Yuda - [[Instagram](https://twitter.com/twitter_handle)](https://www.instagram.com/_yuda23_/)
+Aditya - [[Instagram](https://twitter.com/twitter_handle)](https://www.instagram.com/)
+Seli - [[Instagram](https://twitter.com/twitter_handle)](https://www.instagram.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [MDN Web Docs](https://developer.mozilla.org/)
+* [Workbox](https://developer.chrome.com/docs/workbox/)
+* [Flowbte](https://flowbite.com/)
+* [Express](https://expressjs.com/)
+* [Mongoose](https://mongoosejs.com/)
+* [SweetAlert](https://sweetalert2.github.io/)
+* [Stack Overflow](https://stackoverflow.com/)
+* [Youtube](https://www.youtube.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
