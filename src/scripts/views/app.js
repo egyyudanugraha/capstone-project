@@ -70,7 +70,7 @@ class App {
     } catch (error) {
       Swal.fire({
         title: 'Oops...',
-        text: 'Something went wrong',
+        text: 'Something went wrong, please try again later',
         icon: 'error',
       });
     }
