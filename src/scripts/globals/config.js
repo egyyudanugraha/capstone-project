@@ -1,6 +1,6 @@
-const url = 'https://apptivity-api-v3.herokuapp.com';
-const urlNews = 'https://gnews.io/api/v4/search';
-const apiKey = '745cbe9620ef2d4ddf855fa58340352b';
+const url = process.env.BASE_URL_API;
+const urlNews = process.env.BASE_URL_NEWS;
+const apiKey = process.env.API_KEY;
 
 const CONFIG = {
   BASE_URL: url,
