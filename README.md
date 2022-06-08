@@ -12,7 +12,7 @@
   <p align="center">
     Manage your task with Apptivity
     <br />
-    <a href="#"><strong>Explore the docs »</strong></a>
+    <a href="#top"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://apptivity-v1.netlify.app">View Deployed App</a>
