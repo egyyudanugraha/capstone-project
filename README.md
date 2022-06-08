@@ -12,7 +12,7 @@
   <p align="center">
     Manage your task with Apptivity
     <br />
-    <a href="https://github.com/egyyudanugraha/capstone-project"><strong>Explore the docs »</strong></a>
+    <a href="#"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://apptivity-v1.netlify.app">View Deployed App</a>
@@ -42,10 +42,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -143,10 +140,10 @@ How to install local apptivity on your laptop? let's follow the instructions
 <!-- CONTACT -->
 ## Contact
 
-Arijaya Putra - [[Instagram](https://twitter.com/twitter_handle)](https://www.instagram.com/)
-Yuda - [[Instagram](https://twitter.com/twitter_handle)](https://www.instagram.com/_yuda23_/)
-Aditya - [[Instagram](https://twitter.com/twitter_handle)](https://www.instagram.com/)
-Seli - [[Instagram](https://twitter.com/twitter_handle)](https://www.instagram.com/)
+Arijaya Putra - [Instagram](https://twitter.com/twitter_handle)
+Yuda - [Instagram](https://twitter.com/twitter_handle)
+Aditya - [Instagram](https://www.instagram.com/)
+Seli - [Instagram](https://www.instagram.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
