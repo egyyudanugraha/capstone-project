@@ -39,7 +39,16 @@ class App {
     const page = routes[url];
 
     try {
-      Swal.showLoading();
+      Swal.fire({
+        width: 100,
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      });
       const auth = await checkAuth();
       if (!auth && !['#/login', '#/register'].includes(window.location.hash)) {
         window.location.hash = '#/login';
@@ -64,7 +73,7 @@ class App {
       }
 
       this._content.innerHTML = await page.render();
-      if (Swal.isLoading()) Swal.close();
+      Swal.close();
       this._switchClassActive();
       await page.afterRender();
     } catch (error) {
