@@ -10,7 +10,7 @@
 <h3 align="center">Apptivity API</h3>
 
   <p align="center">
-    API service for [Apptivity](https://apptivity-v1.netlify.app)
+    API service for Apptivity (https://apptivity-v1.netlify.app)
     <br />
     <a href="#top"><strong>Explore the docs »</strong></a>
     <br />
