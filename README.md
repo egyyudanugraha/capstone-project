@@ -53,7 +53,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About Apptivity
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Screenshot-2022-06-09-144606.jpg](https://i.postimg.cc/59DMBFM7/Screenshot-2022-06-09-144606.jpg)](https://postimg.cc/K47VFjjB)
+[![Screenshot-2022-06-09-144654.jpg](https://i.postimg.cc/TYH5q0P8/Screenshot-2022-06-09-144654.jpg)](https://postimg.cc/LnLsmzfv)
+
+#### Support Dark Mode
+[![Screenshot-2022-06-09-144748.jpg](https://i.postimg.cc/jqMDtcPW/Screenshot-2022-06-09-144748.jpg)](https://postimg.cc/3WD8ZgL7)
 
 Apptivity adalah productivity tools berbasis website yang digunakan untuk memudahkan pengguna dalam mengimplementasikan berbagai macam teknik-teknik produktivitas seperti Pomodoro, Eisenhower Matrix, Kaizen, dan terdapat juga berbagai artikel yang membahas segala hal berkaitan dengan produktivitas.
 
@@ -132,6 +136,7 @@ How to install local apptivity on your laptop? let's follow the instructions
 - [x] Pomodoro
 - [x] History of completed task
 - [x] Articles productivity
+- [x] Dark mode (Default by operating system)
 - [x] Progressive Web App
 - [ ] Notification service
 - [ ] Other
