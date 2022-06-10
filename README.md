@@ -78,7 +78,7 @@ Apptivity API adalah backend yang menyediakan fungsi-fungsi atau API untuk kebut
 How to install local apptivity api on local? let's follow the instructions
 
 ### Prerequisites
-* Node Js (v14.17.6 or latest)
+* Node Js (v14.17.6 or higher)
 
 ### Installation
 
@@ -90,13 +90,7 @@ How to install local apptivity api on local? let's follow the instructions
    ```sh
    npm install
    ```
-3. Create file `.env` in root project folder
-   ```js
-   MONGODB_URI='mongodb://localhost:27017/apptivity-api'
-   JWT_SECRET='secret_key_anything'
-   PORT=3000
-   ```
-4. Run the server!
+3. Run the server!
    ```sh
    npm run dev
    ```
