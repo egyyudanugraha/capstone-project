@@ -16,6 +16,7 @@
         "no-underscore-dangle": "off",
         "func-names": "off",
         "no-return-assign": "off",
-        "max-len": "off"
+        "max-len": "off",
+        "no-console": "off"
     }
 }

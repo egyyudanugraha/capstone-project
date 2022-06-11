@@ -4,12 +4,13 @@ const userRouter = require('./routers/user');
 const taskRouter = require('./routers/task');
 const matrixRouter = require('./routers/matrix');
 const historyRouter = require('./routers/history');
+const subscribeRouter = require('./routers/subscribe');
 require('./db/mongoose');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use([userRouter, taskRouter, matrixRouter, historyRouter]);
+app.use([userRouter, taskRouter, matrixRouter, historyRouter, subscribeRouter]);
 
 module.exports = app;
