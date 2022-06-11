@@ -7,7 +7,7 @@ import './components/modal';
 import './components/footer';
 import App from './views/app';
 import registerServiceWorker from './utils/sw-register';
-import showDeadline from './utils/task-utils';
+import NotificationHelper from './utils/notification-helper';
 
 const app = new App({
   hamburger: document.querySelector('#hamburger'),
@@ -22,11 +22,10 @@ window.addEventListener('hashchange', () => {
 window.addEventListener('load', () => {
   app.renderPage();
   registerServiceWorker();
+  NotificationHelper.init();
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('dark');
   } else {
     document.documentElement.classList.remove('dark');
   }
 });
-
-showDeadline();

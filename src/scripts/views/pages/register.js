@@ -88,7 +88,7 @@ const Register = {
         });
         const user = await ApptivityApi.register(data);
         formRegister.reset();
-        if (user.error) {
+        if (user.name === 'ValidationError') {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',

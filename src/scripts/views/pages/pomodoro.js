@@ -11,7 +11,7 @@ const Pomodoro = {
     this.allTask = tasks;
     return `
         <div class="flex flex-col mx-4 md:flex-row gap-3">
-        <div class="flex font-nunito rounded-md flex-col items-center justify-center w-full" id="box-time">
+        <div class="flex font-nunito rounded-md flex-col items-center justify-center w-full min-h-[60vh] max-h-[70vh]" id="box-time">
         <div class="flex justify-center text-white ">
             <div class="mb-4 pt-5 pb-7 h-350 rounded-xl ">
               <div class="flex justify-center" id="js-mode-buttons">
@@ -34,14 +34,14 @@ const Pomodoro = {
             </div>
           </div>
         </div>
-        <div class="block rounded-md py-5 px-4 w-full min-h-[70vh] max-h-[70vh]" id="box-task">
-          <div class="flex items-center text-white text-4xl my-0 mb-2">
-            <p class="font-nunito font-extrabold m-auto ">Tasks</p>
+        <div class="block rounded-md py-5 px-4 w-full min-h-[60vh] max-h-[70vh]" id="box-task">
+          <div class="flex items-center my-0 flex-col gap-4">
+            <p class="font-nunito font-extrabold text-white text-4xl m-auto ">Tasks</p>
+            <select id="filter" class="bg-white border-2 px-3 w-full md:w-[50%] md:justify-self-start border-slate-200 dark:bg-slate-50 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-800 text-slate-800 dark:text-slate-800 focus:ring-purple-600">
+              <option value="deadline">Sort by Deadline</option>
+              <option value="matrix">Sort by Eisenhower Martix</option>
+            </select>
           </div>
-          <select id="filter" class="bg-white text-left border-2 ml-3 border-slate-200 dark:bg-slate-50 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-800 text-slate-800 dark:text-slate-800 focus:ring-purple-600">
-            <option value="deadline">Sort by Deadline</option>
-            <option value="matrix">Sort by Eisenhower Martix</option>
-          </select>
           <div class="card-body overflow-y-auto my-3 flex flex-col gap-2 w-full p-3 max-h-[45vh] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
             
           </div>
@@ -51,9 +51,9 @@ const Pomodoro = {
 
   async afterRender() {
     const timer = {
-      pomodoro: 25,
-      shortBreak: 5,
-      longBreak: 15,
+      pomodoro: 1,
+      shortBreak: 1,
+      longBreak: 1,
       longBreakInterval: 4,
       sessions: 0,
       status: false,
@@ -79,6 +79,13 @@ const Pomodoro = {
           icon: 'warning',
         });
         e.target.checked = false;
+      } else if (e.target.classList.contains('checkbox') && timer.mode !== 'pomodoro') {
+        Swal.fire({
+          title: 'Warning!',
+          text: 'Please start the timer in Pomodoro mode before completing the task',
+          icon: 'warning',
+        });
+        e.target.checked = false;
       } else if (e.target.classList.contains('checkbox')) {
         await ApptivityApi.updateTask(e.target.dataset.id, { completed: e.target.checked });
         if (e.target.checked) {
@@ -101,6 +108,7 @@ const Pomodoro = {
 
     const startSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
     const stopSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-click-error-1110.mp3');
+    const endTimer = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-racing-countdown-timer-1051.mp3');
     const mainButton = document.getElementById('start-btn');
     mainButton.addEventListener('click', () => {
       const {
@@ -176,6 +184,7 @@ const Pomodoro = {
           case 'pomodoro':
             if (timer.sessions % timer.longBreakInterval === 0) {
               switchMode('longBreak');
+              endTimer.play();
               NotificationHelper.sendNotification({
                 title: 'Pomodoro last session ended!',
                 options: {
@@ -184,6 +193,7 @@ const Pomodoro = {
               });
             } else {
               switchMode('shortBreak');
+              endTimer.play();
               NotificationHelper.sendNotification({
                 title: `Pomodoro session ${timer.sessions} ended!`,
                 options: {
@@ -194,6 +204,7 @@ const Pomodoro = {
             break;
           default:
             switchMode('pomodoro');
+            endTimer.play();
             NotificationHelper.sendNotification({
               title: 'Break is over!',
               options: {

@@ -72,7 +72,6 @@ const Login = {
             text: user.message,
           });
         } else {
-          localStorage.setItem('access_token', user.token);
           window.location.href = '/';
         }
       } catch (error) {

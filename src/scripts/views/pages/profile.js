@@ -98,6 +98,7 @@ const Profile = {
       <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
           <tr>
+            <th scope="col" class="px-6 py-3">No</th>
             <th scope="col" class="px-6 py-3">Task name</th>
             <th scope="col" class="px-6 py-3">Finished in</th>
             <th scope="col" class="px-6 py-3">Completed at</th>
@@ -299,12 +300,12 @@ const Profile = {
     content.innerHTML = '';
     const histories = await ApptivityApi.getHistory();
     if (histories.length === 0) {
-      content.innerHTML = '<tr><td colspan="3" class="text-center">No history found</td></tr>';
+      content.innerHTML = '<tr><td colspan="4" class="text-center">No history found</td></tr>';
       return;
     }
 
-    histories.forEach((history) => {
-      content.innerHTML += historyItemTable(history);
+    histories.forEach((history, index) => {
+      content.innerHTML += historyItemTable(history, index + 1);
     });
   },
 };

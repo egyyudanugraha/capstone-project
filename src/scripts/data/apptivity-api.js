@@ -1,11 +1,12 @@
 import API_ENDPOINT from '../globals/api-endpoint';
+import Auth from './key-idb';
 
 class ApptivityApi {
-  static _options() {
+  static async _options() {
     return {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        Authorization: `Bearer ${await Auth.getAccessToken()}`,
       },
     };
   }
@@ -13,7 +14,9 @@ class ApptivityApi {
   static async register(user) {
     const response = await fetch(API_ENDPOINT.REGISTER, {
       method: 'POST',
-      ...this._options(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(user),
     });
     const json = await response.json();
@@ -23,28 +26,32 @@ class ApptivityApi {
   static async login(user) {
     const response = await fetch(API_ENDPOINT.LOGIN, {
       method: 'POST',
-      ...this._options(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(user),
     });
     const json = await response.json();
+    await Auth.setAccessToken(json);
     return json;
   }
 
   static async logout() {
-    const response = await fetch(API_ENDPOINT.LOGOUT, this._options());
+    const response = await fetch(API_ENDPOINT.LOGOUT, await this._options());
     const json = await response.json();
-    localStorage.removeItem('access_token');
+    await Auth.deleteAccessToken();
     return json;
   }
 
   static async logoutAll() {
-    const response = await fetch(API_ENDPOINT.LOGOUT_ALL, this._options());
+    const response = await fetch(API_ENDPOINT.LOGOUT_ALL, await this._options());
     const json = await response.json();
+    await Auth.deleteAccessToken();
     return json;
   }
 
   static async getUser() {
-    const response = await fetch(API_ENDPOINT.USER, this._options());
+    const response = await fetch(API_ENDPOINT.USER, await this._options());
     const json = await response.json();
     return json;
   }
@@ -52,7 +59,7 @@ class ApptivityApi {
   static async updateUser(user) {
     const response = await fetch(API_ENDPOINT.USER, {
       method: 'PUT',
-      ...this._options(),
+      ...await this._options(),
       body: JSON.stringify(user),
     });
     const json = await response.json();
@@ -62,7 +69,7 @@ class ApptivityApi {
   static async updatePassword(passwords) {
     const response = await fetch(API_ENDPOINT.USER_PASSWORD, {
       method: 'PUT',
-      ...this._options(),
+      ...await this._options(),
       body: JSON.stringify(passwords),
     });
     const json = await response.json();
@@ -72,9 +79,10 @@ class ApptivityApi {
   static async deleteUser() {
     const response = await fetch(API_ENDPOINT.USER, {
       method: 'DELETE',
-      ...this._options(),
+      ...await this._options(),
     });
     const json = await response.json();
+    await Auth.deleteAccessToken();
     return json;
   }
 
@@ -82,7 +90,7 @@ class ApptivityApi {
   static async createTask(task) {
     const response = await fetch(API_ENDPOINT.TASK, {
       method: 'POST',
-      ...this._options(),
+      ...await this._options(),
       body: JSON.stringify(task),
     });
     const json = await response.json();
@@ -90,13 +98,13 @@ class ApptivityApi {
   }
 
   static async getAllTask(params = '') {
-    const response = await fetch(`${API_ENDPOINT.TASK}?${params}`, this._options());
+    const response = await fetch(`${API_ENDPOINT.TASK}?${params}`, await this._options());
     const json = await response.json();
     return json.data;
   }
 
   static async getTask(id) {
-    const response = await fetch(API_ENDPOINT.TASK_DETAIL(id), this._options());
+    const response = await fetch(API_ENDPOINT.TASK_DETAIL(id), await this._options());
     const json = await response.json();
     return json.data;
   }
@@ -104,7 +112,7 @@ class ApptivityApi {
   static async updateTask(id, task) {
     const response = await fetch(`${API_ENDPOINT.TASK_DETAIL(id)}`, {
       method: 'PUT',
-      ...this._options(),
+      ...await this._options(),
       body: JSON.stringify(task),
     });
     const json = await response.json();
@@ -114,7 +122,7 @@ class ApptivityApi {
   static async deleteTask(id) {
     const response = await fetch(`${API_ENDPOINT.TASK_DETAIL(id)}`, {
       method: 'DELETE',
-      ...this._options(),
+      ...await this._options(),
     });
     const json = await response.json();
     return json;
@@ -123,7 +131,7 @@ class ApptivityApi {
   static async deleteAllTask() {
     const response = await fetch(`${API_ENDPOINT.TASK}`, {
       method: 'DELETE',
-      ...this._options(),
+      ...await this._options(),
     });
     const json = await response.json();
     return json;
@@ -131,14 +139,14 @@ class ApptivityApi {
 
   // Matrix
   static async getMatrix() {
-    const response = await fetch(API_ENDPOINT.MATRIX, this._options());
+    const response = await fetch(API_ENDPOINT.MATRIX, await this._options());
     const json = await response.json();
     return json.data;
   }
 
   // History
   static async getHistory() {
-    const response = await fetch(API_ENDPOINT.HISTORY, this._options());
+    const response = await fetch(API_ENDPOINT.HISTORY, await this._options());
     const json = await response.json();
     return json.data;
   }
@@ -146,7 +154,7 @@ class ApptivityApi {
   static async createHistory(history) {
     const response = await fetch(API_ENDPOINT.HISTORY, {
       method: 'POST',
-      ...this._options(),
+      ...await this._options(),
       body: JSON.stringify(history),
     });
     const json = response.json();

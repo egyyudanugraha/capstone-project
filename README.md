@@ -87,7 +87,7 @@ Project Apptivity dibangun untuk memenuhi tugas akhir atau Capstone Project pada
 How to install local apptivity on your laptop? let's follow the instructions
 
 ### Prerequisites
-* Node Js (v14.17.6 or latest)
+* Node Js (v14.17.6 or higher)
 
 
 ### Installation

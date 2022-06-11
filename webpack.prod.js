@@ -25,6 +25,7 @@ module.exports = merge(common, {
       'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
       'process.env.BASE_URL_API': JSON.stringify(process.env.BASE_URL_API),
       'process.env.BASE_URL_NEWS': JSON.stringify(process.env.BASE_URL_NEWS),
+      'process.env.PUBLIC_KEY_SERVER': JSON.stringify(process.env.PUBLIC_KEY_SERVER),
     }),
   ],
 });

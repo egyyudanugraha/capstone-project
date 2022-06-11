@@ -4,7 +4,7 @@ class Navbar extends HTMLElement {
   }
 
   render() {
-    this.classList.add('sticky', 'top-0');
+    this.classList.add('sticky', 'top-0', 'z-50');
     this.innerHTML = `<nav class="bg-white border-gray-200 px-2 sm:px-4 rounded-b-md dark:bg-gray-800">
     <div class="container flex flex-wrap justify-around items-center mx-auto">
       <a href="/" class="flex items-center h-12">

@@ -14,7 +14,7 @@ const Matrix = {
         data-title="DELEGATE" data-subtitle="Urgent & Not Important" data-command="Who can do it for you?">
       </app-card-matrix>
       <app-card-matrix class="bg-red-600 border-orange-500 dark:border-red-600 scrollbar-thumb-red-800 scrollbar-track-red-400"
-        data-title="DELETE" data-subtitle="Urgent & Not Important" data-command="Who can do it for you?">
+        data-title="DELETE" data-subtitle="Not Urgent & Not Important" data-command="Eliminate it">
       </app-card-matrix>
       <app-modal></app-modal>`;
   },

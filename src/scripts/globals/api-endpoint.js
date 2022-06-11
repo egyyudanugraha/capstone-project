@@ -12,6 +12,7 @@ const API_ENDPOINT = {
   MATRIX: `${CONFIG.BASE_URL}/matrix`,
   HISTORY: `${CONFIG.BASE_URL}/history`,
   NEWS: `${CONFIG.BASE_NEWS_URL}`,
+  SUBSCRIBE: `${CONFIG.BASE_URL}/save-subscribe`,
 };
 
 export default API_ENDPOINT;

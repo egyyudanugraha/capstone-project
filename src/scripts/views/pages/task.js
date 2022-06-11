@@ -60,6 +60,7 @@ const Task = {
             <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
                 <tr>
+                  <th scope="col" class="px-6 py-3">No</th>
                   <th scope="col" class="px-6 py-3">Task name</th>
                   <th scope="col" class="px-6 py-3 hidden md:block">Urgency</th>
                   <th scope="col" class="px-6 py-3">Deadline</th>
@@ -98,6 +99,16 @@ const Task = {
       e.preventDefault();
       e.submitter.setAttribute('disabled', 'disabled');
 
+      if (!navigator.onLine) {
+        Swal.fire({
+          title: 'Oops...',
+          icon: 'info',
+          text: 'You are offline, but don\'t worry, your task will be saved when you come back online.',
+        }).then(() => {
+          this._resetForm(formTask, e);
+        });
+      }
+
       const taskId = e.target.task_id.value;
       const task = {
         title: e.target.title.value,
@@ -123,10 +134,7 @@ const Task = {
         showConfirmButton: false,
         timer: 2000,
       }).then(() => {
-        e.submitter.removeAttribute('disabled');
-        e.submitter.innerHTML = this._loadingBtnReset();
-        formTask.reset();
-        this._renderTask();
+        this._resetForm(formTask, e);
       });
     });
 
@@ -210,12 +218,12 @@ const Task = {
     const tasks = await ApptivityApi.getAllTask(params);
     this.tasks = tasks;
     if (tasks.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No task</td></tr>';
+      tableBody.innerHTML = '<tr><td colspan="6" class="text-center">No task</td></tr>';
       return;
     }
 
-    tasks.forEach((task) => {
-      tableBody.innerHTML += taskItemTable(task);
+    tasks.forEach((task, index) => {
+      tableBody.innerHTML += taskItemTable(task, index + 1);
     });
   },
 
@@ -229,6 +237,15 @@ const Task = {
 
   _loadingBtnReset() {
     return 'Save task';
+  },
+
+  _resetForm(selector, event) {
+    const formTask = selector;
+    const e = event;
+    e.submitter.removeAttribute('disabled');
+    e.submitter.innerHTML = this._loadingBtnReset();
+    formTask.reset();
+    this._renderTask();
   },
 
   _convertToLocalTime(time) {
