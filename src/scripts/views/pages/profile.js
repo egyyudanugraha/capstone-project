@@ -1,6 +1,5 @@
 import Swal from 'sweetalert2';
 import ApptivityApi from '../../data/apptivity-api';
-import { historyItemTable } from '../template/template-creator';
 
 const Profile = {
   async render() {
@@ -91,31 +90,12 @@ const Profile = {
         </div>
       </div>
     </div>
-  </div>
-  <div class="all-task grid gap-3 max-w-[90%] m-auto">
-    <h2 class="text-2xl text-slate-900 dark:text-white flex justify-center">Histories</h2>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[400px]  scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
-      <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
-          <tr>
-            <th scope="col" class="px-6 py-3">No</th>
-            <th scope="col" class="px-6 py-3">Task name</th>
-            <th scope="col" class="px-6 py-3">Finished in</th>
-            <th scope="col" class="px-6 py-3">Completed at</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-        </tbody>
-      </table>
-    </div>
   </div>`;
   },
 
   userData: {},
 
   async afterRender() {
-    this._renderHistories();
     const typeText = document.querySelectorAll('[type="text"]');
     const btnEdit = document.querySelector('.btn-edit');
     const btnPass = document.querySelector('.btn-password');
@@ -292,20 +272,6 @@ const Profile = {
       document.querySelector('[name="confirm_password"]').value = '';
       document.querySelector('[name="new_password"]').value = '';
       document.querySelector('[name="old_password"]').value = '';
-    });
-  },
-
-  async _renderHistories() {
-    const content = document.querySelector('tbody');
-    content.innerHTML = '';
-    const histories = await ApptivityApi.getHistory();
-    if (histories.length === 0) {
-      content.innerHTML = '<tr><td colspan="4" class="text-center">No history found</td></tr>';
-      return;
-    }
-
-    histories.forEach((history, index) => {
-      content.innerHTML += historyItemTable(history, index + 1);
     });
   },
 };

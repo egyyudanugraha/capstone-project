@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 import { compareAsc } from 'date-fns';
 import ApptivityApi from '../../data/apptivity-api';
-import { pomodorItemTask, taskNotFound } from '../template/template-creator';
+import { historyItemTable, pomodorItemTask, taskNotFound } from '../template/template-creator';
 import NotificationHelper from '../../utils/notification-helper';
 
 const Pomodoro = {
@@ -9,51 +9,67 @@ const Pomodoro = {
   async render() {
     const tasks = await ApptivityApi.getAllTask('completed=false');
     this.allTask = tasks;
-    return `
-        <div class="flex flex-col mx-4 md:flex-row gap-3">
-        <div class="flex font-nunito rounded-md flex-col items-center justify-center w-full min-h-[60vh] max-h-[70vh]" id="box-time">
-        <div class="flex justify-center text-white ">
-            <div class="mb-4 pt-5 pb-7 h-350 rounded-xl ">
-              <div class="flex justify-center" id="js-mode-buttons">
-                <button class="text-sm md:text-base rounded-md py-1 px-3 bg-purple-600 border-b-4 border-purple-800" data-mode="pomodoro">Pomodoro</button>
-                <button class="text-sm md:text-base rounded-md py-1 px-3" data-mode="shortBreak">Short Break</button>
-                <button class="text-sm md:text-base rounded-md py-1 px-3" data-mode="longBreak">Long Break</button>
-              </div>
-              <div class="flex justify-center text-8xl md:text-9xl py-6" id="time-display">
-                <span id="js-minutes">25</span>
-                <span class="separator">:</span>
-                <span id="js-seconds">00</span> 
-              </div>
-              <div class="grid pt:5 md:pt-10 gap-4 justify-center">
-                <button class="
-                bg-amber-400 hover:bg-amber-500 border-b-4 py-4 w-[200px] border-amber-600 text-white text-lg font-extrabold
-                rounded-md text-center"
-                data-action="start" id="start-btn">START</button>
-                <div class="session text-slate-50 text-center text-sm"></div>
-              </div>
+    return `<div class="grid gap-10">
+    <div class="flex flex-col w-[90%] md:flex-row gap-3 m-auto">
+      <div class="flex font-nunito rounded-md flex-col items-center justify-center w-full min-h-[60vh] max-h-[70vh]" id="box-time">
+        <div class="flex justify-center text-white">
+          <div class="mb-4 pt-5 pb-7 h-350 rounded-xl">
+            <div class="flex justify-center" id="js-mode-buttons">
+              <button class="text-sm md:text-base rounded-md py-1 px-3 bg-purple-600 border-b-4 border-purple-800" data-mode="pomodoro">Pomodoro</button>
+              <button class="text-sm md:text-base rounded-md py-1 px-3" data-mode="shortBreak">Short Break</button>
+              <button class="text-sm md:text-base rounded-md py-1 px-3" data-mode="longBreak">Long Break</button>
+            </div>
+            <div class="flex justify-center text-8xl md:text-9xl py-6" id="time-display">
+              <span id="js-minutes">25</span>
+              <span class="separator">:</span>
+              <span id="js-seconds">00</span>
+            </div>
+            <div class="grid pt:5 md:pt-10 gap-4 justify-center">
+              <button class="bg-amber-400 hover:bg-amber-500 border-b-4 py-4 w-[200px] border-amber-600 text-white text-lg font-extrabold rounded-md text-center" data-action="start" id="start-btn">START</button>
+              <div class="session text-slate-50 text-center text-sm"></div>
             </div>
           </div>
         </div>
-        <div class="block rounded-md py-5 px-4 w-full min-h-[60vh] max-h-[70vh]" id="box-task">
-          <div class="flex items-center my-0 flex-col gap-4">
-            <p class="font-nunito font-extrabold text-white text-4xl m-auto ">Tasks</p>
-            <select id="filter" class="bg-white border-2 px-3 w-full md:w-[50%] md:justify-self-start border-slate-200 dark:bg-slate-50 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-800 text-slate-800 dark:text-slate-800 focus:ring-purple-600">
-              <option value="deadline">Sort by Deadline</option>
-              <option value="matrix">Sort by Eisenhower Martix</option>
-            </select>
-          </div>
-          <div class="card-body overflow-y-auto my-3 flex flex-col gap-2 w-full p-3 max-h-[45vh] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
-            
-          </div>
+      </div>
+      <div class="block rounded-md py-5 px-4 w-full min-h-[60vh] max-h-[70vh]" id="box-task">
+        <div class="flex items-center my-0 flex-col gap-4">
+          <p class="font-nunito font-extrabold text-white text-4xl m-auto">Tasks</p>
+          <select
+            id="filter"
+            class="bg-white border-2 px-3 w-full md:w-[50%] md:justify-self-start border-slate-200 dark:bg-slate-50 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-800 text-slate-800 dark:text-slate-800 focus:ring-purple-600"
+          >
+            <option value="deadline">Sort by Deadline</option>
+            <option value="matrix">Sort by Eisenhower Martix</option>
+          </select>
         </div>
-       `;
+        <div class="card-body overflow-y-auto my-3 flex flex-col gap-2 w-full p-3 max-h-[45vh] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"></div>
+      </div>
+    </div>
+    <div class="all-task grid gap-3 max-w-[90%] w-[90%] m-auto">
+      <h2 class="text-2xl text-slate-900 dark:text-white flex justify-center">Histories</h2>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[400px] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
+        <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
+            <tr>
+              <th scope="col" class="px-6 py-3">No</th>
+              <th scope="col" class="px-6 py-3">Task name</th>
+              <th scope="col" class="px-6 py-3">Finished in</th>
+              <th scope="col" class="px-6 py-3">Completed at</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>`;
   },
 
   async afterRender() {
+    this._renderHistories();
     const timer = {
-      pomodoro: 1,
-      shortBreak: 1,
-      longBreak: 1,
+      pomodoro: 25,
+      shortBreak: 5,
+      longBreak: 15,
       longBreakInterval: 4,
       sessions: 0,
       status: false,
@@ -111,9 +127,7 @@ const Pomodoro = {
     const endTimer = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-racing-countdown-timer-1051.mp3');
     const mainButton = document.getElementById('start-btn');
     mainButton.addEventListener('click', () => {
-      const {
-        action,
-      } = mainButton.dataset;
+      const { action } = mainButton.dataset;
       if (action === 'start') {
         startTimer();
       } else {
@@ -122,9 +136,7 @@ const Pomodoro = {
     });
 
     function handleMode(event) {
-      const {
-        mode,
-      } = event.target.dataset;
+      const { mode } = event.target.dataset;
 
       if (!mode) return;
 
@@ -152,9 +164,7 @@ const Pomodoro = {
     }
 
     function startTimer() {
-      const {
-        total,
-      } = timer.remainingTime;
+      const { total } = timer.remainingTime;
       const endTime = Date.parse(new Date()) + total * 1000;
 
       if (timer.mode === 'pomodoro') {
@@ -189,6 +199,7 @@ const Pomodoro = {
                 title: 'Pomodoro last session ended!',
                 options: {
                   body: `Let's take a break for ${timer.longBreak} minutes`,
+                  icon: './favicon.png',
                 },
               });
             } else {
@@ -197,7 +208,8 @@ const Pomodoro = {
               NotificationHelper.sendNotification({
                 title: `Pomodoro session ${timer.sessions} ended!`,
                 options: {
-                  body: `Let's take a break for ${timer.shortBreak} minutes`,
+                  body: `Let's take a break for ${timer.longBreak} minutes`,
+                  icon: './favicon.png',
                 },
               });
             }
@@ -208,7 +220,8 @@ const Pomodoro = {
             NotificationHelper.sendNotification({
               title: 'Break is over!',
               options: {
-                body: 'Let\'s back to work',
+                body: `Let's take a break for ${timer.longBreak} minutes`,
+                icon: './favicon.png',
               },
             });
         }
@@ -234,9 +247,7 @@ const Pomodoro = {
     }
 
     function updateClock() {
-      const {
-        remainingTime,
-      } = timer;
+      const { remainingTime } = timer;
 
       const minutes = `${remainingTime.minutes}`.padStart(2, '0');
       const seconds = `${remainingTime.seconds}`.padStart(2, '0');
@@ -259,9 +270,7 @@ const Pomodoro = {
         changeStatusButton();
       }
 
-      document
-        .querySelectorAll('button[data-mode]')
-        .forEach((e) => e.classList.remove('bg-purple-600', 'border-b-4', 'border-purple-800'));
+      document.querySelectorAll('button[data-mode]').forEach((e) => e.classList.remove('bg-purple-600', 'border-b-4', 'border-purple-800'));
       document.querySelector(`[data-mode="${mode}"]`).classList.add('bg-purple-600', 'border-b-4', 'border-purple-800');
 
       const boxTimer = document.getElementById('box-time');
@@ -291,6 +300,20 @@ const Pomodoro = {
     if (tasks.length === 0) tasksContainer.innerHTML = taskNotFound('All tasks are completed');
     tasks.forEach((task) => {
       tasksContainer.innerHTML += pomodorItemTask(task);
+    });
+  },
+
+  async _renderHistories() {
+    const content = document.querySelector('tbody');
+    content.innerHTML = '';
+    const histories = await ApptivityApi.getHistory();
+    if (histories.length === 0) {
+      content.innerHTML = '<tr><td colspan="4" class="text-center">No history found</td></tr>';
+      return;
+    }
+
+    histories.forEach((history, index) => {
+      content.innerHTML += historyItemTable(history, index + 1);
     });
   },
 };

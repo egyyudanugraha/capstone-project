@@ -9,6 +9,11 @@ const NotificationHelper = {
     }
   },
 
+  sendNotification({ title, options }) {
+    this.init();
+    this._showNotification({ title, options });
+  },
+
   _checkAvailability() {
     return !!('Notification' in window);
   },
@@ -19,6 +24,11 @@ const NotificationHelper = {
 
   async _requestPermission() {
     await Notification.requestPermission();
+  },
+
+  async _showNotification({ title, options }) {
+    const serviceWorkerRegistration = await navigator.serviceWorker.ready;
+    serviceWorkerRegistration.showNotification(title, options);
   },
 };
 

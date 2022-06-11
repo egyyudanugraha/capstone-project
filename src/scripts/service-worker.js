@@ -8,6 +8,7 @@ import { BackgroundSyncPlugin } from 'workbox-background-sync';
 import { isThisHour, isToday } from 'date-fns';
 import ApptivityApi from './data/apptivity-api';
 import API_ENDPOINT from './globals/api-endpoint';
+import CONFIG from './globals/config';
 
 const { CacheableResponse } = require('workbox-cacheable-response');
 const { clientsClaim } = require('workbox-core');
@@ -18,7 +19,7 @@ self.skipWaiting();
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-const bgSyncPlugin = new BackgroundSyncPlugin('taskQueue', {
+const bgSyncPlugin = new BackgroundSyncPlugin(CONFIG.QUEUE_TASK, {
   maxRetentionTime: 24 * 60,
 });
 
@@ -34,7 +35,7 @@ const statusPlugin = {
 };
 
 registerRoute(
-  ({ url }) => url.host === 'apptivity-api-v3.herokuapp.com',
+  ({ url }) => url.pathname.startsWith('/task'),
   new NetworkOnly({
     plugins: [bgSyncPlugin, statusPlugin],
   }),
@@ -42,7 +43,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ url }) => url.host === 'apptivity-api-v3.herokuapp.com',
+  ({ url }) => url.pathname.startsWith('/task'),
   new NetworkOnly({
     plugins: [bgSyncPlugin, statusPlugin],
   }),
@@ -52,7 +53,19 @@ registerRoute(
 registerRoute(
   ({ request }) => request.destination === 'image',
   new CacheFirst({
-    cacheName: 'image-cache',
+    cacheName: CONFIG.CACHE_IMAGE,
+    plugins: [
+      new CacheableResponse({
+        statuses: [200],
+      }),
+    ],
+  }),
+);
+
+registerRoute(
+  ({ request }) => request.destination === 'audio',
+  new CacheFirst({
+    cacheName: CONFIG.CACHE_SOUND,
     plugins: [
       new CacheableResponse({
         statuses: [200],
@@ -64,7 +77,7 @@ registerRoute(
 registerRoute(
   ({ url }) => url.pathname.startsWith('/task'),
   new NetworkFirst({
-    cacheName: 'task-cache',
+    cacheName: CONFIG.CACHE_TASK,
     plugins: [
       new CacheableResponse({
         statuses: [200],
@@ -76,7 +89,7 @@ registerRoute(
 registerRoute(
   ({ url }) => url.pathname.startsWith('/matrix'),
   new NetworkFirst({
-    cacheName: 'matrix-cache',
+    cacheName: CONFIG.CACHE_MATRIX,
     plugins: [
       new CacheableResponse({
         statuses: [200],
@@ -88,7 +101,7 @@ registerRoute(
 registerRoute(
   ({ url }) => url.pathname.startsWith('/user'),
   new NetworkFirst({
-    cacheName: 'user-cache',
+    cacheName: CONFIG.CACHE_USER,
     plugins: [
       new CacheableResponse({
         statuses: [200],
@@ -100,7 +113,7 @@ registerRoute(
 registerRoute(
   ({ url }) => url.origin === 'https://fonts.googleapis.com',
   new CacheFirst({
-    cacheName: 'google-fonts-stylesheets',
+    cacheName: CONFIG.CACHE_FONT,
     plugins: [
       new CacheableResponse({
         statuses: [200],
@@ -112,7 +125,7 @@ registerRoute(
 registerRoute(
   ({ url }) => url.origin === 'https://gnews.io',
   new StaleWhileRevalidate({
-    cacheName: 'articles-cache',
+    cacheName: CONFIG.CACHE_ARTICLE,
     plugins: [
       new CacheableResponse({
         statuses: [200],
