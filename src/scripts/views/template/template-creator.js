@@ -72,7 +72,7 @@ const deadlineItem = (task) => `<button data-id="${task._id}" class="btn-modal f
 </button>`;
 
 const pomodorItemTask = (task) => `<div class="item bg-white rounded-md p-2 w-full flex gap-2">
-<input type="checkbox" data-id="${task._id}" class="checkbox w-8 h-8 bg-slate-400 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
+<input type="checkbox" data-id="${task._id}" class="checkbox w-8 h-8 bg-slate-300 checked:text-amber-500 focus:ring-amber-500 rounded-md border-0 my-auto"/>
 <span class="text-md text-slate-800 my-auto">${task.title}</span>
 </div>`;
 
