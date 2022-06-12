@@ -138,8 +138,9 @@ How to install local apptivity on your laptop? let's follow the instructions
 - [x] Articles productivity
 - [x] Dark mode (Default by operating system)
 - [x] Progressive Web App
-- [ ] Notification service
-- [ ] Other
+- [x] Notification service
+- [ ] How to use
+- [ ] Landing page
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
