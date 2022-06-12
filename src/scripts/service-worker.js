@@ -151,14 +151,17 @@ self.addEventListener('activate', async () => {
   }
 });
 
-self.addEventListener('push', async (event) => {
+self.addEventListener('push', (event) => {
   const msg = event.data.text();
   if (msg === 'deadline') {
-    const tasks = await ApptivityApi.getAllTask('completed=false');
-    if (tasks === undefined) return;
-    const deadline = tasks.filter((item) => isThisHour(new Date(item.deadline)) && isToday(new Date(item.deadline)));
-    if (deadline.length > 0) {
-      const promiseChain = self.registration.showNotification('Deadline - Apptivity!', {
+    const tasksPromise = ApptivityApi.getAllTask('completed=false').then((tasks) => {
+      if (tasks === undefined) return;
+      const deadline = tasks.filter((item) => isThisHour(new Date(item.deadline)) && isToday(new Date(item.deadline)));
+      if (deadline.length <= 0) {
+        return;
+      }
+
+      return self.registration.showNotification('Deadline - Apptivity!', {
         body: `${deadline.length} ${deadline.length > 1 ? 'tasks' : 'task'} to be done in the next 1 hour`,
         icon: './favicon.png',
         actions: [
@@ -168,9 +171,9 @@ self.addEventListener('push', async (event) => {
           },
         ],
       });
-
-      event.waitUntil(promiseChain);
-    }
+    });
+    const promiseChain = Promise.all([tasksPromise]);
+    event.waitUntil(promiseChain);
   }
 });
 
