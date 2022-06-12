@@ -1,9 +1,6 @@
 import { compareAsc, isToday } from 'date-fns';
 import ApptivityApi from '../../data/apptivity-api';
-import NewsApi from '../../data/news-api';
-import {
-  cardArticle, deadlineItem, modalContent, taskNotFound,
-} from '../template/template-creator';
+import { deadlineItem, modalContent, taskNotFound } from '../template/template-creator';
 
 const Home = {
   allTask: null,
@@ -22,14 +19,6 @@ const Home = {
         data-title="All Tasks" data-subtitle="Uncompleted tasks" data-command="List all tasks uncompleted">
       </app-card-matrix>
       <app-modal></app-modal>
-    </div>
-
-    <!-- Recommended Article -->
-    <div class="mx-2">
-      <h3 class="flex justify-center text-2xl leading-6 mb-6 font-medium text-slate-800 dark:text-slate-100">Recommended article of the week</h3>
-      <div class="articles grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 justify-center mx-4 md:mx-8">
-        
-      </div>
     </div>
   </div>`;
   },
@@ -65,8 +54,6 @@ const Home = {
       });
     });
 
-    this._renderRecommendedArticle();
-
     document.querySelector('#modalItemTask').addEventListener('click', (e) => {
       if (e.target.classList.contains('close-modal') || e.target.classList.contains('work-now')) {
         this.modal.hide();
@@ -87,15 +74,6 @@ const Home = {
     if (tasks.length === 0) content.innerHTML = taskNotFound('No task found');
     tasks.forEach((task) => {
       content.innerHTML += deadlineItem(task);
-    });
-  },
-
-  async _renderRecommendedArticle() {
-    const articlesContent = document.querySelector('.articles');
-    articlesContent.innerHTML = '';
-    const articles = await NewsApi.getNews('productivity', 4);
-    articles.forEach((article) => {
-      articlesContent.innerHTML += cardArticle(article);
     });
   },
 };

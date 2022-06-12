@@ -15,7 +15,6 @@ const Task = {
                 class="resize-none bg-transparent border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white"
                 rows="3"
                 placeholder="Description"
-                required
               ></textarea>
             </div>
             <div class="date-urgency grid gap-4">

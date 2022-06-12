@@ -92,7 +92,7 @@ const modalContent = (task) => `
         <div class="detailTask md:w-[65%] ">
             <div class="description my-2">
                 <span class="font-bold">Description</span>
-                <p>${task.description}</p>
+                <p>${task.description !== '' ? task.description : 'No description'}</p>
             </div>
             <div class="completed my-2">
                 <span class="font-semibold">Completed</span>

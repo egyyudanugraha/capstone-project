@@ -11,10 +11,10 @@ const Pomodoro = {
     this.allTask = tasks;
     return `<div class="grid gap-10">
     <div class="flex flex-col w-[90%] md:flex-row gap-3 m-auto">
-      <div class="flex font-nunito rounded-md flex-col items-center justify-center w-full min-h-[60vh] max-h-[70vh]" id="box-time">
-        <div class="flex justify-center text-white">
+      <div class="grid font-nunito rounded-md items-center justify-center w-full min-h-[60vh] max-h-[70vh]" id="box-time">
+        <div class="flex m-2 justify-center text-white">
           <div class="mb-4 pt-5 pb-7 h-350 rounded-xl">
-            <div class="flex justify-center" id="js-mode-buttons">
+            <div class="flex justify-center flex-wrap gap-1" id="js-mode-buttons">
               <button class="text-sm md:text-base rounded-md py-1 px-3 bg-purple-600 border-b-4 border-purple-800" data-mode="pomodoro">Pomodoro</button>
               <button class="text-sm md:text-base rounded-md py-1 px-3" data-mode="shortBreak">Short Break</button>
               <button class="text-sm md:text-base rounded-md py-1 px-3" data-mode="longBreak">Long Break</button>
@@ -24,7 +24,7 @@ const Pomodoro = {
               <span class="separator">:</span>
               <span id="js-seconds">00</span>
             </div>
-            <div class="grid pt:5 md:pt-10 gap-4 justify-center">
+            <div class="grid gap-4 justify-center">
               <button class="bg-amber-400 hover:bg-amber-500 border-b-4 py-4 w-[200px] border-amber-600 text-white text-lg font-extrabold rounded-md text-center" data-action="start" id="start-btn">START</button>
               <div class="session text-slate-50 text-center text-sm"></div>
             </div>
