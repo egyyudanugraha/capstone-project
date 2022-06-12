@@ -3,59 +3,65 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const Task = require('./task');
+const CONFIG = require('../config/config');
 
-const userSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    lowercase: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error('Email is invalid');
-      }
-    },
-  },
-  password: {
-    type: String,
-    required: true,
-    trim: true,
-    validate(value) {
-      if (value.toLowerCase().includes('password')) {
-        throw new Error('Password cannot contain "password"');
-      }
-
-      if (value.length < 8) {
-        throw new Error('Password must be at least 8 characters');
-      }
-    },
-  },
-  role: {
-    type: String,
-    required: true,
-    enum: ['user', 'admin'],
-    default: 'user',
-  },
-  tokens: [{
-    token: {
+const userSchema = new mongoose.Schema(
+  {
+    firstName: {
       type: String,
       required: true,
+      trim: true,
     },
-  }],
-}, {
-  timestamps: true,
-});
+    lastName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+      validate(value) {
+        if (!validator.isEmail(value)) {
+          throw new Error('Email is invalid');
+        }
+      },
+    },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+      validate(value) {
+        if (value.toLowerCase().includes('password')) {
+          throw new Error('Password cannot contain "password"');
+        }
+
+        if (value.length < 8) {
+          throw new Error('Password must be at least 8 characters');
+        }
+      },
+    },
+    role: {
+      type: String,
+      required: true,
+      enum: ['user', 'admin'],
+      default: 'user',
+    },
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  },
+);
 
 userSchema.virtual('tasks', {
   ref: 'Task',
@@ -75,7 +81,7 @@ userSchema.methods.toJSON = function () {
 
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET || 'secret_key_anything');
+  const token = jwt.sign({ _id: user._id.toString() }, CONFIG.JWT_SECRET);
 
   user.tokens = user.tokens.concat({ token });
   await user.save();
