@@ -168,8 +168,8 @@ const Pomodoro = {
       const endTime = Date.parse(new Date()) + total * 1000;
 
       if (timer.mode === 'pomodoro') {
-        startDate = Date.now();
         if (timer.sessions === timer.longBreakInterval) timer.sessions = 0;
+        if (timer.sessions === 0) startDate = Date.now();
         if (timer.remainingTime.minutes === timer.pomodoro) timer.sessions += 1;
         showSession();
       }
@@ -208,7 +208,7 @@ const Pomodoro = {
               NotificationHelper.sendNotification({
                 title: `Pomodoro session ${timer.sessions} ended!`,
                 options: {
-                  body: `Let's take a break for ${timer.longBreak} minutes`,
+                  body: `Let's take a break for ${timer.shortBreak} minutes`,
                   icon: './favicon.png',
                 },
               });
@@ -220,7 +220,7 @@ const Pomodoro = {
             NotificationHelper.sendNotification({
               title: 'Break is over!',
               options: {
-                body: `Let's take a break for ${timer.longBreak} minutes`,
+                body: 'Let\'s come back to work',
                 icon: './favicon.png',
               },
             });

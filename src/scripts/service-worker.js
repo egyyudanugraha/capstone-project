@@ -161,7 +161,7 @@ self.addEventListener('push', (event) => {
         return;
       }
 
-      return self.registration.showNotification('Deadline - Apptivity!', {
+      return self.registration.showNotification('Deadline!', {
         body: `${deadline.length} ${deadline.length > 1 ? 'tasks' : 'task'} to be done in the next 1 hour`,
         icon: './favicon.png',
         actions: [
