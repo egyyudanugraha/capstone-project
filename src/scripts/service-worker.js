@@ -158,7 +158,7 @@ self.addEventListener('push', async (event) => {
     if (tasks === undefined) return;
     const deadline = tasks.filter((item) => isThisHour(new Date(item.deadline)) && isToday(new Date(item.deadline)));
     if (deadline.length > 0) {
-      self.registration.showNotification('Deadline - Apptivity!', {
+      const promiseChain = self.registration.showNotification('Deadline - Apptivity!', {
         body: `${deadline.length} ${deadline.length > 1 ? 'tasks' : 'task'} to be done in the next 1 hour`,
         icon: './favicon.png',
         actions: [
@@ -168,6 +168,8 @@ self.addEventListener('push', async (event) => {
           },
         ],
       });
+
+      event.waitUntil(promiseChain);
     }
   }
 });
@@ -177,4 +179,6 @@ self.addEventListener('notificationclick', (event) => {
     event.notification.close();
     event.waitUntil(clients.openWindow('/'));
   }
+
+  event.notification.close();
 });
