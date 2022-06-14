@@ -121,6 +121,7 @@ How to install local apptivity api on local? let's follow the instructions
 - [x] Route & handle user
 - [x] Route & handle task
 - [x] Route & handle history
+- [x] Push Notification
 - [x] Manual Testing with Postman
 - [x] Deployment
 
