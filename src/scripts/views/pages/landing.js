@@ -13,9 +13,9 @@ const Landing = {
               Manage your task with
               <span class="text-purple-600">Apptivity</span>
             </h1>
-            <p class="mt-5 sm:mt-10 lg:w-10/12 text-gray-400 font-normal text-center text-sm sm:text-lg">
+            <p class="mt-5 sm:mt-10 lg:w-10/12 text-slate-700 dark:text-slate-100 font-normal text-center text-sm sm:text-lg">
             <span class="text-purple-600">Apptivity</span> adalah productivity tools berbasis website yang digunakan untuk memudahkan pengguna dalam mengontrol produktivitas atau pekerjaan dengan menggunakan teknik
-              <span class="border-b-2 font-semibold border-purple-600">Pomodoro</span>, <span class="border-b-2 font-semibold border-purple-600">Eisenhower Matrix</span> dan terdapat juga berbagai artikel yang membahas segala hal berkaitan
+              <span class="border-b-2 font-medium border-purple-600">Pomodoro</span>, <span class="border-b-2 font-medium border-purple-600">Eisenhower Matrix</span> dan terdapat juga berbagai artikel yang membahas segala hal berkaitan
               dengan produktivitas.
             </p>
           </div>
