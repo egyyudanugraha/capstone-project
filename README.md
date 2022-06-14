@@ -104,9 +104,17 @@ How to install local apptivity on your laptop? let's follow the instructions
    ```
 3. Create file `.env` in root project folder
    ```js
+   // FOR PRODUCTION
    API_KEY='YOUR_API_FROM_GNEWS'
    BASE_URL_API='https://apptivity-api-v3.herokuapp.com'
    BASE_URL_NEWS='https://gnews.io/api/v4/search'
+   PUBLIC_KEY_SERVER='BF0iNOeRThs_SsOTc1s77KuIozBdxeaLM5aegT5-UsccCdg2QN9bZQ_a4SZtZ_Y09-ytma00m4AeHqYvk5MZuJA'
+   
+   // FOR DEVELOPMENT (Please start local back-end server)
+   API_KEY='YOUR_API_FROM_GNEWS'
+   BASE_URL_API='http://localhost:3000'
+   BASE_URL_NEWS='https://gnews.io/api/v4/search'
+   PUBLIC_KEY_SERVER='BF0iNOeRThs_SsOTc1s77KuIozBdxeaLM5aegT5-UsccCdg2QN9bZQ_a4SZtZ_Y09-ytma00m4AeHqYvk5MZuJA'
    ```
 4. Run the server!
    ```sh
@@ -136,11 +144,12 @@ How to install local apptivity on your laptop? let's follow the instructions
 - [x] Pomodoro
 - [x] History of completed task
 - [x] Articles productivity
-- [x] Dark mode (Default by operating system)
+- [x] Dark mode
 - [x] Progressive Web App
 - [x] Notification service
+- [x] Landing page
 - [ ] How to use
-- [ ] Landing page
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
