@@ -90,7 +90,18 @@ How to install local apptivity api on local? let's follow the instructions
    ```sh
    npm install
    ```
-3. Run the server!
+3. Create file `.env` in root project folder
+   ```js
+   // FOR PRODUCTION
+   PORT=3000
+   JWT_SECRET='key_secret_jwt'
+   KEY_PUSH='push_key_for_notification'
+   VAPID_PUBLIC_KEY='BF0iNOeRThs_SsOTc1s77KuIozBdxeaLM5aegT5-UsccCdg2QN9bZQ_a4SZtZ_Y09-ytma00m4AeHqYvk5MZuJA'
+   VAPID_PRIVATE_KEY='_xplqJ2vtsXMDJrwU3nRWfLK6jMU1rRidrVOuTCpPKk'
+   GCM_API_KEY='Everything-is-ok'
+   MONGODB_URI='mongodb://localhost:27017/backend_apptivity'
+   ```
+4. Run the server!
    ```sh
    npm run dev
    ```
@@ -130,6 +141,7 @@ How to install local apptivity api on local? let's follow the instructions
 * [EsLint](https://eslint.org/)
 * [MongoDB](https://www.mongodb.com/)
 * [Mongoose](https://mongoosejs.com/)
+* [Web Push](https://www.npmjs.com/package/web-push)
 * [Stack Overflow](https://stackoverflow.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
