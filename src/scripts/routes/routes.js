@@ -6,9 +6,11 @@ import Article from '../views/pages/article';
 import Profile from '../views/pages/profile';
 import Login from '../views/pages/login';
 import Register from '../views/pages/register';
+import Landing from '../views/pages/landing';
 
 const routes = {
-  '/': Home,
+  '/': Landing,
+  '/home': Home,
   '/tasks': Task,
   '/matrix': Matrix,
   '/pomodoro': Pomodoro,

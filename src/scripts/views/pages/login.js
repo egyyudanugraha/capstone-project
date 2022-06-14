@@ -72,7 +72,7 @@ const Login = {
             text: user.message,
           });
         } else {
-          window.location.href = '/';
+          window.location.href = '#/home';
         }
       } catch (error) {
         Swal.fire({

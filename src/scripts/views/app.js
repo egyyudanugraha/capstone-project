@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import routes from '../routes/routes';
 import DrawerInitiator from '../utils/drawer-initiator';
 import URLParser from '../routes/url-parser';
-import checkAuth from '../utils/auth';
+import Auth from '../data/key-idb';
 
 class App {
   constructor({ hamburger, drawer, content }) {
@@ -49,8 +49,8 @@ class App {
           Swal.showLoading();
         },
       });
-      const auth = await checkAuth();
-      if (!auth && !['#/login', '#/register'].includes(window.location.hash)) {
+      const auth = await Auth.getAccessToken();
+      if (!auth && !['', '#/login', '#/register'].includes(window.location.hash)) {
         window.location.hash = '#/login';
         Swal.fire({
           title: 'Oops...',
@@ -62,7 +62,7 @@ class App {
       }
 
       if (auth && ['#/login', '#/register'].includes(window.location.hash)) {
-        window.location.hash = '/';
+        window.location.hash = '#/home';
         Swal.fire({
           title: 'Oops...',
           text: 'You are already logged in',
