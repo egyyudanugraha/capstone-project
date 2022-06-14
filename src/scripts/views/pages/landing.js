@@ -67,12 +67,15 @@ const Landing = {
         <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           <div class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <div class="flex flex-col items-center py-10">
-              <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="./favicon.png" alt="Bonnie image" />
+              <picture>
+                <source srcset="./images/arijaya.webp" type="image/webp">
+                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" data-src="./images/arijaya.jpg" alt="I Nyoman Arijaya Putra"></img>
+              </picture>
               <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">I Nyoman Arijaya Putra</h5>
               <span class="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
               <div class="flex mt-4 space-x-3 lg:mt-6">
                 <a
-                  href="#"
+                  href="https://github.com/ArijayaPutra" target="_blank"
                   class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="mr-2" viewBox="0 0 24 24">
@@ -83,7 +86,7 @@ const Landing = {
                   >GitHub</a
                 >
                 <a
-                  href="#"
+                  href="https://www.instagram.com/arijayaa/" target="_blank"
                   class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
                   ><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="mr-2" viewBox="0 0 24 24">
                     <path
@@ -97,12 +100,15 @@ const Landing = {
           </div>
           <div class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <div class="flex flex-col items-center py-10">
-              <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="./favicon.png" alt="Bonnie image" />
+              <picture>
+                <source srcset="./images/yuda.webp" type="image/webp">
+                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" data-src="./images/yuda.jpg" alt="Egy Yuda Nugraha"></img>
+              </picture>
               <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Egy Yuda Nugraha</h5>
               <span class="text-sm text-gray-500 dark:text-gray-400">Back-End Developer</span>
               <div class="flex mt-4 space-x-3 lg:mt-6">
                 <a
-                  href="#"
+                  href="https://github.com/egyyudanugraha" target="_blank"
                   class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="mr-2" viewBox="0 0 24 24">
@@ -113,7 +119,7 @@ const Landing = {
                   >GitHub</a
                 >
                 <a
-                  href="#"
+                  href="https://www.instagram.com/_yuda23_/" target="_blank"
                   class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
                   ><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="mr-2" viewBox="0 0 24 24">
                     <path
@@ -127,12 +133,15 @@ const Landing = {
           </div>
           <div class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <div class="flex flex-col items-center py-10">
-              <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="./favicon.png" alt="Bonnie image" />
+              <picture>
+                <source srcset="./images/aditya.webp" type="image/webp">
+                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" data-src="./images/aditya.jpg" alt="M. Aditya Sahrin"></img>
+              </picture>
               <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">M. Aditya Sahrin</h5>
               <span class="text-sm text-gray-500 dark:text-gray-400">Front-End Developer</span>
               <div class="flex mt-4 space-x-3 lg:mt-6">
                 <a
-                  href="#"
+                  href="https://github.com/adityaSahrin" target="_blank"
                   class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="mr-2" viewBox="0 0 24 24">
@@ -143,7 +152,7 @@ const Landing = {
                   >GitHub</a
                 >
                 <a
-                  href="#"
+                  href="https://www.instagram.com/aditya.sahrin/" target="_blank"
                   class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
                   ><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="mr-2" viewBox="0 0 24 24">
                     <path
@@ -157,12 +166,15 @@ const Landing = {
           </div>
           <div class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <div class="flex flex-col items-center py-10">
-              <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="./favicon.png" alt="Bonnie image" />
+              <picture>
+                <source srcset="./images/seli.webp" type="image/webp">
+                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" data-src="./images/seli.jpg" alt="Seli Saputri"></img>
+              </picture>
               <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Seli Saputri</h5>
               <span class="text-sm text-gray-500 dark:text-gray-400">Front-End Developer</span>
               <div class="flex mt-4 space-x-3 lg:mt-6">
                 <a
-                  href="#"
+                  href="https://github.com/selyvalov" target="_blank"
                   class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="mr-2" viewBox="0 0 24 24">
@@ -173,7 +185,7 @@ const Landing = {
                   >GitHub</a
                 >
                 <a
-                  href="#"
+                  href="https://www.instagram.com/selyvalovee/" target="_blank"
                   class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
                   ><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="mr-2" viewBox="0 0 24 24">
                     <path

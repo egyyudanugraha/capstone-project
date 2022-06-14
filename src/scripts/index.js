@@ -4,6 +4,7 @@ import 'flowbite';
 import './components/navbar';
 import './components/card-matrix';
 import './components/modal';
+import './components/btn-mode';
 import './components/footer';
 import App from './views/app';
 import registerServiceWorker from './utils/sw-register';
@@ -23,9 +24,13 @@ window.addEventListener('load', () => {
   app.renderPage();
   registerServiceWorker();
   NotificationHelper.init();
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.classList.add('dark');
+});
+
+window.addEventListener('scroll', () => {
+  const btnMode = document.getElementById('btn-mode');
+  if (Math.round(window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+    btnMode.classList.add('hidden');
   } else {
-    document.documentElement.classList.remove('dark');
+    btnMode.classList.remove('hidden');
   }
 });

@@ -7,7 +7,7 @@ class Navbar extends HTMLElement {
     this.classList.add('sticky', 'top-0', 'z-50');
     this.innerHTML = `<nav class="bg-white border-gray-200 px-2 sm:px-4 rounded-b-md dark:bg-gray-800">
     <div class="container flex flex-wrap justify-around items-center mx-auto">
-      <a href="/" class="flex items-center h-12">
+      <a href="#/home" class="flex items-center h-12">
         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Apptivity</span>
       </a>
       <button
