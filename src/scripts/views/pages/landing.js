@@ -1,10 +1,9 @@
 import Auth from '../../data/key-idb';
 
 const Landing = {
+  _logged: null,
   async render() {
-    document.querySelector('app-navbar').remove();
-    document.querySelector('main').classList.remove('mt-10');
-    document.querySelector('app-footer').classList.remove('mt-10');
+    this._logged = await Auth.getAccessToken();
     return `  
       <section class="bg-slate-100 dark:bg-gray-900">
         <div class="container mx-auto flex flex-col items-center py-12 sm:py-24">
@@ -211,13 +210,12 @@ const Landing = {
 
   async afterRender() {
     document.querySelector('#get_started').addEventListener('click', async () => {
-      const logged = await Auth.getAccessToken();
-      if (logged) {
+      if (this._logged) {
         window.location.href = '#/home';
       } else {
         window.location.hash = '#/login';
       }
-      window.location.reload();
+      // window.location.reload();
     });
   },
 };

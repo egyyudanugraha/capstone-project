@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import routes from '../routes/routes';
 import DrawerInitiator from '../utils/drawer-initiator';
 import URLParser from '../routes/url-parser';
-import Auth from '../data/key-idb';
+import checkAuth from '../utils/check-auth';
 
 class App {
   constructor({ hamburger, drawer, content }) {
@@ -49,28 +49,8 @@ class App {
           Swal.showLoading();
         },
       });
-      const auth = await Auth.getAccessToken();
-      if (!auth && !['', '#/login', '#/register'].includes(window.location.hash)) {
-        window.location.hash = '#/login';
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Session expired, please login again',
-          icon: 'error',
-        });
 
-        return;
-      }
-
-      if (auth && ['#/login', '#/register'].includes(window.location.hash)) {
-        window.location.hash = '#/home';
-        Swal.fire({
-          title: 'Oops...',
-          text: 'You are already logged in',
-          icon: 'warning',
-        });
-      } else if (auth) {
-        document.querySelector('app-navbar').classList.remove('hidden');
-      }
+      checkAuth();
 
       this._content.innerHTML = await page.render();
       Swal.close();
