@@ -35,7 +35,7 @@ const statusPlugin = {
 };
 
 registerRoute(
-  ({ url }) => url.pathname.startsWith('/task'),
+  ({ url }) => url.pathname.startsWith('/task') || url.pathname.startsWith('/history'),
   new NetworkOnly({
     plugins: [bgSyncPlugin, statusPlugin],
   }),
