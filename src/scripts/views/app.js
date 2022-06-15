@@ -27,7 +27,7 @@ class App {
     links.forEach((link) => {
       if (link.getAttribute('href') === `#${url}` || link.getAttribute('href') === url) {
         link.classList.add('text-white', 'md:text-purple-600', 'dark:text-white', 'bg-purple-600', 'md:bg-transparent', 'rounded', 'dark:hover:bg-purple-700', 'hover:bg-purple-700');
-        link.classList.remove('text-gray-700');
+        link.classList.remove('text-gray-700', 'hover:bg-gray-50');
       } else {
         link.classList.remove('text-white', 'dark:text-white', 'md:text-purple-600', 'bg-purple-600', 'rounded', 'dark:hover:bg-purple-700', 'hover:bg-purple-700');
       }
