@@ -103,13 +103,15 @@ const Pomodoro = {
         });
         e.target.checked = false;
       } else if (e.target.classList.contains('checkbox')) {
-        await ApptivityApi.updateTask(e.target.dataset.id, { completed: e.target.checked });
-        if (e.target.checked) {
-          await ApptivityApi.createHistory({
-            task: e.target.dataset.id,
-            start_date: startDate,
-          });
-        }
+        await ApptivityApi.updateTask(e.target.dataset.id, { completed: e.target.checked }).finally(async () => {
+          if (e.target.checked) {
+            console.log('ini ada');
+            await ApptivityApi.createHistory({
+              task: e.target.dataset.id,
+              start_date: startDate,
+            });
+          }
+        });
       }
     });
 

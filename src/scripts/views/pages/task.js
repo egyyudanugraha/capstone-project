@@ -169,8 +169,15 @@ const Task = {
           confirmButtonText: 'Yes, delete it!',
         }).then(async (result) => {
           if (result.isConfirmed) {
+            if (!navigator.onLine) {
+              Swal.fire({
+                title: 'Oops...',
+                icon: 'info',
+                text: 'You are offline, but don\'t worry, your task will be delete when you come back online.',
+              });
+            }
             const deleteTask = await ApptivityApi.deleteTask(e.target.dataset.id);
-            Swal.showLoading();
+
             Swal.fire({
               title: 'Success',
               icon: 'success',
@@ -196,6 +203,13 @@ const Task = {
         confirmButtonText: 'Yes, delete it!',
       }).then(async (result) => {
         if (result.isConfirmed) {
+          if (!navigator.onLine) {
+            Swal.fire({
+              title: 'Oops...',
+              icon: 'info',
+              text: 'You are offline, but don\'t worry, your task will be delete when you come back online.',
+            });
+          }
           const deleteAllTask = await ApptivityApi.deleteAllTask();
           Swal.fire({
             title: 'Success',
