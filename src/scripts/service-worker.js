@@ -49,6 +49,13 @@ registerRoute(
   }),
   'PUT',
 );
+registerRoute(
+  ({ url }) => url.pathname.startsWith('/task'),
+  new NetworkOnly({
+    plugins: [bgSyncPlugin, statusPlugin],
+  }),
+  'DELETE',
+);
 
 registerRoute(
   ({ request }) => request.destination === 'image',
