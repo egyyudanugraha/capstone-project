@@ -29,8 +29,8 @@ window.addEventListener('load', () => {
 window.addEventListener('scroll', () => {
   const btnMode = document.getElementById('btn-mode');
   if (Math.round(window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-    btnMode.classList.add('hidden');
+    btnMode.classList.add('translate-y-20');
   } else {
-    btnMode.classList.remove('hidden');
+    btnMode.classList.remove('translate-y-20');
   }
 });

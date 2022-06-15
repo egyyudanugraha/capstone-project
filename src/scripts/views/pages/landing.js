@@ -10,17 +10,17 @@ const Landing = {
           <div class="w-[80%] sm:w-2/3 lg:flex justify-center items-center flex-col mb-5 sm:mb-10">
             <h1 class="text-4xl lg:text-5xl xl:text-6xl text-center text-gray-800 dark:text-white font-black">
               Manage your task with
-              <span class="text-purple-600">Apptivity</span>
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">Apptivity</span>
             </h1>
             <p class="mt-5 sm:mt-10 lg:w-10/12 text-slate-700 dark:text-slate-100 font-normal text-center text-sm sm:text-lg">
             <span class="text-purple-600">Apptivity</span> adalah productivity tools berbasis website yang digunakan untuk memudahkan pengguna dalam mengontrol produktivitas atau pekerjaan dengan menggunakan teknik
-              <span class="border-b-2 font-medium border-purple-600">Pomodoro</span>, <span class="border-b-2 font-medium border-purple-600">Eisenhower Matrix</span> dan terdapat juga berbagai artikel yang membahas segala hal berkaitan
+            <span class="border-b-2 font-medium border-purple-600">Eisenhower Matrix</span>, <span class="border-b-2 font-medium border-purple-600">Pomodoro</span> dan terdapat juga berbagai artikel yang membahas segala hal berkaitan
               dengan produktivitas.
             </p>
           </div>
           <div class="flex justify-center items-center">
             <button id="get_started"
-              class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-700 bg-purple-700 transition duration-150 ease-in-out hover:bg-purple-600 lg:text-xl lg:font-bold rounded text-white px-4 sm:px-10 border border-purple-700 py-2 sm:py-4 text-sm"
+              class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-700 bg-purple-700 transition duration-150 ease-in-out hover:bg-purple-600 text-lg font-semibold lg:text-xl lg:font-bold rounded text-white px-4 sm:px-10 border border-purple-700 py-2 sm:py-4"
             >
               Get Started
             </button>
@@ -49,6 +49,18 @@ const Landing = {
           <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Deadline</h5>
             <p class="font-normal text-gray-700 dark:text-gray-400">Anda akan mendapat pemberitahuan jika pekerjaan sudah mendekati batas waktu.</p>
+          </div>
+          <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Installable</h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400">PWA supported, Apptivity dapat dipasang pada semua perangkat.</p>
+          </div>
+          <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Offline Mode</h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Anda tetap bisa bekerja walau jaringan internet tidak ada.</p>
+          </div>
+          <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Background Sync</h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Semua perubahan pada task anda akan tersimpan ketika kembali online.</p>
           </div>
         </div>
       </section>
