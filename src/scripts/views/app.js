@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import routes from '../routes/routes';
 import DrawerInitiator from '../utils/drawer-initiator';
 import URLParser from '../routes/url-parser';
-import checkAuth from '../utils/check-auth';
+import Auth from '../data/key-idb';
 
 class App {
   constructor({ hamburger, drawer, content }) {
@@ -39,6 +39,7 @@ class App {
     const page = routes[url];
 
     try {
+      const auth = await Auth.getAccessToken();
       Swal.fire({
         width: 100,
         allowOutsideClick: false,
@@ -50,7 +51,34 @@ class App {
         },
       });
 
-      checkAuth();
+      if (!auth && !['', '#/login', '#/register'].includes(window.location.hash)) {
+        window.location.hash = '#/login';
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Session expired, please login again',
+          icon: 'error',
+        });
+        return;
+      }
+
+      if (auth && ['#/login', '#/register'].includes(window.location.hash)) {
+        window.location.hash = '#/home';
+        Swal.fire({
+          title: 'Oops...',
+          text: 'You are already logged in',
+          icon: 'warning',
+        });
+      }
+
+      if (['', '#/login', '#/register'].includes(window.location.hash)) {
+        document.querySelector('app-navbar').classList.add('hidden');
+        document.querySelector('main').classList.remove('mt-10');
+        document.querySelector('app-footer').classList.remove('mt-10');
+      } else {
+        document.querySelector('app-navbar').classList.remove('hidden');
+        document.querySelector('main').classList.add('mt-10');
+        document.querySelector('app-footer').classList.add('mt-10');
+      }
 
       this._content.innerHTML = await page.render();
       Swal.close();
