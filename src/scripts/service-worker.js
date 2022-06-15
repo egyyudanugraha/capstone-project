@@ -185,7 +185,7 @@ self.addEventListener('push', (event) => {
 self.addEventListener('notificationclick', (event) => {
   if (event.action === 'view') {
     event.notification.close();
-    event.waitUntil(clients.openWindow('#/home'));
+    event.waitUntil(clients.openWindow('/#/home'));
   }
 
   event.notification.close();
