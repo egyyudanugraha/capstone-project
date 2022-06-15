@@ -44,7 +44,6 @@ const Login = {
   },
 
   async afterRender() {
-    document.querySelector('app-navbar').classList.add('hidden');
     const formLogin = document.querySelector('form');
     formLogin.addEventListener('submit', async (e) => {
       e.preventDefault();
