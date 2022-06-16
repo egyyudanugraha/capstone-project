@@ -13,9 +13,8 @@ const Landing = {
               <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">Apptivity</span>
             </h1>
             <p class="mt-5 sm:mt-10 lg:w-10/12 text-slate-700 dark:text-slate-100 font-normal text-center text-sm sm:text-lg">
-            <span class="text-purple-600">Apptivity</span> adalah productivity tools berbasis website yang digunakan untuk memudahkan pengguna dalam mengontrol produktivitas atau pekerjaan dengan menggunakan teknik
-            <span class="border-b-2 font-medium border-purple-600">Eisenhower Matrix</span>, <span class="border-b-2 font-medium border-purple-600">Pomodoro</span> dan terdapat juga berbagai artikel yang membahas segala hal berkaitan
-              dengan produktivitas.
+            <span class="text-purple-600">Apptivity</span> is a website-based productivity tool that is used to make it easier for users to control productivity or work using the 
+            <span class="border-b-2 font-medium border-purple-600 hover:border-b-gradient-to-r from-pink-500 to-purple-600">Eisenhower Matrix</span>, <span class="border-b-2 font-medium border-purple-600">Pomodoro techniques</span> and there are also various articles that discuss all things related to productivity.
             </p>
           </div>
           <div class="flex justify-center items-center">
@@ -38,29 +37,29 @@ const Landing = {
       <section id="features" class="mx-0 text-center py-20 px-5 bg-white dark:bg-gray-800">
         <h2 class="mb-8 text-4xl text-center text-gray-800 dark:text-white font-black leading-7 md:leading-10">Features</h2>
         <div class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Eisenhower Matrix</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Membatu anda menentukan prioritas dan beban pekerjaan.</p>
+          <div class="block group justify-self-center group-hover:ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 group-hover:text-white dark:text-white">Eisenhower Matrix</h5>
+            <p class="font-normal text-gray-700 group-hover:text-gray-100 dark:text-gray-400">Helping you determine priorities and workloads</p>
           </div>
-          <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Pomodoro</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Timer yang membagi beberapa sesi untuk manajemen waktu kerja anda.</p>
+          <div class="block group justify-self-center group-hover:ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 group-hover:text-white dark:text-white">Pomodoro</h5>
+            <p class="font-normal text-gray-700 group-hover:text-gray-100 dark:text-gray-400">A timer that divides multiple sessions for your work time management</p>
           </div>
-          <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Deadline</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Anda akan mendapat pemberitahuan jika pekerjaan sudah mendekati batas waktu.</p>
+          <div class="block group justify-self-center group-hover:ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 group-hover:text-white dark:text-white">Deadline</h5>
+            <p class="font-normal text-gray-700 group-hover:text-gray-100 dark:text-gray-400">You will be notified when the job is approaching the deadline</p>
           </div>
-          <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Installable</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">PWA supported, Apptivity dapat dipasang pada semua perangkat.</p>
+          <div class="block group justify-self-center group-hover:ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 group-hover:text-white dark:text-white">Installable</h5>
+            <p class="font-normal text-gray-700 group-hover:text-gray-100 dark:text-gray-400">PWA supported, Apptivity can be installed on all devices</p>
           </div>
-          <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Offline Mode</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Anda tetap bisa bekerja walau jaringan internet tidak ada.</p>
+          <div class="block group justify-self-center group-hover:ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 group-hover:text-white dark:text-white">Offline Mode</h5>
+            <p class="font-normal text-gray-700 group-hover:text-gray-100 dark:text-gray-400">You can still work even if there is no internet network</p>
           </div>
-          <div class="block justify-self-center p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Background Sync</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Semua perubahan pada task anda akan tersimpan ketika kembali online.</p>
+          <div class="block group justify-self-center group-hover:ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 group-hover:text-white dark:text-white">Background Sync</h5>
+            <p class="font-normal text-gray-700 group-hover:text-gray-100 dark:text-gray-400">All changes to your task will be saved when you return online</p>
           </div>
         </div>
       </section>

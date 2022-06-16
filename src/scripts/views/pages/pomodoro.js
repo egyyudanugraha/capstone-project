@@ -6,7 +6,23 @@ import NotificationHelper from '../../utils/notification-helper';
 
 const Pomodoro = {
   allTask: null,
+  _init() {
+    const pomodoro = {
+      pomodoro: 25,
+      shortBreak: 5,
+      longBreak: 15,
+      longBreakInterval: 4,
+      sessions: 0,
+      status: false,
+      startDate: null,
+    };
+    if (!localStorage.getItem('pomodoro')) {
+      localStorage.setItem('pomodoro', JSON.stringify(pomodoro));
+    }
+  },
+
   async render() {
+    this._init();
     const tasks = await ApptivityApi.getAllTask('completed=false');
     this.allTask = tasks;
     return `<div class="grid gap-10">
@@ -26,7 +42,10 @@ const Pomodoro = {
             </div>
             <div class="grid gap-4 justify-center">
               <button class="bg-amber-400 hover:bg-amber-500 border-b-4 py-4 w-[200px] border-amber-600 text-white text-lg font-extrabold rounded-md text-center" data-action="start" id="start-btn">START</button>
-              <div class="session text-slate-50 text-center text-sm"></div>
+              <div class="grid gap-1 justify-center">
+                <div class="session text-slate-50 text-center text-sm"></div>
+                <span id="reset-session" class="text-slate-50 hover:underline text-center cursor-pointer text-sm">Reset</span>
+              </div>
             </div>
           </div>
         </div>
@@ -47,38 +66,39 @@ const Pomodoro = {
     </div>
     <div class="all-task grid gap-3 max-w-[90%] w-[90%] m-auto">
       <h2 class="text-2xl text-slate-900 dark:text-white flex justify-center">Histories</h2>
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[400px] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
-        <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
-            <tr>
-              <th scope="col" class="px-6 py-3">No</th>
-              <th scope="col" class="px-6 py-3">Task name</th>
-              <th scope="col" class="px-6 py-3">Finished in</th>
-              <th scope="col" class="px-6 py-3">Completed at</th>
+        <table class="block text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs w-full relative block overflow-auto text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
+            <tr class="flex w-full">
+              <th class="px-6 py-3 block flex-grow-0 my-auto">No</th>
+              <th class="px-6 py-3 block basis-[40%] flex-grow-[2] my-auto">Task name</th>
+              <th class="px-6 py-3 block basis-[30%] flex-grow-[1] my-auto">Finished in</th>
+              <th class="px-6 py-3 block basis-[30%] flex-grow-[1] my-auto">Completed at</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody class="block relative overflow-y-auto max-h-[400px] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500"></tbody>
         </table>
-      </div>
     </div>
   </div>`;
   },
 
   async afterRender() {
     this._renderHistories();
-    const timer = {
-      pomodoro: 25,
-      shortBreak: 5,
-      longBreak: 15,
-      longBreakInterval: 4,
-      sessions: 0,
-      status: false,
-    };
+    const timer = JSON.parse(localStorage.getItem('pomodoro'));
 
     let interval;
-    let startDate = null;
     switchMode('pomodoro');
     showSession();
+
+    document.querySelector('#reset-session').addEventListener('click', () => {
+      if (timer.status) {
+        stopTimer();
+      }
+      localStorage.setItem('pomodoro', JSON.stringify({
+        ...timer,
+        sessions: 0,
+      }));
+      window.location.reload();
+    });
 
     const tasksContainer = document.querySelector('.card-body');
     this._renderItemTask(tasksContainer);
@@ -88,27 +108,36 @@ const Pomodoro = {
     });
 
     tasksContainer.addEventListener('click', async (e) => {
-      if (startDate === null || timer.status !== true) {
+      const { checked } = e.target;
+      if (timer.startDate === null || !timer.status) {
+        if (checked) {
+          e.target.checked = false;
+        } else {
+          e.target.checked = true;
+        }
         Swal.fire({
           title: 'Warning!',
-          text: 'Please start the timer before completing the task',
+          text: `Please start the timer before ${checked ? 'complete' : 'uncomplete'} the task`,
           icon: 'warning',
         });
-        e.target.checked = false;
       } else if (e.target.classList.contains('checkbox') && timer.mode !== 'pomodoro') {
+        if (checked) {
+          e.target.checked = false;
+        } else {
+          e.target.checked = true;
+        }
         Swal.fire({
           title: 'Warning!',
-          text: 'Please start the timer in Pomodoro mode before completing the task',
+          text: `You can only ${checked ? 'complete' : 'uncomplete'} the task when you are in Pomodoro mode`,
           icon: 'warning',
         });
-        e.target.checked = false;
       } else if (e.target.classList.contains('checkbox')) {
         await ApptivityApi.updateTask(e.target.dataset.id, { completed: e.target.checked }).finally(async () => {
           if (e.target.checked) {
             console.log('ini ada');
             await ApptivityApi.createHistory({
               task: e.target.dataset.id,
-              start_date: startDate,
+              start_date: timer.startDate,
             });
           }
         });
@@ -171,7 +200,7 @@ const Pomodoro = {
 
       if (timer.mode === 'pomodoro') {
         if (timer.sessions === timer.longBreakInterval) timer.sessions = 0;
-        if (timer.sessions === 0) startDate = Date.now();
+        if (timer.sessions === 0) timer.startDate = Date.now();
         if (timer.remainingTime.minutes === timer.pomodoro) timer.sessions += 1;
         showSession();
       }
@@ -236,6 +265,12 @@ const Pomodoro = {
       stopSound.play();
       timer.status = false;
       changeStatusButton();
+      changeState();
+    }
+
+    function changeState() {
+      const currentStatus = { ...timer };
+      localStorage.setItem('pomodoro', JSON.stringify(currentStatus));
     }
 
     function changeStatusButton(start = false) {
@@ -286,6 +321,7 @@ const Pomodoro = {
       }
 
       updateClock();
+      changeState();
     }
   },
 
@@ -310,7 +346,7 @@ const Pomodoro = {
     content.innerHTML = '';
     const histories = await ApptivityApi.getHistory();
     if (histories.length === 0) {
-      content.innerHTML = '<tr><td colspan="4" class="text-center">No history found</td></tr>';
+      content.innerHTML = '<tr class="flex w-full"><td colspan="4" class="text-center block basis-[100px] flex-grow-[2]">No history found</td></tr>';
       return;
     }
 

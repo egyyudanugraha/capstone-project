@@ -55,23 +55,20 @@ const Task = {
             </select>
             <button class="btn-delete-all focus:outline-none align-middle text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm px-3 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete All Task</button>
           </div>
-          <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[400px]  scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
             <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
-                <tr>
-                  <th scope="col" class="px-6 py-3">No</th>
-                  <th scope="col" class="px-6 py-3">Task name</th>
-                  <th scope="col" class="px-6 py-3 hidden md:block">Urgency</th>
-                  <th scope="col" class="px-6 py-3">Deadline</th>
-                  <th scope="col" class="px-6 py-3 hidden md:block">Completed</th>
-                  <th scope="col" class="px-6 py-3">Action</th>
+                <tr class="flex w-full">
+                  <th scope="col" class="block flex-grow-0 my-auto px-6 py-3">No</th>
+                  <th scope="col" class="block flex-grow-[2] my-auto px-6 py-3">Task name</th>
+                  <th scope="col" class="md:block flex-grow-[1] my-auto px-6 py-3 hidden">Urgency</th>
+                  <th scope="col" class="block flex-grow-[1] my-auto px-6 py-3">Deadline</th>
+                  <th scope="col" class="md:block flex-grow-[1] my-auto px-6 py-3 hidden">Completed</th>
+                  <th scope="col" class="block flex-grow-[1] my-auto px-6 py-3">Action</th>
                 </tr>
               </thead>
-              <tbody>
-                
+              <tbody class="block relative overflow-y-auto max-h-[400px] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
               </tbody>
             </table>
-          </div>
         </div>
       </div>
       <app-modal></app-modal>

@@ -1,3 +1,5 @@
+import API_ENDPOINT from '../globals/api-endpoint';
+
 const NotificationHelper = {
   init() {
     if (!this._checkAvailability()) {
@@ -23,7 +25,28 @@ const NotificationHelper = {
   },
 
   async _requestPermission() {
-    await Notification.requestPermission();
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
+        await this._subscribeNotification();
+      }
+    } catch (err) {
+      console.error('Error', err);
+    }
+  },
+
+  async _subscribeNotification() {
+    const applicationServerKey = process.env.PUBLIC_KEY_SERVER;
+    const options = { applicationServerKey, userVisibleOnly: true };
+    const serviceWorker = await navigator.serviceWorker.ready;
+    const subscription = await serviceWorker.pushManager.subscribe(options);
+    await fetch(API_ENDPOINT.SUBSCRIBE, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(subscription),
+    });
   },
 
   async _showNotification({ title, options }) {

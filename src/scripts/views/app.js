@@ -32,6 +32,16 @@ class App {
         link.classList.remove('text-white', 'dark:text-white', 'md:text-purple-600', 'bg-purple-600', 'rounded', 'dark:hover:bg-purple-700', 'hover:bg-purple-700');
       }
     });
+
+    if (['', '#/login', '#/register'].includes(window.location.hash)) {
+      document.querySelector('app-navbar').classList.add('hidden');
+      document.querySelector('main').classList.remove('mt-10');
+      document.querySelector('app-footer').classList.remove('mt-10');
+    } else {
+      document.querySelector('app-navbar').classList.remove('hidden');
+      document.querySelector('main').classList.add('mt-10');
+      document.querySelector('app-footer').classList.add('mt-10');
+    }
   }
 
   async renderPage() {
@@ -58,16 +68,6 @@ class App {
 
       if (auth && ['#/login', '#/register'].includes(window.location.hash)) {
         window.location.hash = '#/home';
-      }
-
-      if (['', '#/login', '#/register'].includes(window.location.hash)) {
-        document.querySelector('app-navbar').classList.add('hidden');
-        document.querySelector('main').classList.remove('mt-10');
-        document.querySelector('app-footer').classList.remove('mt-10');
-      } else {
-        document.querySelector('app-navbar').classList.remove('hidden');
-        document.querySelector('main').classList.add('mt-10');
-        document.querySelector('app-footer').classList.add('mt-10');
       }
 
       this._content.innerHTML = await page.render();

@@ -42,24 +42,24 @@ const _getClassForDeadline = (deadline, modal = false) => {
   return null;
 };
 
-const taskItemTable = (task, index) => `<tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
-<td class="px-6 py-4">${index}</td>
-<th scope="row" class="px-6 py-4 md:min-w-[170px] font-medium text-gray-900 dark:text-white whitespace-nowrap">${task.title}</th>
-<td class="px-6 py-4 hidden md:block">${_urgencyToString(task.urgency)}</td>
-<td class="px-6 py-4">${_convertDate(task.deadline)}</td>
-<td class="px-6 py-4 hidden md:block">${task.completed ? 'Yes' : 'No'}</td>
-<td class="px-6 py-4 text-center">
-  <button data-id="${task._id}" class="btn-detail text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" data-modal-toggle="modalItemTask">Detail</button>
-  <button data-id="${task._id}" class="btn-edit focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Edit</button>
-  <button data-id="${task._id}" class="btn-delete focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
+const taskItemTable = (task, index) => `<tr class="flex w-full border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+<td class="block flex-grow-0 my-auto px-6 py-4 text-center">${index}</td>
+<th class="block flex-grow-[2] md:basis-[20%] lg:basis-[17%] my-auto px-6 py-4 md:min-w-[170px] font-medium text-gray-900 dark:text-white whitespace-nowrap">${task.title}</th>
+<td class="md:block flex-grow-[1] my-auto px-6 py-4 hidden text-center">${_urgencyToString(task.urgency)}</td>
+<td class="block flex-grow-[1] my-auto px-6 py-4 text-center">${_convertDate(task.deadline)}</td>
+<td class="md:block flex-grow-[1] px-6 py-4 hidden text-center">${task.completed ? 'Yes' : 'No'}</td>
+<td class="block flex-grow-[1] my-auto px-6 py-4 text-center">
+  <button data-id="${task._id}" class="btn-detail text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" data-modal-toggle="modalItemTask">Detail</button>
+  <button data-id="${task._id}" class="btn-edit focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-3 py-2 mr-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Edit</button>
+  <button data-id="${task._id}" class="btn-delete focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
 </td>
 </tr>`;
 
-const historyItemTable = (task, index) => `<tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
-<td class="px-6 py-4">${index}</td>
-<th scope="row" class="px-6 py-4 md:min-w-[170px] font-medium text-gray-900 dark:text-white whitespace-nowrap">${task.task}</th>
-<td class="px-6 py-4">${formatDistanceStrict(new Date(task.start_date), new Date(task.end_date))}</td>
-<td class="px-6 py-4">${format(new Date(task.end_date), 'PPPPpp')}</td>
+const historyItemTable = (task, index) => `<tr class="flex w-full border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+<td class="block flex-grow-0 my-auto px-6 py-4">${index}</td>
+<td class="block basis-[40%] flex-grow-[2] my-auto px-6 py-4 md:min-w-[170px] font-medium text-gray-900 dark:text-white">${task.task}</td>
+<td class="block basis-[30%] flex-grow-[1] my-auto px-6 py-4">${formatDistanceStrict(new Date(task.start_date), new Date(task.end_date))}</td>
+<td class="block basis-[30%] flex-grow-[1] my-auto px-6 py-4">${format(new Date(task.end_date), 'PPPPpp')}</td>
 </tr>`;
 
 const matrixItem = (task) => `<button data-id="${task._id}" class="btn-modal block bg-slate-50 hover:bg-slate-100 text-left text-slate-800 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white p-2 rounded-md" type="button" data-modal-toggle="modalItemTask">

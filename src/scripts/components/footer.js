@@ -4,7 +4,7 @@ class Footer extends HTMLElement {
   }
 
   render() {
-    this.classList.add('p-4', 'bg-white', 'rounded-t-lg', 'shadow', 'flex', 'flex-col', 'md:p-6', 'dark:bg-gray-800', 'mt-10');
+    this.classList.add('p-4', 'bg-white', 'rounded-t-lg', 'flex', 'flex-col', 'md:p-6', 'dark:bg-gray-800', 'mt-10');
     this.innerHTML = `
         <div class="copyright flex md:justify-between w-full">
           <span class="text-sm text-gray-500 m-auto sm:text-center dark:text-gray-400">© 2022 <a href="/" class="hover:underline">Apptivity</a></span>

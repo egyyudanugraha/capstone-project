@@ -5,9 +5,8 @@ import {
   NetworkFirst, StaleWhileRevalidate, CacheFirst, NetworkOnly,
 } from 'workbox-strategies';
 import { BackgroundSyncPlugin } from 'workbox-background-sync';
-import { isThisHour, isToday } from 'date-fns';
+import { differenceInMinutes, isToday } from 'date-fns';
 import ApptivityApi from './data/apptivity-api';
-import API_ENDPOINT from './globals/api-endpoint';
 import CONFIG from './globals/config';
 
 const { CacheableResponse } = require('workbox-cacheable-response');
@@ -139,29 +138,13 @@ registerRoute(
   }),
 );
 
-self.addEventListener('activate', async () => {
-  try {
-    const applicationServerKey = process.env.PUBLIC_KEY_SERVER;
-    const options = { applicationServerKey, userVisibleOnly: true };
-    const subscription = await self.registration.pushManager.subscribe(options);
-    await fetch(API_ENDPOINT.SUBSCRIBE, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(subscription),
-    });
-  } catch (err) {
-    console.error('Error', err);
-  }
-});
-
 self.addEventListener('push', (event) => {
   const msg = event.data.text();
+  let promiseChain = null;
   if (msg === 'deadline') {
     const tasksPromise = ApptivityApi.getAllTask('completed=false').then((tasks) => {
       if (tasks === undefined) return;
-      const deadline = tasks.filter((item) => isThisHour(new Date(item.deadline)) && isToday(new Date(item.deadline)));
+      const deadline = tasks.filter((item) => differenceInMinutes(new Date(item.deadline), new Date(), { roundingMethod: 'ceil' }) <= 60 && isToday(new Date(item.deadline)));
       if (deadline.length <= 0) {
         return;
       }
@@ -177,9 +160,9 @@ self.addEventListener('push', (event) => {
         ],
       });
     });
-    const promiseChain = Promise.all([tasksPromise]);
-    event.waitUntil(promiseChain);
+    promiseChain = Promise.all([tasksPromise]);
   }
+  event.waitUntil(promiseChain);
 });
 
 self.addEventListener('notificationclick', (event) => {
