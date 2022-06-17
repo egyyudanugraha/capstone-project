@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import routes from '../routes/routes';
 import DrawerInitiator from '../utils/drawer-initiator';
 import URLParser from '../routes/url-parser';
-import Auth from '../data/key-idb';
+import checkAuth from '../utils/auth';
 
 class App {
   constructor({ hamburger, drawer, content }) {
@@ -49,7 +49,7 @@ class App {
     const page = routes[url];
 
     try {
-      const auth = await Auth.getAccessToken();
+      const auth = await checkAuth();
       Swal.fire({
         width: 100,
         allowOutsideClick: false,

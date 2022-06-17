@@ -138,38 +138,57 @@ registerRoute(
   }),
 );
 
-self.addEventListener('push', (event) => {
-  const msg = event.data.text();
-  let promiseChain = null;
-  if (msg === 'deadline') {
-    const tasksPromise = ApptivityApi.getAllTask('completed=false').then((tasks) => {
+self.addEventListener('push', async (event) => {
+  event.waitUntil(
+    ApptivityApi.getAllTask('completed=false').then((tasks) => {
       if (tasks === undefined) return;
       const deadline = tasks.filter((item) => differenceInMinutes(new Date(item.deadline), new Date(), { roundingMethod: 'ceil' }) <= 60 && isToday(new Date(item.deadline)));
-      if (deadline.length <= 0) {
-        return;
+      if (deadline.length > 0) {
+        self.registration.showNotification('Deadline - Apptivity!', {
+          body: `${deadline.length} ${deadline.length > 1 ? 'tasks' : 'task'} to be done in the next 1 hour`,
+          icon: './favicon.png',
+          actions: [
+            {
+              action: 'home',
+              title: 'View tasks',
+            },
+          ],
+        });
       }
-
-      return self.registration.showNotification('Deadline!', {
-        body: `${deadline.length} ${deadline.length > 1 ? 'tasks' : 'task'} to be done in the next 1 hour`,
-        icon: './favicon.png',
-        actions: [
-          {
-            action: 'view',
-            title: 'View tasks',
-          },
-        ],
-      });
-    });
-    promiseChain = Promise.all([tasksPromise]);
-  }
-  event.waitUntil(promiseChain);
+    }),
+  );
 });
 
 self.addEventListener('notificationclick', (event) => {
-  if (event.action === 'view') {
+  async function matchTab(path) {
+    const allClients = await clients.matchAll({
+      includeUncontrolled: true,
+    });
+
+    let tabsClient;
+    for (const client of allClients) {
+      const url = new URL(client.url);
+      if (url.hash === path) {
+        client.focus();
+        tabsClient = client;
+        break;
+      }
+    }
+
+    if (!tabsClient) {
+      await clients.openWindow(`/${path}`);
+    }
+
     event.notification.close();
-    event.waitUntil(clients.openWindow('/#/home'));
   }
 
-  event.notification.close();
+  if (event.action === 'home') {
+    event.waitUntil(matchTab('#/home'));
+  }
+
+  if (event.action === 'pomodoro') {
+    event.waitUntil(matchTab('#/pomodoro'));
+  }
+
+  event.waitUntil(matchTab(`#/${event.notification.actions[0].action}`));
 });

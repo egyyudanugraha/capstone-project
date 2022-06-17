@@ -231,6 +231,12 @@ const Pomodoro = {
                 options: {
                   body: `Let's take a break for ${timer.longBreak} minutes`,
                   icon: './favicon.png',
+                  actions: [
+                    {
+                      action: 'pomodoro',
+                      title: 'Open pomodoro',
+                    },
+                  ],
                 },
               });
             } else {
@@ -241,6 +247,12 @@ const Pomodoro = {
                 options: {
                   body: `Let's take a break for ${timer.shortBreak} minutes`,
                   icon: './favicon.png',
+                  actions: [
+                    {
+                      action: 'pomodoro',
+                      title: 'Open pomodoro',
+                    },
+                  ],
                 },
               });
             }
@@ -253,6 +265,12 @@ const Pomodoro = {
               options: {
                 body: 'Let\'s come back to work',
                 icon: './favicon.png',
+                actions: [
+                  {
+                    action: 'pomodoro',
+                    title: 'Open pomodoro',
+                  },
+                ],
               },
             });
         }

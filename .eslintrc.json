@@ -24,6 +24,7 @@
     "no-multi-assign": "off",
     "no-use-before-define": "off",
     "consistent-return": "off",
-    "no-dupe-else-if": "off"
+    "no-dupe-else-if": "off",
+    "no-restricted-syntax": "off"
   }
 }
