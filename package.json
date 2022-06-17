@@ -35,10 +35,8 @@
     "webpack-merge": "^5.0.9"
   },
   "dependencies": {
-    "@themesberg/tailwind-datepicker": "^1.1.0",
     "date-fns": "^2.28.0",
     "flowbite": "^1.4.7",
-    "googleapis": "^100.0.0",
     "idb": "^7.0.1",
     "regenerator-runtime": "^0.13.5",
     "sweetalert2": "^11.4.17",

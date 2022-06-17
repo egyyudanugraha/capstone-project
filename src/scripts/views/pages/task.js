@@ -228,7 +228,7 @@ const Task = {
     const tasks = await ApptivityApi.getAllTask(params);
     this.tasks = tasks;
     if (tasks.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="6" class="text-center">No task</td></tr>';
+      tableBody.innerHTML = '<tr class="flex w-full"><td colspan="6" class="text-center block basis-[100px] flex-grow-[2]">No task found</td></tr>';
       return;
     }
 
