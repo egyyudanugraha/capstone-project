@@ -22,9 +22,9 @@ module.exports = {
     const { email, password } = req.body;
     try {
       const user = await User.findByCredentials(email, password);
-      if (!user) {
+      if (user.error) {
         return res.status(401).send({
-          message: 'User not found',
+          message: user.message,
           error: true,
         });
       }
