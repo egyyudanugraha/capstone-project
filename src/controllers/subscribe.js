@@ -79,6 +79,6 @@ module.exports = {
       } catch (error) {
         console.error(error.stack);
       }
-    }, 60000 * 20); // 20 minutes
+    }, 60000 * CONFIG.INTERVAL);
   },
 };

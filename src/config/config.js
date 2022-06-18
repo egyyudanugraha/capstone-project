@@ -8,6 +8,7 @@ const CONFIG = {
   VAPID_PRIVATE_KEY: process.env.VAPID_PRIVATE_KEY,
   GCM_API_KEY: process.env.GCM_API_KEY,
   MONGODB_URI: process.env.MONGODB_URI,
+  INTERVAL: process.env.INTERVAL,
 };
 
 module.exports = CONFIG;
