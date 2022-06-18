@@ -139,22 +139,25 @@ registerRoute(
 );
 
 self.addEventListener('push', async (event) => {
+  const showDeadline = (title, body, actTitle, silent = false) => self.registration.showNotification(title, {
+    body,
+    icon: './favicon.png',
+    actions: [
+      {
+        action: 'home',
+        title: actTitle,
+      },
+    ],
+    silent,
+  });
+
   event.waitUntil(
     ApptivityApi.getAllTask('completed=false').then((tasks) => {
-      if (tasks === undefined) return;
+      if (tasks === undefined) return showDeadline('Apptivity', 'Please login to see your tasks deadline.', 'Login', true);
+
       const deadline = tasks.filter((item) => differenceInMinutes(new Date(item.deadline), new Date(), { roundingMethod: 'ceil' }) <= 60 && isToday(new Date(item.deadline)));
-      if (deadline.length > 0) {
-        self.registration.showNotification('Deadline - Apptivity!', {
-          body: `${deadline.length} ${deadline.length > 1 ? 'tasks' : 'task'} to be done in the next 1 hour`,
-          icon: './favicon.png',
-          actions: [
-            {
-              action: 'home',
-              title: 'View tasks',
-            },
-          ],
-        });
-      }
+      if (deadline.length === 0) return showDeadline('Apptivity', 'You have no tasks with deadline in next 60 minutes.', 'OK', true);
+      return showDeadline('Deadline! - Apptivity', `${deadline.length} ${deadline.length > 1 ? 'tasks' : 'task'} to be done in the next 60 minutes.`, 'View tasks');
     }),
   );
 });
