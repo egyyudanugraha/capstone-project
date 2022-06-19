@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         sans: ['Fredoka', ...defaultTheme.fontFamily.sans],
       },
+      height: {
+        128: '32rem',
+      },
       keyframes: {
         flip: {
           '0%, 100%': { transform: 'scaleX(1)' },
