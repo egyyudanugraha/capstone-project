@@ -66,17 +66,19 @@ const Pomodoro = {
     </div>
     <div class="all-task grid gap-3 max-w-[90%] w-[90%] m-auto">
       <h2 class="text-2xl text-slate-900 dark:text-white flex justify-center">Histories</h2>
-        <table class="block text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs w-full relative block overflow-auto text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
-            <tr class="flex w-full">
-              <th class="px-6 py-3 block flex-grow-0 my-auto">No</th>
-              <th class="px-6 py-3 block basis-[40%] flex-grow-[2] my-auto">Task name</th>
-              <th class="px-6 py-3 block basis-[30%] flex-grow-[1] my-auto">Finished in</th>
-              <th class="px-6 py-3 block basis-[30%] flex-grow-[1] my-auto">Completed at</th>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[400px] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
+        <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
+            <tr>
+              <th scope="col" class="px-6 py-3">No</th>
+              <th scope="col" class="px-6 py-3">Task name</th>
+              <th scope="col" class="px-6 py-3">Finished in</th>
+              <th scope="col" class="px-6 py-3">Completed at</th>
             </tr>
           </thead>
-          <tbody class="block relative overflow-y-auto max-h-[400px] scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500"></tbody>
+          <tbody></tbody>
         </table>
+      </div>
     </div>
   </div>`;
   },
@@ -364,7 +366,7 @@ const Pomodoro = {
     content.innerHTML = '';
     const histories = await ApptivityApi.getHistory();
     if (histories.length === 0) {
-      content.innerHTML = '<tr class="flex w-full"><td colspan="4" class="text-center block basis-[100px] flex-grow-[2]">No history found</td></tr>';
+      content.innerHTML = '<tr><td colspan="4" class="text-center">No history found</td></tr>';
       return;
     }
 

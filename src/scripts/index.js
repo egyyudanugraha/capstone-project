@@ -1,6 +1,7 @@
 import 'regenerator-runtime';
 import '../styles/style.css';
 import 'flowbite';
+import 'tw-elements';
 import './components/navbar';
 import './components/card-matrix';
 import './components/modal';

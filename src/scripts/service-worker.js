@@ -55,7 +55,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ request }) => request.destination === 'image',
+  ({ request, url }) => request.destination === 'image' || url.origin === 'https://i.postimg.cc',
   new CacheFirst({
     cacheName: CONFIG.CACHE_IMAGE,
     plugins: [

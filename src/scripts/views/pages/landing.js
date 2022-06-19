@@ -14,7 +14,7 @@ const Landing = {
             </h1>
             <p class="mt-5 sm:mt-10 lg:w-10/12 text-slate-700 dark:text-slate-100 font-normal text-center text-sm sm:text-lg">
             <span class="text-purple-600">Apptivity</span> is a website-based productivity tool that is used to make it easier for users to control productivity or work using the 
-            <span class="border-b-2 font-medium border-purple-600 hover:border-b-gradient-to-r from-pink-500 to-purple-600">Eisenhower Matrix</span>, <span class="border-b-2 font-medium border-purple-600">Pomodoro techniques</span> and there are also various articles that discuss all things related to productivity.
+            <span class="border-b-2 font-medium border-purple-600">Eisenhower Matrix</span>, <span class="border-b-2 font-medium border-purple-600">Pomodoro techniques</span> and there are also various articles that discuss all things related to productivity.
             </p>
           </div>
           <div class="flex justify-center items-center">
