@@ -34,7 +34,7 @@ const Home = {
         </div>
         <div class="carousel-inner relative w-full overflow-hidden">
           <div class="carousel-item active relative float-left w-full">
-            <img src="https://i.postimg.cc/Y0mbMbYm/component-1.png" class="block h-[60%] mx-auto object-cover" alt="adding task" />
+            <img src="https://i.postimg.cc/Znk1JPbk/Component-1.png" class="block h-[60%] mx-auto object-cover" alt="adding task" />
             <div class="carousel-caption hidden md:block absolute text-center">
               <p class="text-slate-900">
                 <strong class="text-purple-600">Start</strong>
@@ -45,7 +45,7 @@ const Home = {
             </div>
           </div>
           <div class="carousel-item relative float-left w-full">
-            <img src="https://i.postimg.cc/s2Rm5VHn/component-2.png" class="block h-[60%] mx-auto object-cover" alt="prioritized with eisenhower matrix" />
+            <img src="https://i.postimg.cc/NF7PYWCT/Component-2.png" class="block h-[60%] mx-auto object-cover" alt="prioritized with eisenhower matrix" />
             <div class="carousel-caption hidden md:block absolute text-center">
               <p class="text-slate-900">
                 Go to <strong class="text-purple-600">Eisenhower Matrix</strong> and watch your prioritized task results on 4 quadrants. Choose task that you want to work on by clicking task card and you will see details of your task, then
@@ -54,7 +54,7 @@ const Home = {
             </div>
           </div>
           <div class="carousel-item relative float-left w-full">
-            <img src="https://i.postimg.cc/FRrxnT43/component-3.png" class="block h-[60%] mx-auto object-cover" alt="pomodoro timer" />
+            <img src="https://i.postimg.cc/G3kfky32/Component-3.png" class="block h-[60%] mx-auto object-cover" alt="pomodoro timer" />
             <div class="carousel-caption hidden md:block absolute text-center">
               <h5 class="text-xl">Third slide label</h5>
               <p class="text-slate-900">
@@ -64,7 +64,7 @@ const Home = {
             </div>
           </div>
           <div class="carousel-item relative float-left w-full">
-            <img src="https://i.postimg.cc/Rh8Qh9nL/component-4.png" class="block h-[60%] mx-auto object-cover" alt="pomodoro timer" />
+            <img src="https://i.postimg.cc/xTn4g1qP/Component-4.png" class="block h-[60%] mx-auto object-cover" alt="pomodoro timer" />
             <div class="carousel-caption hidden md:block absolute text-center">
               <h5 class="text-xl">Third slide label</h5>
               <p class="text-slate-900">
