@@ -156,7 +156,7 @@ How to install local apptivity on your laptop? let's follow the instructions
 <!-- CONTACT -->
 ## Contact
 
-- [Arijaya Putra](https://www.instagram.com/)
+- [Arijaya Putra](https://www.instagram.com/arijayaa/)
 - [Yuda](https://www.instagram.com/_yuda23_)
 - [Aditya](https://www.instagram.com/)
 - [Seli](https://www.instagram.com/)
