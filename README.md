@@ -92,7 +92,6 @@ How to install local apptivity api on local? let's follow the instructions
    ```
 3. Create file `.env` in root project folder
    ```js
-   // FOR PRODUCTION
    PORT=3000
    INTERVAL=60
    JWT_SECRET='key_secret_jwt'
@@ -101,6 +100,7 @@ How to install local apptivity api on local? let's follow the instructions
    VAPID_PRIVATE_KEY='_xplqJ2vtsXMDJrwU3nRWfLK6jMU1rRidrVOuTCpPKk'
    GCM_API_KEY='Everything-is-ok'
    MONGODB_URI='mongodb://localhost:27017/backend_apptivity'
+   INTERVAL=20
    ```
 4. Run the server!
    ```sh
