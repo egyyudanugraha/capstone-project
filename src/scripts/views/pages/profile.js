@@ -154,7 +154,6 @@ const Profile = {
               icon: 'success',
               timer: 1500,
             }).then(() => {
-              localStorage.removeItem('access_token');
               window.location.hash = '#/login';
             });
           } else {
@@ -184,7 +183,6 @@ const Profile = {
               icon: 'success',
               timer: 1500,
             }).then(() => {
-              localStorage.removeItem('access_token');
               window.location.hash = '#/login';
             });
           } else {
@@ -248,6 +246,7 @@ const Profile = {
             text: `${updatePass.message}, please re-login!`,
             timer: 3000,
           }).then(async () => {
+            await ApptivityApi.logoutAll();
             await Auth.deleteAccessToken();
           }).then(() => window.location.hash = '#/login');
         } else {

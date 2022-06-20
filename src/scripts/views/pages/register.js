@@ -88,11 +88,11 @@ const Register = {
         });
         const user = await ApptivityApi.register(data);
         formRegister.reset();
-        if (user.name === 'ValidationError') {
+        if (user.name === 'ValidationError' || user.code === 11000) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: user.message,
+            text: user.message || 'Something went wrong!',
           });
         } else {
           Swal.fire({
