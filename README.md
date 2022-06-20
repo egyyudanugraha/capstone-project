@@ -55,7 +55,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Apptivity API adalah backend yang menyediakan fungsi-fungsi atau API untuk kebutuhan data. Apptivity API ini digunakan oleh project [Apptivity](http://apptivity-v1.netlify.app/)
+Apptivity API adalah backend yang menyediakan fungsi-fungsi atau API untuk kebutuhan data. Apptivity API ini digunakan oleh project [Apptivity](http://apptivity-v1.netlify.app/). API ini adalah versi ke-3 dari yang kami bangun dan yang akhirnya kami gunakan.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -94,6 +94,7 @@ How to install local apptivity api on local? let's follow the instructions
    ```js
    // FOR PRODUCTION
    PORT=3000
+   INTERVAL=60
    JWT_SECRET='key_secret_jwt'
    KEY_PUSH='push_key_for_notification'
    VAPID_PUBLIC_KEY='BF0iNOeRThs_SsOTc1s77KuIozBdxeaLM5aegT5-UsccCdg2QN9bZQ_a4SZtZ_Y09-ytma00m4AeHqYvk5MZuJA'
