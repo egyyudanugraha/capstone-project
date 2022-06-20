@@ -53,11 +53,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About Apptivity
 
-[![Screenshot-2022-06-09-144606.jpg](https://i.postimg.cc/59DMBFM7/Screenshot-2022-06-09-144606.jpg)](https://apptivity-v1.netlify.app)
-[![Screenshot-2022-06-09-144654.jpg](https://i.postimg.cc/TYH5q0P8/Screenshot-2022-06-09-144654.jpg)](https://apptivity-v1.netlify.app)
+[![frame-chrome-mac-light.png](https://i.postimg.cc/fWrsxgMm/frame-chrome-mac-light.png)](https://apptivity-v1.netlify.app)
+[![frame-chrome-mac-light-2.png](https://i.postimg.cc/43DLfVGK/frame-chrome-mac-light-2.png)](https://apptivity-v1.netlify.app)
+[![frame-chrome-mac-light-3.png](https://i.postimg.cc/nrk0GWD7/frame-chrome-mac-light-3.png)](https://apptivity-v1.netlify.app)
+[![frame-chrome-mac-light-4.png](https://i.postimg.cc/134JDJ5n/frame-chrome-mac-light-4.png)](https://apptivity-v1.netlify.app)
 
 #### Support Dark Mode
-[![Screenshot-2022-06-09-144748.jpg](https://i.postimg.cc/jqMDtcPW/Screenshot-2022-06-09-144748.jpg)](https://apptivity-v1.netlify.app)
+[![frame-chrome-mac-light-1.png](https://i.postimg.cc/MphbVwFN/frame-chrome-mac-light-1.png)](https://apptivity-v1.netlify.app)
 
 Apptivity adalah productivity tools berbasis website yang digunakan untuk memudahkan pengguna dalam mengimplementasikan berbagai macam teknik-teknik produktivitas seperti Pomodoro, Eisenhower Matrix, Kaizen, dan terdapat juga berbagai artikel yang membahas segala hal berkaitan dengan produktivitas.
 
@@ -148,7 +150,7 @@ How to install local apptivity on your laptop? let's follow the instructions
 - [x] Progressive Web App
 - [x] Notification service
 - [x] Landing page
-- [ ] How to use
+- [x] How to use
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -156,10 +158,10 @@ How to install local apptivity on your laptop? let's follow the instructions
 <!-- CONTACT -->
 ## Contact
 
-- [Arijaya Putra](https://www.instagram.com/arijayaa/)
+- [Arijaya Putra](https://www.instagram.com/arijayaa)
 - [Yuda](https://www.instagram.com/_yuda23_)
-- [Aditya](https://www.instagram.com/)
-- [Seli](https://www.instagram.com/)
+- [Aditya](https://www.instagram.com/aditya.sahrin)
+- [Seli](https://www.instagram.com/selyvalovee)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
