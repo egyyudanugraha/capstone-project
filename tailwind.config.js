@@ -19,7 +19,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require('flowbite/plugin'), require('tailwind-scrollbar'), require('tw-elements/dist/plugin')],
+  plugins: [require('flowbite/plugin'), require('tailwind-scrollbar')],
   variants: {
     scrollbar: ['dark', 'rounded'],
   },
