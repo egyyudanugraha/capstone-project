@@ -95,12 +95,11 @@ How to install local apptivity api on local? let's follow the instructions
    PORT=3000
    INTERVAL=60
    JWT_SECRET='key_secret_jwt'
-   KEY_PUSH='push_key_for_notification'
+   KEY_PUSH='testpushnotification'
    VAPID_PUBLIC_KEY='BF0iNOeRThs_SsOTc1s77KuIozBdxeaLM5aegT5-UsccCdg2QN9bZQ_a4SZtZ_Y09-ytma00m4AeHqYvk5MZuJA'
    VAPID_PRIVATE_KEY='_xplqJ2vtsXMDJrwU3nRWfLK6jMU1rRidrVOuTCpPKk'
    GCM_API_KEY='Everything-is-ok'
    MONGODB_URI='mongodb://localhost:27017/backend_apptivity'
-   INTERVAL=20
    ```
 4. Run the server!
    ```sh
@@ -110,6 +109,10 @@ How to install local apptivity api on local? let's follow the instructions
    
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### ROUTE PATH AND TESTING
+
+1. Import all files in postman folder to your postman
+2. Yeay! you can access route API with postman!
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -123,7 +126,7 @@ How to install local apptivity api on local? let's follow the instructions
 - [x] Route & handle task
 - [x] Route & handle history
 - [x] Push Notification
-- [x] Manual Testing with Postman
+- [x] Automation test with Postman
 - [x] Deployment
 
 <p align="right">(<a href="#top">back to top</a>)</p>
