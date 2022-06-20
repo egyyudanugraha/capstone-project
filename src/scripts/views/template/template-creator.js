@@ -42,8 +42,9 @@ const _getClassForDeadline = (deadline, modal = false) => {
   return null;
 };
 
-const taskItemTable = (task) => `<tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
-<th scope="row" class="px-6 py-4 md:min-w-[170px] font-medium text-gray-900 dark:text-white whitespace-nowrap">${task.title}</th>
+const taskItemTable = (task, index) => `<tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+<td class="px-6 py-4">${index}</td>
+<th class="px-6 py-4 md:min-w-[170px] font-medium text-gray-900 dark:text-white whitespace-nowrap">${task.title}</th>
 <td class="px-6 py-4 hidden md:block">${_urgencyToString(task.urgency)}</td>
 <td class="px-6 py-4">${_convertDate(task.deadline)}</td>
 <td class="px-6 py-4 hidden md:block">${task.completed ? 'Yes' : 'No'}</td>
@@ -54,8 +55,9 @@ const taskItemTable = (task) => `<tr class="border-b dark:bg-gray-800 dark:borde
 </td>
 </tr>`;
 
-const historyItemTable = (task) => `<tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
-<th scope="row" class="px-6 py-4 md:min-w-[170px] font-medium text-gray-900 dark:text-white whitespace-nowrap">${task.task}</th>
+const historyItemTable = (task, index) => `<tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+<td class="px-6 py-4">${index}</td>
+<th class="px-6 py-4 md:min-w-[170px] font-medium text-gray-900 dark:text-white whitespace-nowrap">${task.task}</th>
 <td class="px-6 py-4">${formatDistanceStrict(new Date(task.start_date), new Date(task.end_date))}</td>
 <td class="px-6 py-4">${format(new Date(task.end_date), 'PPPPpp')}</td>
 </tr>`;

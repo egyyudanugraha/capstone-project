@@ -56,7 +56,6 @@ const Home = {
           <div class="carousel-item relative float-left w-full">
             <img src="https://i.postimg.cc/G3kfky32/Component-3.png" class="block h-[60%] mx-auto object-cover" alt="pomodoro timer" />
             <div class="carousel-caption hidden md:block absolute text-center">
-              <h5 class="text-xl">Third slide label</h5>
               <p class="text-slate-900">
                 Start working your task by pressing <strong class="text-purple-600">Start</strong> button to start the Pomodoro timer. Checklist the task that you think already <strong class="text-purple-600">complete/finish</strong>. You
                 can watch your work history in the <strong class="text-purple-600">History Bar</strong>.
@@ -66,7 +65,6 @@ const Home = {
           <div class="carousel-item relative float-left w-full">
             <img src="https://i.postimg.cc/xTn4g1qP/Component-4.png" class="block h-[60%] mx-auto object-cover" alt="pomodoro timer" />
             <div class="carousel-caption hidden md:block absolute text-center">
-              <h5 class="text-xl">Third slide label</h5>
               <p class="text-slate-900">
                 In the home page you can wacth your <strong class="text-purple-600">uncompleted tasks</strong> and <strong class="text-purple-600">tasks to complete</strong>. You can click the task card to see more details about it.
               </p>

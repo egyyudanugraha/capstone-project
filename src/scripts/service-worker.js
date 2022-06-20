@@ -139,7 +139,7 @@ registerRoute(
 );
 
 self.addEventListener('push', async (event) => {
-  const showDeadline = (title, body, actTitle, silent = false) => self.registration.showNotification(title, {
+  const showDeadline = (title, body, actTitle, silent = false, timeout = 60) => self.registration.showNotification(title, {
     body,
     icon: './favicon.png',
     actions: [
@@ -149,14 +149,20 @@ self.addEventListener('push', async (event) => {
       },
     ],
     silent,
-  });
+  })
+    .then(() => self.registration.getNotifications())
+    .then((notifications) => {
+      setTimeout(() => {
+        notifications.forEach((notification) => notification.close());
+      }, 60000 * timeout);
+    });
 
   event.waitUntil(
     ApptivityApi.getAllTask('completed=false').then((tasks) => {
-      if (tasks === undefined) return showDeadline('Apptivity', 'Please login to see your tasks deadline.', 'Login', true);
+      if (tasks === undefined) return showDeadline('Apptivity', 'Please login to see your tasks deadline.', 'Login', true, 1);
 
       const deadline = tasks.filter((item) => differenceInMinutes(new Date(item.deadline), new Date(), { roundingMethod: 'ceil' }) <= 60 && isToday(new Date(item.deadline)));
-      if (deadline.length === 0) return showDeadline('Apptivity', 'You have no tasks with deadline in next 60 minutes.', 'OK', true);
+      if (deadline.length === 0) return showDeadline('Apptivity', 'You have no tasks with deadline in next 60 minutes.', 'OK', true, 1);
       return showDeadline('Deadline! - Apptivity', `${deadline.length} ${deadline.length > 1 ? 'tasks' : 'task'} to be done in the next 60 minutes.`, 'View tasks');
     }),
   );

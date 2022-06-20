@@ -1,3 +1,4 @@
+import { isToday } from 'date-fns';
 import Swal from 'sweetalert2';
 import ApptivityApi from '../../data/apptivity-api';
 import { modalContent, taskItemTable } from '../template/template-creator';
@@ -45,20 +46,41 @@ const Task = {
         </div>
         <div class="all-task grid gap-3">
           <h2 class="text-2xl text-slate-900 dark:text-white flex justify-center">All Task</h2>
-          <div class="flex justify-between">
-            <select id="filter" class="bg-white border-2 border-slate-200 dark:bg-slate-700 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white focus:ring-purple-600">
-              <option value="">Show all</option>
-              <option value="priority=high">Sort by high priority</option>
-              <option value="priority=low">Sort by low priority</option>
-              <option value="completed=true">Filter by completed</option>
-              <option value="completed=false">Filter by uncompleted</option>
-            </select>
-            <button class="btn-delete-all focus:outline-none align-middle text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm px-3 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete All Task</button>
+          <div class="gird sm:flex justify-between gap-2">
+            <ul class="w-full sm:max-w-[40vh] mb-2 sm:mb-0 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+              <li class="flex gap-2 justify-between w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                <span>Deadline today</span>
+                <span id="deadline-today"></span>
+              </li>
+              <li class="flex gap-2 justify-between w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">
+                <span>Completed</span>
+                <span id="completed"></span>
+              </li>
+              <li class="flex gap-2 justify-between w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">
+                <span>Uncompleted</span>
+                <span id="uncompleted"></span>
+              </li>
+              <li class="flex gap-2 justify-between w-full px-4 py-2 border-b border-gray-200 rounded-b-lg dark:border-gray-600">
+                <span>Total</span>
+                <span id="total"></span>
+              </li>
+            </ul>
+            <div id="select-delete" class="flex flex-col md:flex-row gap-2">
+              <button class="btn-delete-all focus:outline-none mt-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm px-3 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete All Task</button>
+              <select id="filter" class="bg-white md:mt-auto border-slate-200 dark:bg-slate-700 rounded-md dark:border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white focus:ring-purple-600">
+                <option value="">Show all</option>
+                <option value="priority=high">Sort by high priority</option>
+                <option value="priority=low">Sort by low priority</option>
+                <option value="completed=true">Filter by completed</option>
+                <option value="completed=false">Filter by uncompleted</option>
+              </select>
+            </div>
           </div>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[400px]  scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-300 dark:scrollbar-thumb-slate-700 dark:scrollbar-track-slate-500">
             <table class="table-auto w-full overflow-scroll text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-slate-200">
                 <tr>
+                  <th scope="col" class="px-6 py-3">No</th>
                   <th scope="col" class="px-6 py-3">Task name</th>
                   <th scope="col" class="px-6 py-3 hidden md:block">Urgency</th>
                   <th scope="col" class="px-6 py-3">Deadline</th>
@@ -82,6 +104,7 @@ const Task = {
 
   async afterRender() {
     this._renderTask();
+    this._renderInfo();
     this.modal = new Modal(document.getElementById('modalItemTask'), {
       placement: 'center',
       backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
@@ -237,6 +260,23 @@ const Task = {
     tasks.forEach((task, index) => {
       tableBody.innerHTML += taskItemTable(task, index + 1);
     });
+  },
+
+  async _renderInfo() {
+    const selectorDeadline = document.querySelector('#deadline-today');
+    const selectorCompleted = document.querySelector('#completed');
+    const selectorUncompleted = document.querySelector('#uncompleted');
+    const selectorTotal = document.querySelector('#total');
+    const tasks = await ApptivityApi.getAllTask();
+    const deadline = tasks.filter((task) => isToday(new Date(task.deadline)) && !task.completed).length;
+    const completed = tasks.filter((task) => task.completed).length;
+    const uncompleted = tasks.filter((task) => !task.completed).length;
+    const total = tasks.length;
+
+    selectorDeadline.innerHTML = `: ${deadline} task`;
+    selectorCompleted.innerHTML = `: ${completed} task`;
+    selectorUncompleted.innerHTML = `: ${uncompleted} task`;
+    selectorTotal.innerHTML = `: ${total} task`;
   },
 
   _loadingBtn(msg) {

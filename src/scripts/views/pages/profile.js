@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2';
 import ApptivityApi from '../../data/apptivity-api';
+import Auth from '../../data/key-idb';
 
 const Profile = {
   async render() {
@@ -246,10 +247,9 @@ const Profile = {
             icon: 'success',
             text: `${updatePass.message}, please re-login!`,
             timer: 3000,
-          }).then(() => {
-            localStorage.removeItem('access_token');
-            window.location.hash = '#/login';
-          });
+          }).then(async () => {
+            await Auth.deleteAccessToken();
+          }).then(() => window.location.hash = '#/login');
         } else {
           this._swAlert(updatePass);
         }

@@ -43,7 +43,7 @@ class ButtonMode extends HTMLElement {
   render() {
     this.innerHTML = `<button
         type="button"
-        class="block p-4 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 bottom-5 right-5 fixed"
+        class="block z-20 p-4 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 bottom-5 right-5 fixed"
         id="btn-mode"
       >
       <svg id="theme-toggle-dark-icon" class="hidden w-4 h-4 animate-[flip_3s_infinite_2s]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
