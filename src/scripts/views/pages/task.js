@@ -298,6 +298,7 @@ const Task = {
     e.submitter.innerHTML = this._loadingBtnReset();
     formTask.reset();
     this._renderTask();
+    this._renderInfo();
   },
 
   _convertToLocalTime(time) {
