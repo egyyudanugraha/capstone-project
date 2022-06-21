@@ -206,9 +206,10 @@ const Task = {
               html: deleteTask.message,
               showConfirmButton: false,
               timer: 2000,
+            }).then(() => {
+              this._renderInfo();
+              this._renderTask();
             });
-
-            this._renderTask();
           }
         });
       }
@@ -239,9 +240,10 @@ const Task = {
             html: `${deleteAllTask.message}`,
             showConfirmButton: false,
             timer: 2000,
+          }).then(() => {
+            this._renderInfo();
+            this._renderTask();
           });
-
-          this._renderTask();
         }
       });
     });
