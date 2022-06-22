@@ -22,94 +22,53 @@ const Home = {
     </div>
   </div>
   
-  <div class="my-14">
-    <div class="how-to-use px-2 flex flex-col gap-8 py-6 bg-white dark:bg-slate-800">
-      <h1 class="text-3xl lg:text-4xl text-center text-slate-900 dark:text-slate-100">How to Use</h1>
-      <div id="carouselExampleCaptions" class="carousel slide relative" data-bs-ride="carousel">
-        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        </div>
-        <div class="carousel-inner relative w-full overflow-hidden">
-          <div class="carousel-item active relative float-left w-full">
-            <img src="https://i.postimg.cc/Znk1JPbk/Component-1.png" class="block h-[60%] mx-auto object-cover" alt="adding task" />
-            <div class="carousel-caption hidden md:block absolute text-center">
-              <p class="text-slate-900">
-                <strong class="text-purple-600">Start</strong>
-                with creating new task, set your deadline and prioritizing tasks by urgency and importance. Make sure you fill every field, then save your task by pressing
-                <strong class="text-purple-600">Save Task</strong>
-                button.
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item relative float-left w-full">
-            <img src="https://i.postimg.cc/NF7PYWCT/Component-2.png" class="block h-[60%] mx-auto object-cover" alt="prioritized with eisenhower matrix" />
-            <div class="carousel-caption hidden md:block absolute text-center">
-              <p class="text-slate-900">
-                Go to <strong class="text-purple-600">Eisenhower Matrix</strong> and watch your prioritized task results on 4 quadrants. Choose task that you want to work on by clicking task card and you will see details of your task, then
-                press <strong class="text-purple-600">Work Now!</strong> button and you will directly go to Pomodoro timer to start working.
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item relative float-left w-full">
-            <img src="https://i.postimg.cc/G3kfky32/Component-3.png" class="block h-[60%] mx-auto object-cover" alt="pomodoro timer" />
-            <div class="carousel-caption hidden md:block absolute text-center">
-              <p class="text-slate-900">
-                Start working your task by pressing <strong class="text-purple-600">Start</strong> button to start the Pomodoro timer. Checklist the task that you think already <strong class="text-purple-600">complete/finish</strong>. You
-                can watch your work history in the <strong class="text-purple-600">History Bar</strong>.
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item relative float-left w-full">
-            <img src="https://i.postimg.cc/xTn4g1qP/Component-4.png" class="block h-[60%] mx-auto object-cover" alt="pomodoro timer" />
-            <div class="carousel-caption hidden md:block absolute text-center">
-              <p class="text-slate-900">
-                In the home page you can wacth your <strong class="text-purple-600">uncompleted tasks</strong> and <strong class="text-purple-600">tasks to complete</strong>. You can click the task card to see more details about it.
-              </p>
-            </div>
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-      <div class="my-4 md:hidden">
-        <ol class="list-decimal grid gap-2 marker:text-purple-600 mx-5 text-slate-900 dark:text-slate-100 lg:text-1xl">
-          <li>
-            <strong class="text-purple-600">Start</strong>
-            with creating new task, set your deadline and prioritizing tasks by urgency and importance. Make sure you fill every field, then save your task by pressing
-            <strong class="text-purple-600">Save Task</strong>
-            button.
-          </li>
-          <li>
-            Go to <strong class="text-purple-600">Eisenhower Matrix</strong> and watch your prioritized task results on 4 quadrants. Choose task that you want to work on by clicking task card and you will see details of your task, then
-            press <strong class="text-purple-600">Work Now!</strong> button and you will directly go to Pomodoro timer to start working.
-          </li>
-          <li>
-            Start working your task by pressing <strong class="text-purple-600">Start</strong> button to start the Pomodoro timer. Checklist the task that you think already <strong class="text-purple-600">complete/finish</strong>. You can
-            watch your work history in the <strong class="text-purple-600">History Bar</strong>.
-          </li>
-          <li>In the home page you can wacth your <strong class="text-purple-600">uncompleted tasks</strong> and <strong class="text-purple-600">tasks to complete</strong>. You can click the task card to see more details about it.</li>
-        </ol>
+  <div class="bg-white dark:bg-gray-800 mt-10 mb-10">
+  <h1 class="text-3xl lg:text-5xl text-center mb-2 dark:text-white">How to use</h1>
+  
+  <div class="p-10 grid md:mx-14 lg:mx-20 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-10 bg-white dark:bg-gray-800">
+    
+  <div class="rounded-md overflow-hidden shadow-lg md:mx-4">
+      <img class="w-full" src="https://i.postimg.cc/Znk1JPbk/Component-1.png" alt="adding task">
+      <div class="px-6 py-4">
+          <p class="text-slate-900 text-center dark:text-white">
+          <strong class="text-purple-600">Start</strong>
+          with creating new task, set your deadline and prioritizing tasks by urgency and importance. Make sure you fill every field, then save your task by pressing
+          <strong class="text-purple-600">Save Task</strong>
+          button.
+        </p>
+    </div>
+    </div>
+
+    <div class="rounded-md overflow-hidden shadow-lg md:mx-4">
+      <img class="w-full" src="https://i.postimg.cc/NF7PYWCT/Component-2.png" alt="prioritized with eisenhower matrix">
+      <div class="px-6 py-4">
+          <p class="text-slate-900 text-center dark:text-white">
+          Go to <strong class="text-purple-600">Eisenhower Matrix</strong> and watch your prioritized task results on 4 quadrants. Choose task that you want to work on by clicking task card and you will see details of your task, then
+          press <strong class="text-purple-600">Work Now!</strong> button and you will directly go to Pomodoro timer to start working.
+        </p>
+    </div>
+    </div>
+
+    <div class="rounded-md overflow-hidden shadow-lg md:mx-4">
+      <img class="w-full" src="https://i.postimg.cc/G3kfky32/Component-3.png" alt="pomodoro timer">
+      <div class="px-6 py-4">
+        <p class="text-slate-900 text-center dark:text-white ">
+          Start working your task by pressing <strong class="text-purple-600">Start</strong> button to start the Pomodoro timer. Checklist the task that you think already <strong class="text-purple-600">complete/finish</strong>. You
+          can watch your work history in the <strong class="text-purple-600">History Bar</strong>.
+        </p>
       </div>
     </div>
+
+    <div class="rounded-md overflow-hidden shadow-lg md:mx-4">
+      <img class="w-full" src="https://i.postimg.cc/xTn4g1qP/Component-4.png" alt="uncompleted task">
+      <div class="px-6 py-4">
+        <p class="text-slate-900 text-center dark:text-white">
+          In the home page you can wacth your <strong class="text-purple-600">uncompleted tasks</strong> and <strong class="text-purple-600">tasks to complete</strong>. You can click the task card to see more details about it.
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
   </div>
 
   <div class="flex flex-col gap-4 mx-5 mb-10 items-center dark:text-white">
