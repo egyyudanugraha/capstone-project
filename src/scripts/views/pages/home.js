@@ -10,7 +10,7 @@ const Home = {
     const tasks = await ApptivityApi.getAllTask('completed=false');
     this.allTask = tasks;
 
-    return `<div class="dashboard flex flex-col gap-10">
+    return `<div class="dashboard flex flex-col gap-10 min-h-[65vh]">
     <div class="flex flex-col md:grid md:grid-cols-2 max-w-3xl md:max-w-full gap-3 mx-6 md:mx-14">
       <app-card-matrix class="bg-amber-600 border-yellow-200 dark:border-amber-600 scrollbar-thumb-amber-800 scrollbar-track-amber-500"
         data-title="Deadline Today" data-subtitle="Tasks to complete" data-command="List tasks deadline today">
@@ -22,10 +22,10 @@ const Home = {
     </div>
   </div>
   
-  <div class="bg-white dark:bg-gray-800 mt-10 mb-10">
-  <h1 class="text-3xl lg:text-5xl text-center mb-2 dark:text-white">How to use</h1>
+  <div class="bg-white dark:bg-gray-800 my-5 py-5">
+  <h1 class="text-3xl lg:text-5xl text-center mb-2 dark:text-white">How to <span class="border-b-2 font-medium border-purple-600">use</span></h1>
   
-  <div class="p-10 grid md:mx-14 lg:mx-20 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-10 bg-white dark:bg-gray-800">
+  <div class="p-10 grid md:mx-14 lg:mx-20 grid-cols-1 md:grid-cols-2 gap-10 bg-white dark:bg-gray-800">
     
   <div class="rounded-md overflow-hidden shadow-lg md:mx-4">
       <img class="w-full" src="https://i.postimg.cc/Znk1JPbk/Component-1.png" alt="adding task">
@@ -71,7 +71,7 @@ const Home = {
   </div>
   </div>
 
-  <div class="flex flex-col gap-4 mx-5 mb-10 items-center dark:text-white">
+  <div class="flex flex-col gap-4 mx-5 my-5 py-5 items-center dark:text-white">
     <div class="md:w-3/4">
       <h1 class="text-3xl lg:text-5xl text-center mb-2">How to <span class="border-b-2 font-medium border-purple-600">prioritizing</span> your to do list</h1>
       <h2 class="text-md text-center">

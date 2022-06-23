@@ -115,7 +115,7 @@ const Landing = {
                 <img class="mb-3 w-24 h-24 rounded-full shadow-lg" data-src="./images/yuda.jpg" alt="Egy Yuda Nugraha"></img>
               </picture>
               <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Egy Yuda Nugraha</h5>
-              <span class="text-sm text-gray-500 dark:text-gray-400">Back-End Developer</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">Full-Stack Developer</span>
               <div class="flex mt-4 space-x-3 lg:mt-6">
                 <a
                   href="https://github.com/egyyudanugraha" target="_blank"
