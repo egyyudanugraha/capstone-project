@@ -53,8 +53,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About Apptivity
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Apptivity API adalah backend yang menyediakan fungsi-fungsi atau API untuk kebutuhan data. Apptivity API ini digunakan oleh project [Apptivity](http://apptivity-v1.netlify.app/). API ini adalah versi ke-3 dari yang kami bangun dan yang akhirnya kami gunakan.
 
 <p align="right">(<a href="#top">back to top</a>)</p>

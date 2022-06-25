@@ -1,6 +1,7 @@
 const Task = require('../models/task');
 
-const mapingMatrix = (tasks) => tasks.map((task) => ({ _id: task._id, title: task.title }));
+const mapingMatrix = (tasks) => tasks.sort((a, b) => a.deadline - b.deadline)
+  .map((task) => ({ _id: task._id, title: task.title }));
 
 module.exports = {
   matrix: async (req, res) => {
