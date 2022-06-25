@@ -8,20 +8,20 @@ const Task = {
     return `<div class="grid justify-center grid-cols-[85%] gap-14">
         <div class="add-task">
           <form class="grid md:grid-cols-2 gap-4">
-            <div class="title-desc grid gap-2">
+            <div class="title-desc grid gap-2 md:row-span-2">
               <input type="text" class="hidden" id="task_id" name="task_id">
-              <input type="text" id="title" placeholder="Task title" class="bg-transparent border-0 focus:ring-0 text-2xl placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white" required />
+              <input type="text" id="title" placeholder="Task title" class="md:text-xl md:placeholder:text-xl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
               <textarea
                 id="description"
-                class="resize-none bg-transparent border-0 focus:ring-0 text-sm placeholder:text-slate-600 dark:placeholder:text-slate-400 text-slate-800 dark:text-white"
-                rows="3"
-                placeholder="Description"
+                class="resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                rows="7"
+                placeholder="Description (optional)"
               ></textarea>
             </div>
             <div class="date-urgency grid gap-4">
               <label for="date" class="grid gap-2 text-slate-600 dark:text-slate-400">
                 <span>Deadline</span>
-                <input type="datetime-local" class="bg-transparent border-0" id="date" required />
+                <input type="datetime-local" class="bg-gray-50 border appearance-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="date" required />
               </label>
               <label for="urgency" class="grid gap-2 text-slate-600 dark:text-slate-400">
                 <span>Urgency</span>
