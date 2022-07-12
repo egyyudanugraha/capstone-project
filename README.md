@@ -106,21 +106,17 @@ How to install local apptivity on your laptop? let's follow the instructions
    ```
 3. Create file `.env` in root project folder
    ```js
-   // FOR DEVELOPMENT (Please start local back-end server)
-   PORT=3000
-   JWT_SECRET='Apptivity-backend'
-   KEY_PUSH='testpushnotification'
-   VAPID_PUBLIC_KEY='BF0iNOeRThs_SsOTc1s77KuIozBdxeaLM5aegT5-UsccCdg2QN9bZQ_a4SZtZ_Y09-ytma00m4AeHqYvk5MZuJA'
-   VAPID_PRIVATE_KEY='_xplqJ2vtsXMDJrwU3nRWfLK6jMU1rRidrVOuTCpPKk'
-   GCM_API_KEY='Everything-is-ok'
-   MONGODB_URI='mongodb://localhost:27017/capstone'
-   INTERVAL=20
+   BASE_URL_API='http://localhost:3000' // FOR DEVELOPMENT
+   BASE_URL_API='https://apptivity-api-v3.herokuapp.com/' // FOR PRODUCTION
+   BASE_URL_NEWS='https://gnews.io/api/v4/search'
+   API_KEY='YOUR_API_KEY-FROM_GNEWS' // PLEASE REGISTER GNEWS API TO GET API KEY
+   PUBLIC_KEY_SERVER='BF0iNOeRThs_SsOTc1s77KuIozBdxeaLM5aegT5-UsccCdg2QN9bZQ_a4SZtZ_Y09-ytma00m4AeHqYvk5MZuJA' 
    ```
 4. Run the server!
    ```sh
    npm run start-dev
    ```
-   Yeay! Server running on [localhost](http://localhost:3000/)
+   Yeay! Server running on [localhost](http://localhost:8080/)
    
    #### Optional
    For the styling development please run tailwind, open new tab on terminal.
