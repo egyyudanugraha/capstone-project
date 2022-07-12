@@ -120,7 +120,7 @@ How to install local apptivity on your laptop? let's follow the instructions
    ```sh
    npm run start-dev
    ```
-   Yeay! Server running on [localhost](http://localhost:8080/)
+   Yeay! Server running on [localhost](http://localhost:3000/)
    
    #### Optional
    For the styling development please run tailwind, open new tab on terminal.
